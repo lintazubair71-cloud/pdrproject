@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="robots" content="index, follow, max-image-preview:large"/>
+
+<title>Calorie Burn Calculator: How Many Calories Did I Burn?</title>
+<meta name="description" content="How many calories did you burn? Free calorie burn calculator for running, walking, HIIT, weight training &amp; 70+ activities — personalized by your weight, age, sex &amp; fitness level."/>
+<link rel="canonical" href="https://exercisemenu.com/calorie-burn-calculator/"/>
+
+<!-- Open Graph / social -->
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="Calorie Burn Calculator: How Many Calories Did I Burn?"/>
+<meta property="og:description" content="Estimate calories burned for 70+ exercises — running, walking, HIIT, weights &amp; more. Personalized by weight, age, sex and fitness level."/>
+<meta property="og:url" content="https://exercisemenu.com/calorie-burn-calculator/"/>
+<meta name="twitter:card" content="summary_large_image"/>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+
+<!-- Schema: WebApplication -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Calorie Burn Calculator",
+  "url": "https://exercisemenu.com/calorie-burn-calculator/",
+  "description": "Estimate how many calories you burn during any exercise. Based on MET values from the Compendium of Physical Activities, adjusted for weight, age, sex, and fitness level.",
+  "applicationCategory": "HealthApplication",
+  "operatingSystem": "All",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "creator": { "@type": "Organization", "name": "ExerciseMenu", "url": "https://exercisemenu.com" },
+  "featureList": [
+    "77+ exercise types with MET-based calorie estimation",
+    "Adjustable for body weight, age, sex, fitness level, and intensity",
+    "Comparison across exercise types for the same duration",
+    "Fat burn estimation in grams",
+    "Food equivalent and weekly projection"
+  ]
+}
+</script>
+
+<!-- Schema: HowTo -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to calculate calories burned during exercise",
+  "description": "Estimate calories burned for any activity using the MET method, adjusted for body weight and duration.",
+  "step": [
+    { "@type": "HowToStep", "name": "Enter your body weight", "text": "Enter your body weight in kilograms or pounds." },
+    { "@type": "HowToStep", "name": "Choose your activity", "text": "Select your exercise so its MET value is applied automatically." },
+    { "@type": "HowToStep", "name": "Set the duration", "text": "Enter how many minutes you exercised." },
+    { "@type": "HowToStep", "name": "Get your result", "text": "The calculator returns estimated calories burned using the formula MET x 3.5 x weight(kg) / 200 x minutes, adjusted for age, sex and fitness level." }
+  ]
+}
+</script>
+
+<!-- Schema: FAQPage (matches the visible FAQ section below) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "How many calories should I burn per workout to lose weight?",
+      "acceptedAnswer": { "@type": "Answer", "text": "A realistic target for most people is 200-400 calories per session, 4-5 days per week, combined with a moderate calorie deficit from food. The specific number matters far less than consistency over weeks and months." } },
+    { "@type": "Question", "name": "What exercise burns the most calories?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Among common exercises, jump rope has the highest MET value at 11.8, followed by running at 8+ mph (13.8 MET) and squash (12.0 MET). However, the best calorie-burning exercise is the one you can sustain long enough to accumulate meaningful total burn." } },
+    { "@type": "Question", "name": "Does sweating more mean I burned more calories?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. Sweating is your body's cooling response, not a calorie indicator. You can sweat heavily in a hot room doing nothing. Calorie burn is driven by exercise intensity and how much muscle you engage, not by how wet your shirt gets." } },
+    { "@type": "Question", "name": "Do I burn more calories lifting heavy or doing more reps?",
+      "acceptedAnswer": { "@type": "Answer", "text": "During the session, calorie burn is similar. Heavy loads with fewer reps (3-6 range) and lighter loads with more reps (12-20 range) produce comparable in-session energy expenditure. The difference is afterward - heavy compound lifts tend to produce greater EPOC, meaning your metabolism stays elevated longer post-workout." } },
+    { "@type": "Question", "name": "How many calories do 10,000 steps burn?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Roughly 400-500 calories for an average adult, depending on your weight, walking speed, and terrain. A 180 lb person walking briskly on varied terrain will burn significantly more than a 130 lb person strolling on flat ground." } },
+    { "@type": "Question", "name": "How many calories do I burn per day without exercise?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Your body burns calories around the clock just to stay alive - this is your basal metabolic rate (BMR). For most adults, BMR falls between 1,400 and 1,800 calories per day. Add daily movement like walking, cooking, and fidgeting (NEAT), and most people burn 1,800-2,400 calories per day before any structured exercise." } },
+    { "@type": "Question", "name": "Is running or weight training better for burning calories?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Running burns more calories per minute during the session. Weight training burns fewer during the workout but elevates your resting metabolic rate afterward through EPOC and builds muscle tissue that increases daily calorie burn over time. For overall body composition, combining both produces better results than either alone." } },
+    { "@type": "Question", "name": "Why does my fitness tracker show different numbers than this calculator?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Fitness trackers estimate calorie burn from heart rate sensors and accelerometers, which are affected by wrist fit, skin tone, device calibration, and arm movement during exercise. MET-based calculators use standardized activity data from controlled research. Both are estimates - they use different methods, so the numbers will rarely match exactly." } }
+  ]
+}
+</script>
+
+<style>
+  :root {
+    --surface: #0b0b0b;
+    --surface2: #151515;
+    --border: rgba(255,255,255,0.07);
+    --accent: #E02B2B;
+    --accent2: #ef4444;
+    --accent-glow: rgba(224,43,43,0.15);
+    --text: #f0ede8;
+    --muted: #6b6878;
+    --muted2: #9794a0;
+    /* light content theme */
+    --page-bg: #faf9f7;
+    --ink: #1c1b1a;
+    --ink-soft: #3d3b39;
+    --ink-mute: #6b6760;
+    --line: #e7e3dd;
+    --card-bg: #ffffff;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--page-bg);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .container { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
+
+  /* ---------- Header ---------- */
+  header { margin-bottom: 2.5rem; animation: fadeUp 0.6s ease both; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--accent-glow); border: 1px solid rgba(224,43,43,0.3);
+    border-radius: 100px; padding: 5px 14px; font-size: 11px; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent2); margin-bottom: 1.25rem;
+  }
+  .badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: pulse 2s infinite; }
+  h1 { font-family: 'DM Serif Display', serif; font-size: clamp(2.4rem, 6vw, 4rem); line-height: 1.1; letter-spacing: -0.02em; color: var(--ink); }
+  h1 .h1-accent { font-style: italic; color: var(--accent); }
+  .subtitle { margin-top: 0.85rem; color: var(--ink-soft); font-size: 1.05rem; font-weight: 400; max-width: 620px; line-height: 1.6; }
+
+  /* ---------- Calculator card ---------- */
+  .card { background: var(--surface); border: 1px solid rgba(224,43,43,0.25); border-radius: 20px; overflow: hidden; color: var(--text); animation: fadeUp 0.6s 0.1s ease both; box-shadow: 0 20px 60px rgba(0,0,0,0.18); }
+  .card-header { display: flex; align-items: center; gap: 10px; padding: 1.25rem 1.75rem; border-bottom: 1px solid var(--border); }
+  .dot { width: 10px; height: 10px; border-radius: 50%; }
+  .dot-red { background: #ff5f57; } .dot-yellow { background: #febc2e; } .dot-green { background: #28c840; }
+  .card-title { margin-left: 6px; font-size: 12px; color: var(--muted); font-weight: 500; letter-spacing: 0.04em; }
+  .card-body { padding: 2rem 1.75rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  @media (max-width: 600px) { .card-body { grid-template-columns: 1fr; } }
+
+  .unit-toggle { grid-column: 1 / -1; display: flex; background: var(--surface2); border-radius: 10px; padding: 4px; gap: 4px; }
+  .unit-btn { flex: 1; padding: 8px; border: none; background: transparent; color: var(--muted2); font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; border-radius: 7px; cursor: pointer; transition: all 0.2s; }
+  .unit-btn.active { background: var(--accent); color: #fff; }
+
+  .field { display: flex; flex-direction: column; gap: 8px; }
+  .field.full { grid-column: 1 / -1; }
+  .field label { font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted2); }
+  .field input, .field select { background: var(--surface2); border: 1px solid var(--border); border-radius: 10px; padding: 13px 16px; font-family: 'DM Sans', sans-serif; font-size: 15px; color: var(--text); outline: none; transition: border-color 0.2s; -webkit-appearance: none; appearance: none; }
+  .field input:focus, .field select:focus { border-color: rgba(224,43,43,0.5); box-shadow: 0 0 0 3px rgba(224,43,43,0.08); }
+  .field select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b6878' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; padding-right: 40px; cursor: pointer; }
+  .field select option { background: #151515; }
+  .field select optgroup { color: var(--accent); font-weight: 600; }
+
+  .search-wrap { position: relative; margin-bottom: 6px; }
+  .search-wrap input { width: 100%; background: var(--surface2); border: 1px solid var(--border); border-radius: 10px; padding: 10px 16px 10px 38px; font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--text); outline: none; transition: border-color 0.2s; }
+  .search-wrap input:focus { border-color: rgba(224,43,43,0.5); }
+  .search-wrap input::placeholder { color: var(--muted); }
+  .search-wrap::before { content: '🔍'; position: absolute; left: 12px; top: 50%; transform: translateY(-50%); font-size: 13px; pointer-events: none; }
+
+  .intensity-group { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .int-pill { padding: 10px 6px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface2); color: var(--muted2); font-size: 12px; font-weight: 500; text-align: center; cursor: pointer; transition: all 0.2s; }
+  .int-pill:hover { border-color: rgba(224,43,43,0.3); }
+  .int-pill.active { border-color: var(--accent); background: var(--accent-glow); color: var(--accent2); }
+  .int-pill .int-icon { font-size: 18px; display: block; margin-bottom: 4px; }
+
+  .slider-wrap { position: relative; }
+  .slider-vals { display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); margin-top: 6px; }
+  .slider-current { position: absolute; right: 0; top: -26px; font-size: 13px; font-weight: 600; color: var(--accent); }
+  input[type=range] { -webkit-appearance: none; appearance: none; width: 100%; height: 4px; border-radius: 2px; background: var(--surface2); outline: none; border: none; padding: 0; }
+  input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; border-radius: 50%; background: var(--accent); cursor: pointer; box-shadow: 0 0 10px rgba(224,43,43,0.4); }
+  input[type=range]::-moz-range-thumb { width: 18px; height: 18px; border-radius: 50%; background: var(--accent); cursor: pointer; border: none; }
+
+  .calc-btn { grid-column: 1 / -1; padding: 16px; background: var(--accent); border: none; border-radius: 12px; color: #fff; font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 600; letter-spacing: 0.02em; cursor: pointer; transition: all 0.2s; position: relative; overflow: hidden; }
+  .calc-btn::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 60%); }
+  .calc-btn:hover { background: var(--accent2); transform: translateY(-1px); box-shadow: 0 8px 30px rgba(224,43,43,0.35); }
+  .calc-btn:active { transform: translateY(0); }
+
+  .results { padding: 0 1.75rem 2rem; animation: fadeUp 0.5s ease both; }
+  .results-divider { height: 1px; background: var(--border); margin-bottom: 2rem; }
+  .results-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 12px; margin-bottom: 1.5rem; }
+  @media (max-width: 600px) { .results-grid { grid-template-columns: 1fr 1fr; } .results-grid .main-metric { grid-column: 1 / -1; } }
+  .metric-card { background: var(--surface2); border: 1px solid var(--border); border-radius: 14px; padding: 1.25rem; }
+  .main-metric { background: linear-gradient(135deg, rgba(224,43,43,0.12), rgba(224,43,43,0.04)); border-color: rgba(224,43,43,0.2); }
+  .metric-label { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted2); margin-bottom: 8px; }
+  .metric-value { font-family: 'DM Serif Display', serif; font-size: 2.8rem; line-height: 1; color: var(--accent); }
+  .metric-unit { font-size: 14px; color: var(--muted2); margin-top: 4px; }
+  .metric-small .metric-value { font-size: 1.6rem; color: var(--text); }
+
+  .extra-metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 1.5rem; }
+  @media (max-width: 600px) { .extra-metrics { grid-template-columns: 1fr 1fr; } }
+  .extra-card { background: var(--surface2); border: 1px solid var(--border); border-radius: 12px; padding: 1rem; text-align: center; }
+  .extra-card .extra-icon { font-size: 20px; margin-bottom: 6px; }
+  .extra-card .extra-val { font-family: 'DM Serif Display', serif; font-size: 1.2rem; color: var(--text); line-height: 1.2; }
+  .extra-card .extra-label { font-size: 10px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted2); margin-top: 4px; }
+
+  .intensity-bar-wrap { margin-bottom: 1.5rem; }
+  .bar-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+  .bar-title { font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted2); }
+  .bar-pct { font-size: 13px; font-weight: 600; color: var(--accent); }
+  .bar-track { height: 8px; background: var(--surface2); border-radius: 4px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 4px; transition: width 0.8s cubic-bezier(0.34,1.56,0.64,1); background: linear-gradient(90deg, #E02B2B, #ef4444); }
+  .bar-ticks { display: flex; justify-content: space-between; margin-top: 6px; font-size: 11px; color: var(--muted); }
+
+  .breakdown { background: var(--surface2); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+  .breakdown-header { padding: 1rem 1.25rem; border-bottom: 1px solid var(--border); font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted2); }
+  .breakdown-row { display: flex; align-items: center; justify-content: space-between; padding: 14px 1.25rem; border-bottom: 1px solid var(--border); transition: background 0.15s; }
+  .breakdown-row:last-child { border-bottom: none; }
+  .breakdown-row:hover { background: rgba(255,255,255,0.02); }
+  .breakdown-left { display: flex; align-items: center; gap: 10px; }
+  .breakdown-icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; background: var(--surface); }
+  .breakdown-name { font-size: 14px; font-weight: 500; color: var(--text); }
+  .breakdown-met { font-size: 12px; color: var(--muted); }
+  .breakdown-cal { font-family: 'DM Serif Display', serif; font-size: 1.3rem; color: var(--text); }
+  .breakdown-cal span { font-size: 12px; color: var(--muted); font-family: 'DM Sans', sans-serif; }
+
+  .tip-card { margin-top: 1rem; padding: 1rem 1.25rem; background: rgba(59,130,246,0.07); border: 1px solid rgba(59,130,246,0.2); border-radius: 12px; display: flex; gap: 10px; align-items: flex-start; }
+  .tip-icon { font-size: 16px; margin-top: 2px; flex-shrink: 0; }
+  .tip-text { font-size: 13px; color: #1e40af; line-height: 1.6; }
+
+  .card-footnote { text-align: center; margin: 1.25rem 0 0; font-size: 12px; color: var(--ink-mute); }
+  .card-footnote a { color: var(--accent); text-decoration: none; }
+  .card-footnote a:hover { text-decoration: underline; }
+
+  /* ---------- SEO content ---------- */
+  .cbc-content { margin-top: 3.5rem; animation: fadeUp 0.6s 0.2s ease both; }
+  .cbc-content h2 { font-family: 'DM Serif Display', serif; font-size: clamp(1.6rem, 3.5vw, 2rem); line-height: 1.2; color: var(--ink); margin: 3rem 0 1rem; padding-left: 14px; border-left: 4px solid var(--accent); }
+  .cbc-content h2:first-child { margin-top: 0; }
+  .cbc-content h3 { font-size: 1.15rem; font-weight: 600; color: var(--ink); margin: 1.75rem 0 0.6rem; }
+  .cbc-content p { color: var(--ink-soft); line-height: 1.75; margin: 0.9rem 0; font-size: 1rem; }
+  .cbc-content a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+  .cbc-content strong { color: var(--ink); font-weight: 600; }
+
+  .table-scroll { overflow-x: auto; margin: 1.25rem 0; border: 1px solid var(--line); border-radius: 14px; }
+  table.cbc-table { width: 100%; border-collapse: collapse; font-size: 0.95rem; min-width: 460px; }
+  table.cbc-table thead th { background: #1c1b1a; color: #fff; text-align: left; padding: 13px 16px; font-weight: 600; font-size: 0.85rem; letter-spacing: 0.02em; }
+  table.cbc-table tbody td { padding: 12px 16px; border-top: 1px solid var(--line); color: var(--ink-soft); }
+  table.cbc-table tbody tr:nth-child(even) { background: #f4f1ec; }
+  table.cbc-table tbody td:first-child { font-weight: 500; color: var(--ink); }
+  table.cbc-table td.num { font-variant-numeric: tabular-nums; }
+
+  .callout { margin: 1.5rem 0; padding: 1.1rem 1.3rem; border-radius: 12px; border: 1px solid var(--line); background: #fff; }
+  .callout.accent { border-color: rgba(224,43,43,0.25); background: linear-gradient(135deg, rgba(224,43,43,0.06), rgba(224,43,43,0.02)); }
+  .callout .callout-title { font-weight: 700; color: var(--ink); margin-bottom: 0.3rem; display: flex; align-items: center; gap: 8px; }
+  .callout p { margin: 0.3rem 0 0; }
+
+  .formula-box { background: #1c1b1a; color: #f0ede8; border-radius: 16px; padding: 1.5rem; margin: 1.5rem 0; }
+  .formula-box .fb-head { font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted2); margin-bottom: 1rem; }
+  .fb-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 1.25rem; }
+  @media (max-width: 600px) { .fb-steps { grid-template-columns: 1fr; } }
+  .fb-step { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 1rem; }
+  .fb-step .fb-n { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent2); margin-bottom: 0.5rem; }
+  .fb-step .fb-item { font-size: 0.9rem; color: #f0ede8; margin: 0.25rem 0; }
+  .fb-step .fb-sub { font-size: 0.78rem; color: var(--muted2); }
+  .fb-formula { text-align: center; font-family: 'DM Serif Display', serif; font-size: clamp(1.1rem, 3vw, 1.5rem); color: #fff; padding: 1rem; background: rgba(224,43,43,0.14); border-radius: 12px; }
+  .fb-formula small { display:block; font-family:'DM Sans',sans-serif; font-size: 0.8rem; color: var(--muted2); margin-top: 0.4rem; }
+
+  /* FAQ accordion */
+  .faq-list { margin: 1.25rem 0; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; background: #fff; }
+  .faq-list details { border-top: 1px solid var(--line); }
+  .faq-list details:first-child { border-top: none; }
+  .faq-list summary { list-style: none; cursor: pointer; padding: 16px 20px; font-weight: 600; color: var(--ink); display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 1rem; }
+  .faq-list summary::-webkit-details-marker { display: none; }
+  .faq-list summary::after { content: '+'; font-size: 1.4rem; color: var(--accent); font-weight: 400; line-height: 1; flex-shrink: 0; transition: transform 0.2s; }
+  .faq-list details[open] summary::after { content: '\2212'; }
+  .faq-list .faq-a { padding: 0 20px 18px; color: var(--ink-soft); line-height: 1.7; }
+
+  .related { margin-top: 2rem; padding: 1.3rem 1.4rem; background: #f4f1ec; border-radius: 14px; }
+  .related h3 { margin-top: 0; }
+  .related ul { margin: 0.5rem 0 0; padding-left: 1.1rem; }
+  .related li { margin: 0.35rem 0; color: var(--ink-soft); }
+
+  .sources { margin-top: 2rem; font-size: 0.82rem; color: var(--ink-mute); line-height: 1.6; }
+  .sources h3 { font-size: 0.95rem; color: var(--ink); margin-bottom: 0.5rem; }
+  .sources ol { padding-left: 1.2rem; }
+
+  footer { text-align: center; margin-top: 3rem; font-size: 12px; color: var(--ink-mute); animation: fadeUp 0.6s 0.3s ease both; }
+  footer a { color: var(--ink-mute); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+  .hidden { display: none; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <div class="badge"><span class="badge-dot"></span> Fitness Tool</div>
+    <h1>Calorie Burn <span class="h1-accent">Calculator</span></h1>
+    <p class="subtitle">How many calories did you burn? Estimate calories burned for running, walking, HIIT, weight training and 70+ activities. Enter your weight, pick an exercise, set the duration — the result is personalized by your age, sex and fitness level, using MET values from the Compendium of Physical Activities.</p>
+  </header>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="dot dot-red"></div>
+      <div class="dot dot-yellow"></div>
+      <div class="dot dot-green"></div>
+      <span class="card-title">exercisemenu.com/calorie-burn-calculator/</span>
+    </div>
+
+    <div class="card-body">
+      <!-- Unit toggle -->
+      <div class="unit-toggle" style="grid-column:1/-1">
+        <button type="button" class="unit-btn active" id="btn-kg" onclick="setUnit('kg')">Kilograms (kg)</button>
+        <button type="button" class="unit-btn" id="btn-lb" onclick="setUnit('lb')">Pounds (lbs)</button>
+      </div>
+
+      <!-- Weight -->
+      <div class="field">
+        <label for="weight" id="weight-label">Body Weight (kg)</label>
+        <input type="number" id="weight" inputmode="decimal" value="70" min="20" max="300" step="1" placeholder="e.g. 70"/>
+      </div>
+
+      <!-- Age -->
+      <div class="field">
+        <label for="age">Age (years)</label>
+        <input type="number" id="age" inputmode="numeric" value="25" min="10" max="100" step="1" placeholder="e.g. 25"/>
+      </div>
+
+      <!-- Exercise type with search -->
+      <div class="field full">
+        <label for="exercise">Exercise Type</label>
+        <div class="search-wrap">
+          <input type="text" id="exercise-search" aria-label="Search exercises" placeholder="Search exercises... e.g. leg press, swimming, yoga" oninput="filterExercises(this.value)"/>
+        </div>
+        <select id="exercise">
+          <optgroup label="🏃 Cardio">
+            <option value="running_6">Running — 6 mph (10 min/mile)</option>
+            <option value="running_8">Running — 8 mph (7.5 min/mile)</option>
+            <option value="running_10">Running — 10 mph (6 min/mile)</option>
+            <option value="jogging">Jogging — 4.5–5 mph</option>
+            <option value="walking_brisk">Walking — brisk (3.5–4 mph)</option>
+            <option value="walking_moderate">Walking — moderate (3.0 mph)</option>
+            <option value="walking_slow">Walking — slow (2.0–2.5 mph)</option>
+            <option value="incline_walking">Incline Walking — treadmill 5% grade</option>
+            <option value="cycling_outdoor_mod">Cycling — outdoor, moderate</option>
+            <option value="cycling_outdoor_vig">Cycling — outdoor, vigorous</option>
+            <option value="cycling_stationary_mod">Cycling — stationary, moderate</option>
+            <option value="cycling_stationary_vig">Cycling — stationary, vigorous</option>
+            <option value="swimming_free_mod">Swimming — freestyle, moderate</option>
+            <option value="swimming_free_vig">Swimming — freestyle, vigorous</option>
+            <option value="swimming_back">Swimming — backstroke</option>
+            <option value="swimming_butterfly">Swimming — butterfly</option>
+            <option value="rowing_mod">Rowing Machine — moderate</option>
+            <option value="rowing_vig">Rowing Machine — vigorous</option>
+          </optgroup>
+          <optgroup label="⚡ High Intensity">
+            <option value="hiit">HIIT (general)</option>
+            <option value="circuit_training">Circuit Training — vigorous</option>
+            <option value="crossfit">CrossFit</option>
+            <option value="boxing_bag">Boxing — punching bag</option>
+            <option value="boxing_sparring">Boxing — sparring</option>
+            <option value="kickboxing">Kickboxing</option>
+            <option value="jump_rope">Jump Rope — moderate</option>
+            <option value="burpees">Burpees</option>
+          </optgroup>
+          <optgroup label="🏋️ Strength Training">
+            <option value="weight_training_mod">Weight Training — moderate</option>
+            <option value="weight_training_vig">Weight Training — vigorous</option>
+            <option value="squats">Squats</option>
+            <option value="deadlifts">Deadlifts</option>
+            <option value="bench_press">Bench Press</option>
+            <option value="leg_press">Leg Press</option>
+            <option value="leg_extension">Leg Extension (isolation)</option>
+            <option value="lunges">Lunges / Split Squats</option>
+            <option value="hip_thrust">Hip Thrusts / Glute Bridges</option>
+            <option value="bicep_curls">Bicep Curls (isolation)</option>
+            <option value="abs_crunches">Abs / Crunches / Sit-ups</option>
+            <option value="bodyweight_mod">Bodyweight Exercises — moderate</option>
+            <option value="bodyweight_vig">Bodyweight Exercises — vigorous</option>
+            <option value="powerlifting">Powerlifting</option>
+            <option value="kettlebell">Kettlebell Training</option>
+          </optgroup>
+          <optgroup label="🖥️ Cardio Machines">
+            <option value="elliptical_mod">Elliptical — moderate</option>
+            <option value="elliptical_vig">Elliptical — vigorous</option>
+            <option value="gazelle">Gazelle Glider</option>
+            <option value="stair_climber">Stair Climber</option>
+            <option value="treadmill_walk">Treadmill — walking (3.5 mph)</option>
+            <option value="treadmill_run">Treadmill — running (6 mph)</option>
+          </optgroup>
+          <optgroup label="⚽ Sports">
+            <option value="football">Football / Soccer</option>
+            <option value="basketball">Basketball — game play</option>
+            <option value="tennis_singles">Tennis — singles</option>
+            <option value="tennis_doubles">Tennis — doubles</option>
+            <option value="badminton">Badminton</option>
+            <option value="volleyball">Volleyball — competitive</option>
+            <option value="cricket">Cricket</option>
+            <option value="golf_carry">Golf — carrying clubs</option>
+            <option value="golf_cart">Golf — using cart</option>
+            <option value="martial_arts">Martial Arts (judo, karate, taekwondo)</option>
+            <option value="wrestling">Wrestling</option>
+            <option value="squash">Squash</option>
+            <option value="skiing_downhill">Skiing — downhill</option>
+            <option value="skiing_cross">Skiing — cross-country</option>
+            <option value="rock_climbing">Rock Climbing</option>
+          </optgroup>
+          <optgroup label="🧘 Low Intensity & Flexibility">
+            <option value="yoga_hatha">Yoga — hatha</option>
+            <option value="yoga_power">Yoga — power/vinyasa</option>
+            <option value="pilates">Pilates</option>
+            <option value="stretching">Stretching</option>
+            <option value="tai_chi">Tai Chi</option>
+            <option value="dancing_gen">Dancing — general</option>
+            <option value="dancing_vig">Dancing — vigorous (Zumba, hip-hop)</option>
+            <option value="hiking">Hiking</option>
+          </optgroup>
+          <optgroup label="🏠 Daily Activities">
+            <option value="gardening">Gardening — moderate</option>
+            <option value="housework">Housework — general cleaning</option>
+            <option value="mowing">Mowing Lawn — push mower</option>
+            <option value="cooking">Cooking — standing</option>
+            <option value="groceries">Walking — carrying groceries</option>
+            <option value="playing_kids">Playing with Children — moderate</option>
+            <option value="standing">Standing — general</option>
+          </optgroup>
+        </select>
+      </div>
+
+      <!-- Intensity -->
+      <div class="field full">
+        <label>Intensity Level</label>
+        <div class="intensity-group">
+          <div class="int-pill" id="int-low" onclick="setIntensity('low')"><span class="int-icon">🌿</span> Low</div>
+          <div class="int-pill active" id="int-moderate" onclick="setIntensity('moderate')"><span class="int-icon">🔥</span> Moderate</div>
+          <div class="int-pill" id="int-high" onclick="setIntensity('high')"><span class="int-icon">⚡</span> High</div>
+        </div>
+      </div>
+
+      <!-- Duration slider -->
+      <div class="field full">
+        <label for="duration">Duration</label>
+        <div class="slider-wrap">
+          <span class="slider-current" id="dur-val">30 min</span>
+          <input type="range" id="duration" min="5" max="180" value="30" step="5" oninput="updateDuration(this.value)"/>
+          <div class="slider-vals"><span>5 min</span><span>3 hrs</span></div>
+        </div>
+      </div>
+
+      <!-- Gender -->
+      <div class="field">
+        <label for="gender">Biological Sex</label>
+        <select id="gender"><option value="male">Male</option><option value="female">Female</option></select>
+      </div>
+
+      <!-- Fitness level -->
+      <div class="field">
+        <label for="fitness">Fitness Level</label>
+        <select id="fitness">
+          <option value="beginner">Beginner</option>
+          <option value="intermediate" selected>Intermediate</option>
+          <option value="advanced">Advanced / Athlete</option>
+        </select>
+      </div>
+
+      <button type="button" class="calc-btn" onclick="calculate()">Calculate Calories Burned →</button>
+    </div>
+
+    <!-- Results -->
+    <div class="results hidden" id="results">
+      <div class="results-divider"></div>
+      <div class="results-grid">
+        <div class="metric-card main-metric">
+          <div class="metric-label">Total Calories Burned</div>
+          <div class="metric-value" id="res-cal">—</div>
+          <div class="metric-unit">kilocalories (kcal)</div>
+        </div>
+        <div class="metric-card metric-small">
+          <div class="metric-label">Per Minute</div>
+          <div class="metric-value" id="res-pm">—</div>
+          <div class="metric-unit">kcal / min</div>
+        </div>
+        <div class="metric-card metric-small">
+          <div class="metric-label">Fat Burned</div>
+          <div class="metric-value" id="res-fat">—</div>
+          <div class="metric-unit">grams</div>
+        </div>
+      </div>
+
+      <div class="extra-metrics" id="extra-metrics">
+        <div class="extra-card"><div class="extra-icon">⏱️</div><div class="extra-val" id="res-hourly">—</div><div class="extra-label">Per Hour</div></div>
+        <div class="extra-card"><div class="extra-icon">🍔</div><div class="extra-val" id="res-food">—</div><div class="extra-label">Food Equivalent</div></div>
+        <div class="extra-card"><div class="extra-icon">📅</div><div class="extra-val" id="res-weekly">—</div><div class="extra-label">4× Per Week</div></div>
+        <div class="extra-card"><div class="extra-icon">⚖️</div><div class="extra-val" id="res-fatloss">—</div><div class="extra-label">Sessions to Burn 1 lb Fat</div></div>
+      </div>
+
+      <div class="intensity-bar-wrap">
+        <div class="bar-header"><span class="bar-title">Exercise Intensity</span><span class="bar-pct" id="bar-pct">—</span></div>
+        <div class="bar-track"><div class="bar-fill" id="bar-fill" style="width:0%"></div></div>
+        <div class="bar-ticks"><span>Light</span><span>Moderate</span><span>Vigorous</span><span>Max</span></div>
+      </div>
+
+      <div class="breakdown">
+        <div class="breakdown-header">How it compares — same duration</div>
+        <div id="breakdown-rows"></div>
+      </div>
+
+      <div class="tip-card" id="tip-card"><span class="tip-icon">💡</span><p class="tip-text" id="tip-text"></p></div>
+    </div>
+  </div>
+
+  <p class="card-footnote">Estimates based on MET values from the <a href="https://pubmed.ncbi.nlm.nih.gov/21681120/" target="_blank" rel="noopener">2011 Compendium of Physical Activities</a> · Results vary by individual physiology.</p>
+
+  <!-- ===================== SEO CONTENT ===================== -->
+  <article class="cbc-content">
+
+    <h2>How Many Calories Do Common Exercises Burn?</h2>
+    <p>Calorie burn depends on three things: <strong>what you do, how much you weigh, and how long you do it</strong>. The table below shows estimated calories burned during 30 minutes of common exercises, calculated using MET values from the 2011 Compendium of Physical Activities.</p>
+
+    <div class="table-scroll">
+      <table class="cbc-table">
+        <thead>
+          <tr><th>Exercise</th><th>150 lb / 68 kg (30 min)</th><th>180 lb / 82 kg (30 min)</th><th>MET</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Walking — moderate (3.0 mph)</td><td class="num">125 cal</td><td class="num">151 cal</td><td class="num">3.5</td></tr>
+          <tr><td>Walking — brisk (3.5 mph)</td><td class="num">154 cal</td><td class="num">185 cal</td><td class="num">4.3</td></tr>
+          <tr><td>Running (6 mph / 10 min mile)</td><td class="num">350 cal</td><td class="num">422 cal</td><td class="num">9.8</td></tr>
+          <tr><td>Cycling — stationary, moderate</td><td class="num">243 cal</td><td class="num">293 cal</td><td class="num">6.8</td></tr>
+          <tr><td>Swimming — freestyle, moderate</td><td class="num">250 cal</td><td class="num">301 cal</td><td class="num">7.0</td></tr>
+          <tr><td>Weight training — moderate</td><td class="num">125 cal</td><td class="num">151 cal</td><td class="num">3.5</td></tr>
+          <tr><td>Weight training — vigorous</td><td class="num">214 cal</td><td class="num">258 cal</td><td class="num">6.0</td></tr>
+          <tr><td>HIIT / Circuit training</td><td class="num">286 cal</td><td class="num">344 cal</td><td class="num">8.0</td></tr>
+          <tr><td>Jump rope — moderate pace</td><td class="num">421 cal</td><td class="num">508 cal</td><td class="num">11.8</td></tr>
+          <tr><td>Rowing machine — moderate</td><td class="num">250 cal</td><td class="num">301 cal</td><td class="num">7.0</td></tr>
+          <tr><td>Elliptical — moderate</td><td class="num">179 cal</td><td class="num">215 cal</td><td class="num">5.0</td></tr>
+          <tr><td>Stair climber</td><td class="num">321 cal</td><td class="num">388 cal</td><td class="num">9.0</td></tr>
+          <tr><td>Yoga — hatha</td><td class="num">89 cal</td><td class="num">108 cal</td><td class="num">2.5</td></tr>
+          <tr><td>Bodyweight exercises</td><td class="num">136 cal</td><td class="num">164 cal</td><td class="num">3.8</td></tr>
+          <tr><td>Standing — general</td><td class="num">64 cal</td><td class="num">77 cal</td><td class="num">1.8</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Of all common exercises, <strong>jump rope burns the most calories per minute</strong> — at 11.8 MET, it requires nearly 12 times the energy of sitting still. Running at 6 mph comes second at 9.8 MET, followed by stair climbing at 9.0 MET.</p>
+    <p>To estimate calories burned per hour, double the 30-minute values above. Keep in mind that very few people maintain high-intensity activities like jump rope or fast running for a full hour — your actual hourly burn will depend on how long you can sustain that pace.</p>
+    <p>These numbers are estimates. Your actual calorie burn varies with age, fitness level, lean body mass, and workout intensity — which is why the calculator above asks for those details.</p>
+
+    <h2>How Long Does It Take to Burn 100–500 Calories?</h2>
+    <p>Another common question is the reverse: <strong>how long do you have to exercise to burn a set number of calories?</strong> The table below shows approximate minutes for a 155 lb (70 kg) person at three intensities. Lighter people take a little longer; heavier people reach the target faster.</p>
+    <div class="table-scroll">
+      <table class="cbc-table">
+        <thead>
+          <tr><th>Calorie target</th><th>Brisk walking (4.3 MET)</th><th>Jogging (7.0 MET)</th><th>Running 6 mph (9.8 MET)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Burn 100 calories</td><td class="num">~19 min</td><td class="num">~12 min</td><td class="num">~8 min</td></tr>
+          <tr><td>Burn 150 calories</td><td class="num">~28 min</td><td class="num">~17 min</td><td class="num">~13 min</td></tr>
+          <tr><td>Burn 250 calories</td><td class="num">~47 min</td><td class="num">~29 min</td><td class="num">~21 min</td></tr>
+          <tr><td>Burn 350 calories</td><td class="num">~66 min</td><td class="num">~41 min</td><td class="num">~29 min</td></tr>
+          <tr><td>Burn 500 calories</td><td class="num">~95 min</td><td class="num">~58 min</td><td class="num">~42 min</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>For any other activity, weight or target, set the exercise and duration in the calculator above and adjust the minutes until you hit your goal.</p>
+
+    <h2>How Many Calories Does Weight Training Burn?</h2>
+    <p>Moderate-effort weight training burns roughly <strong>125–150 calories per 30 minutes</strong> for most people, depending on body weight. That is lower than running or cycling during the session itself — but the number is misleading on its own.</p>
+    <p>Resistance training creates a post-workout calorie burn that cardio does not match. This effect is called <strong>EPOC (excess post-exercise oxygen consumption)</strong>, sometimes referred to as the "afterburn effect." Your body continues consuming extra oxygen — and therefore extra calories — for hours after you finish lifting. A study published in the <em>European Journal of Applied Physiology</em> found that after a 31-minute heavy resistance session, participants' metabolic rate remained elevated for up to 38 hours post-exercise.</p>
+    <div class="callout accent">
+      <div class="callout-title">🔥 The afterburn effect (EPOC)</div>
+      <p>According to the American Council on Exercise, heavy resistance exercise produces a greater EPOC response than aerobic cycling at the same intensity. The afterburn from a single strength session adds an estimated <strong>6–15%</strong> to the total calories burned during the workout.</p>
+    </div>
+    <p>The type of exercise matters too. <strong>Compound lifts</strong> — squats, deadlifts, bench press, rows — recruit more muscle mass and burn more calories per minute than isolation exercises like bicep curls or leg extensions. If you want per-exercise numbers, the calculator above now includes squats, deadlifts, leg press, leg extension, lunges, hip thrusts, bench press, bicep curls and ab/crunch work, so you can compare compound and isolation movements directly.</p>
+    <p>If you want to increase calorie burn further during resistance training, shorten your rest periods or use circuit-style formats. Circuit training at vigorous effort registers 8.0 MET — more than double the 3.5 MET of a moderate-paced weight session with standard rest.</p>
+
+    <h2>How Many Calories Does Walking Burn?</h2>
+    <p>Walking speed changes calorie burn more than most people expect. At 3.0 mph (a casual pace), a 150 lb person burns roughly <strong>125 calories in 30 minutes</strong>. At 4.0 mph (a brisk pace), that jumps to about 179 calories — a 43% increase from simply walking faster.</p>
+    <p>Incline adds even more. Walking at 3.5 mph on a 5% treadmill incline (6.0 MET) burns around 214 calories in 30 minutes for a 150 lb person. That is roughly 40% more than the same speed on flat ground — making incline walking one of the most efficient low-impact calorie burners available.</p>
+    <p>For the common goal of <strong>10,000 steps per day</strong>, that translates to approximately 400–500 calories depending on your pace, weight, and terrain. Faster steps on incline terrain burn meaningfully more than slow steps on a flat surface.</p>
+    <p>Even standing burns more than sitting. At 1.8 MET, standing quietly for 30 minutes uses roughly 64 calories for a 150 lb person — compared to about 50 calories from sitting. The difference is small per session, but across an 8-hour workday, choosing to stand for half of it can add 50–70 extra calories burned.</p>
+
+    <h2>How Many Calories Does Running Burn?</h2>
+    <p>Running is one of the highest calorie-burning exercises per minute for most people. At 6 mph (a 10-minute mile), a 150 lb person burns roughly <strong>350 calories in 30 minutes</strong>. At 8 mph (a 7.5-minute mile), that increases to approximately 493 calories in the same time window.</p>
+    <p>On a treadmill specifically, the calorie display uses a similar MET-based formula but typically assumes a 155 lb person without adjusting for individual differences. If your weight differs from that baseline, the treadmill reading will be off. The calculator above accounts for your actual body weight, age, and fitness level for a more tailored estimate.</p>
+    <p>One practical consideration: running at higher speeds burns more calories per minute, but most people cannot sustain high speeds for long durations. A 30-minute jog at 5 mph (7.0 MET) burns roughly 250 calories — and most beginners can sustain that pace far longer than an 8 mph sprint. Total calorie burn for a workout depends on both intensity and duration, not just speed.</p>
+
+    <h2>How Is Calorie Burn Calculated?</h2>
+    <p>This calculator uses <strong>MET values</strong> — metabolic equivalents of task — to estimate your energy expenditure. MET is a standard unit used by the American College of Sports Medicine (ACSM) to express the energy cost of physical activity relative to rest.</p>
+    <p>One MET equals the energy your body uses while sitting quietly — roughly 3.5 millilitres of oxygen consumed (VO₂) per kilogram of body weight per minute, or about 1 kilocalorie per kilogram per hour. An activity rated at 8.0 MET requires eight times that resting energy cost.</p>
+
+    <div class="formula-box">
+      <div class="fb-head">How calorie burn is calculated · based on the 2011 Compendium of Physical Activities</div>
+      <div class="fb-steps">
+        <div class="fb-step">
+          <div class="fb-n">Step 1 — your inputs</div>
+          <div class="fb-item">MET value <span class="fb-sub">· activity intensity</span></div>
+          <div class="fb-item">Body weight <span class="fb-sub">· in kilograms</span></div>
+          <div class="fb-item">Duration <span class="fb-sub">· in minutes</span></div>
+        </div>
+        <div class="fb-step">
+          <div class="fb-n">Step 2 — the formula</div>
+          <div class="fb-item">Cal/min = MET × 3.5 × weight(kg) ÷ 200</div>
+          <div class="fb-item fb-sub">then multiply by duration for the total</div>
+        </div>
+        <div class="fb-step">
+          <div class="fb-n">Step 3 — adjustments</div>
+          <div class="fb-item">Biological sex <span class="fb-sub">· female ≈ −10%</span></div>
+          <div class="fb-item">Fitness level <span class="fb-sub">· fitter = fewer cal</span></div>
+          <div class="fb-item">Intensity <span class="fb-sub">· low / mod / high</span></div>
+        </div>
+      </div>
+      <div class="fb-formula">Calories per minute = (MET × 3.5 × weight in kg) ÷ 200<small>Total calories burned = calories per minute × duration in minutes</small></div>
+    </div>
+
+    <p>The MET values used in this calculator come from the 2011 Compendium of Physical Activities, developed by Ainsworth et al. and published in <em>Medicine &amp; Science in Sports &amp; Exercise</em>. The Compendium catalogs the energy cost of over 800 activities and is the standard reference used in exercise science research worldwide. A 2024 update to the Compendium expanded the database further and introduced separate compendia for older adults and wheelchair users.</p>
+    <p>This calculator also factors in your <strong>age, biological sex, and fitness level</strong> — details that most competing calculators ignore. These variables adjust the baseline resting metabolic rate (RMR), because a 25-year-old and a 55-year-old burn calories at different rates even during the same exercise.</p>
+    <p>Other calorie estimation methods exist. The Harris-Benedict and Mifflin-St Jeor equations estimate your basal metabolic rate (BMR) — the total calories your body burns at complete rest over 24 hours — and are commonly used in TDEE calculators. Heart rate-based estimation, used by most fitness trackers, measures your actual pulse to infer oxygen consumption and calorie burn in real time. Each method has tradeoffs: MET-based calculations are consistent and research-standardized but rely on population averages. Heart rate-based tracking is more individualized but sensitive to device accuracy, caffeine, stress, and skin contact quality.</p>
+    <p>Your <strong>total daily energy expenditure (TDEE)</strong> combines your BMR with all activity throughout the day — not just structured exercise. For most people, exercise accounts for only 5–10% of total daily calorie burn. The majority comes from BMR (60–70%) and non-exercise movement like walking, fidgeting, and daily tasks (NEAT).</p>
+
+    <h2>Are Calorie Burn Calculators Accurate?</h2>
+    <p>No calorie calculator is perfectly accurate — this one included. Every MET-based calculator estimates energy expenditure from <strong>population averages</strong>, not from your individual physiology.</p>
+    <p>The standard 1-MET baseline was derived from a single reference subject: a healthy 40-year-old male weighing 70 kg (154 lbs). If you differ significantly from that profile — in age, sex, body composition, or lean body mass — the estimate will shift. Research from the Compendium's own team shows that standard MET values can underestimate the actual energy cost for people with higher BMI or older age, because their resting metabolic rate differs from the 3.5 ml/kg/min reference.</p>
+    <p>Fitness trackers and smartwatches have their own accuracy issues. A study from Stanford University School of Medicine, published in the <em>Journal of Personalized Medicine</em>, tested seven popular wrist-worn devices and found they overestimated calorie burn by <strong>27% to 93%</strong> depending on the device and activity. Heart rate-based tracking is more responsive to real-time effort than MET tables, but factors like caffeine intake, ambient temperature, and even how tightly the band fits your wrist can skew the reading.</p>
+    <p>MET-based calculators like this one tend to be more consistent across activities than wearable sensors, but neither method captures individual metabolic variation. Use the number as a <strong>directional guide — not as an exact measurement</strong>. If you need precise data, indirect calorimetry (measuring actual oxygen consumption in a lab) is the gold standard.</p>
+
+    <h2>Should You Eat Back Calories Burned During Exercise?</h2>
+    <p>If your goal is fat loss — generally, no. Eating back every calorie your workout burns erases the calorie deficit (consuming fewer calories than your body uses) you created in the first place.</p>
+    <p>A more reliable approach: set your daily calorie intake based on your <strong>sedentary</strong> total daily energy expenditure (TDEE), then treat your workout calorie burn as additional deficit rather than permission to eat more. This avoids the common problem of overestimating exercise burn and underestimating food intake — both of which research consistently shows people do.</p>
+    <p>If your goal is muscle gain or performance, partial replacement after training makes sense — particularly protein within a couple of hours of resistance training. But that is a nutrition strategy, not a calorie-matching exercise.</p>
+    <p>The core principle: <strong>exercise supports fat loss, but nutrition drives it</strong>. A 300-calorie workout is undone by a single extra snack if you are not tracking your intake independently.</p>
+
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-list">
+      <details>
+        <summary>How many calories should I burn per workout to lose weight?</summary>
+        <div class="faq-a">A realistic target for most people is 200–400 calories per session, 4–5 days per week, combined with a moderate calorie deficit from food. The specific number matters far less than consistency over weeks and months.</div>
+      </details>
+      <details>
+        <summary>What exercise burns the most calories?</summary>
+        <div class="faq-a">Among common exercises, jump rope has the highest MET value at 11.8, followed by running at 8+ mph (13.8 MET) and squash (12.0 MET). However, the best calorie-burning exercise is the one you can sustain long enough to accumulate meaningful total burn.</div>
+      </details>
+      <details>
+        <summary>Does sweating more mean I burned more calories?</summary>
+        <div class="faq-a">No. Sweating is your body's cooling response, not a calorie indicator. You can sweat heavily in a hot room doing nothing. Calorie burn is driven by exercise intensity and how much muscle you engage, not by how wet your shirt gets.</div>
+      </details>
+      <details>
+        <summary>Do I burn more calories lifting heavy or doing more reps?</summary>
+        <div class="faq-a">During the session, calorie burn is similar. Heavy loads with fewer reps (3–6 range) and lighter loads with more reps (12–20 range) produce comparable in-session energy expenditure. The difference is afterward — heavy compound lifts tend to produce greater EPOC, meaning your metabolism stays elevated longer post-workout.</div>
+      </details>
+      <details>
+        <summary>How many calories do 10,000 steps burn?</summary>
+        <div class="faq-a">Roughly 400–500 calories for an average adult, depending on your weight, walking speed, and terrain. A 180 lb person walking briskly on varied terrain will burn significantly more than a 130 lb person strolling on flat ground.</div>
+      </details>
+      <details>
+        <summary>How many calories do I burn per day without exercise?</summary>
+        <div class="faq-a">Your body burns calories around the clock just to stay alive — this is your basal metabolic rate (BMR). For most adults, BMR falls between 1,400 and 1,800 calories per day. Add daily movement like walking, cooking, and fidgeting (NEAT), and most people burn 1,800–2,400 calories per day before any structured exercise.</div>
+      </details>
+      <details>
+        <summary>Is running or weight training better for burning calories?</summary>
+        <div class="faq-a">Running burns more calories per minute during the session. Weight training burns fewer during the workout but elevates your resting metabolic rate afterward through EPOC and builds muscle tissue that increases daily calorie burn over time. For overall body composition, combining both produces better results than either alone.</div>
+      </details>
+      <details>
+        <summary>Why does my fitness tracker show different numbers than this calculator?</summary>
+        <div class="faq-a">Fitness trackers estimate calorie burn from heart rate sensors and accelerometers, which are affected by wrist fit, skin tone, device calibration, and arm movement during exercise. MET-based calculators use standardized activity data from controlled research. Both are estimates — they use different methods, so the numbers will rarely match exactly.</div>
+      </details>
+    </div>
+
+    <!-- Internal links: replace # with your real URLs to boost SEO -->
+    <div class="related">
+      <h3>Related calculators &amp; guides</h3>
+      <ul>
+        <li><a href="#">BMR &amp; TDEE Calculator</a> — total daily calories your body burns</li>
+        <li><a href="#">Steps to Calories Calculator</a> — how many calories your daily steps burn</li>
+        <li><a href="#">Running Pace &amp; Calorie Calculator</a></li>
+        <li><a href="#">Walking Calorie Calculator</a></li>
+      </ul>
+    </div>
+
+    <div class="sources">
+      <h3>Sources &amp; references</h3>
+      <ol>
+        <li>Ainsworth BE, et al. <em>2011 Compendium of Physical Activities</em>. Medicine &amp; Science in Sports &amp; Exercise. <a href="https://pubmed.ncbi.nlm.nih.gov/21681120/" target="_blank" rel="noopener">PubMed</a>.</li>
+        <li>American College of Sports Medicine (ACSM) metabolic equations for energy expenditure.</li>
+        <li>Schuna JM / American Council on Exercise — EPOC and resistance training.</li>
+        <li>Shcherbina A, et al. Accuracy of wrist-worn heart-rate monitors. <em>Journal of Personalized Medicine</em>, Stanford University School of Medicine.</li>
+        <li>European Journal of Applied Physiology — post-resistance-exercise metabolic rate.</li>
+      </ol>
+    </div>
+
+  </article>
+
+  <footer>
+    Estimates are for general information and are not medical advice · <a href="https://exercisemenu.com">ExerciseMenu.com</a>
+  </footer>
+</div>
+
+<script>
+  let unit = 'kg';
+  let intensity = 'moderate';
+
+  /* ── MET DATA — 2011 Compendium + 2024 update ── */
+  const MET_DATA = {
+    running_6:             { base: 9.8,  label: 'Running (6 mph)',         icon: '🏃', intPct: 82 },
+    running_8:             { base: 13.8, label: 'Running (8 mph)',         icon: '🏃', intPct: 93 },
+    running_10:            { base: 16.0, label: 'Running (10 mph)',        icon: '🏃', intPct: 98 },
+    jogging:               { base: 7.0,  label: 'Jogging',                icon: '🏃', intPct: 62 },
+    walking_brisk:         { base: 4.3,  label: 'Brisk Walking',          icon: '🚶', intPct: 40 },
+    walking_moderate:      { base: 3.5,  label: 'Walking (moderate)',      icon: '🚶', intPct: 30 },
+    walking_slow:          { base: 2.5,  label: 'Walking (slow)',          icon: '🚶', intPct: 18 },
+    incline_walking:       { base: 6.0,  label: 'Incline Walking',        icon: '🚶', intPct: 55 },
+    cycling_outdoor_mod:   { base: 6.8,  label: 'Cycling (outdoor mod)',   icon: '🚴', intPct: 60 },
+    cycling_outdoor_vig:   { base: 10.0, label: 'Cycling (outdoor vig)',   icon: '🚴', intPct: 85 },
+    cycling_stationary_mod:{ base: 6.8,  label: 'Stationary Bike (mod)',   icon: '🚴', intPct: 60 },
+    cycling_stationary_vig:{ base: 10.5, label: 'Stationary Bike (vig)',   icon: '🚴', intPct: 88 },
+    swimming_free_mod:     { base: 7.0,  label: 'Swimming Freestyle',      icon: '🏊', intPct: 62 },
+    swimming_free_vig:     { base: 9.8,  label: 'Swimming Fast',           icon: '🏊', intPct: 82 },
+    swimming_back:         { base: 7.0,  label: 'Backstroke',              icon: '🏊', intPct: 62 },
+    swimming_butterfly:    { base: 13.8, label: 'Butterfly Stroke',        icon: '🏊', intPct: 93 },
+    rowing_mod:            { base: 7.0,  label: 'Rowing (moderate)',       icon: '🚣', intPct: 62 },
+    rowing_vig:            { base: 12.0, label: 'Rowing (vigorous)',       icon: '🚣', intPct: 90 },
+    hiit:                  { base: 8.0,  label: 'HIIT',                    icon: '⚡', intPct: 88 },
+    circuit_training:      { base: 8.0,  label: 'Circuit Training',        icon: '⚡', intPct: 88 },
+    crossfit:              { base: 8.0,  label: 'CrossFit',                icon: '💪', intPct: 88 },
+    boxing_bag:            { base: 5.5,  label: 'Boxing (bag)',             icon: '🥊', intPct: 50 },
+    boxing_sparring:       { base: 7.8,  label: 'Boxing (sparring)',        icon: '🥊', intPct: 70 },
+    kickboxing:            { base: 10.3, label: 'Kickboxing',              icon: '🥊', intPct: 86 },
+    jump_rope:             { base: 11.8, label: 'Jump Rope',               icon: '🪢', intPct: 92 },
+    burpees:               { base: 8.0,  label: 'Burpees',                 icon: '🔥', intPct: 88 },
+    weight_training_mod:   { base: 3.5,  label: 'Weight Training (mod)',    icon: '🏋️', intPct: 30 },
+    weight_training_vig:   { base: 6.0,  label: 'Weight Training (vig)',    icon: '🏋️', intPct: 55 },
+    squats:                { base: 5.0,  label: 'Squats',                  icon: '🦵', intPct: 45 },
+    deadlifts:             { base: 6.0,  label: 'Deadlifts',               icon: '🏋️', intPct: 55 },
+    bench_press:           { base: 5.0,  label: 'Bench Press',             icon: '🏋️', intPct: 45 },
+    leg_press:             { base: 5.0,  label: 'Leg Press',               icon: '🦵', intPct: 45 },
+    leg_extension:         { base: 3.5,  label: 'Leg Extension',           icon: '🦵', intPct: 30 },
+    lunges:                { base: 4.0,  label: 'Lunges',                  icon: '🦵', intPct: 35 },
+    hip_thrust:            { base: 5.0,  label: 'Hip Thrusts',             icon: '🍑', intPct: 45 },
+    bicep_curls:           { base: 3.5,  label: 'Bicep Curls',             icon: '💪', intPct: 30 },
+    abs_crunches:          { base: 3.8,  label: 'Abs / Crunches',          icon: '🔥', intPct: 33 },
+    bodyweight_mod:        { base: 3.8,  label: 'Bodyweight (moderate)',    icon: '💪', intPct: 33 },
+    bodyweight_vig:        { base: 8.0,  label: 'Bodyweight (vigorous)',    icon: '💪', intPct: 70 },
+    powerlifting:          { base: 6.0,  label: 'Powerlifting',             icon: '🏋️', intPct: 55 },
+    kettlebell:            { base: 6.0,  label: 'Kettlebell',               icon: '🏋️', intPct: 55 },
+    elliptical_mod:        { base: 5.0,  label: 'Elliptical (moderate)',    icon: '⭕', intPct: 45 },
+    elliptical_vig:        { base: 7.5,  label: 'Elliptical (vigorous)',    icon: '⭕', intPct: 65 },
+    gazelle:               { base: 5.0,  label: 'Gazelle Glider',           icon: '⭕', intPct: 45 },
+    stair_climber:         { base: 9.0,  label: 'Stair Climber',            icon: '🪜', intPct: 78 },
+    treadmill_walk:        { base: 4.3,  label: 'Treadmill Walk',           icon: '🏃', intPct: 40 },
+    treadmill_run:         { base: 9.8,  label: 'Treadmill Run',            icon: '🏃', intPct: 82 },
+    football:              { base: 7.0,  label: 'Football / Soccer',        icon: '⚽', intPct: 62 },
+    basketball:            { base: 8.0,  label: 'Basketball',                icon: '🏀', intPct: 70 },
+    tennis_singles:        { base: 8.0,  label: 'Tennis (singles)',          icon: '🎾', intPct: 70 },
+    tennis_doubles:        { base: 5.0,  label: 'Tennis (doubles)',          icon: '🎾', intPct: 45 },
+    badminton:             { base: 5.5,  label: 'Badminton',                 icon: '🏸', intPct: 50 },
+    volleyball:            { base: 6.0,  label: 'Volleyball',                icon: '🏐', intPct: 55 },
+    cricket:               { base: 5.0,  label: 'Cricket',                   icon: '🏏', intPct: 45 },
+    golf_carry:            { base: 4.3,  label: 'Golf (carrying)',           icon: '⛳', intPct: 40 },
+    golf_cart:             { base: 3.5,  label: 'Golf (cart)',               icon: '⛳', intPct: 30 },
+    martial_arts:          { base: 10.3, label: 'Martial Arts',              icon: '🥋', intPct: 86 },
+    wrestling:             { base: 6.0,  label: 'Wrestling',                 icon: '🤼', intPct: 55 },
+    squash:                { base: 12.0, label: 'Squash',                    icon: '🎾', intPct: 90 },
+    skiing_downhill:       { base: 6.8,  label: 'Skiing (downhill)',         icon: '⛷️', intPct: 60 },
+    skiing_cross:          { base: 9.0,  label: 'Skiing (cross-country)',    icon: '⛷️', intPct: 78 },
+    rock_climbing:         { base: 8.0,  label: 'Rock Climbing',             icon: '🧗', intPct: 70 },
+    yoga_hatha:            { base: 2.5,  label: 'Yoga (hatha)',              icon: '🧘', intPct: 18 },
+    yoga_power:            { base: 4.0,  label: 'Yoga (power/vinyasa)',      icon: '🧘', intPct: 35 },
+    pilates:               { base: 3.0,  label: 'Pilates',                   icon: '🤸', intPct: 25 },
+    stretching:            { base: 2.3,  label: 'Stretching',                icon: '🤸', intPct: 15 },
+    tai_chi:               { base: 3.0,  label: 'Tai Chi',                   icon: '🧘', intPct: 25 },
+    dancing_gen:           { base: 4.8,  label: 'Dancing',                   icon: '💃', intPct: 43 },
+    dancing_vig:           { base: 7.8,  label: 'Dancing (Zumba/hip-hop)',   icon: '💃', intPct: 68 },
+    hiking:                { base: 6.0,  label: 'Hiking',                    icon: '🥾', intPct: 55 },
+    gardening:             { base: 3.8,  label: 'Gardening',                 icon: '🌱', intPct: 33 },
+    housework:             { base: 3.3,  label: 'Housework',                 icon: '🧹', intPct: 28 },
+    mowing:                { base: 5.5,  label: 'Mowing Lawn',               icon: '🌿', intPct: 50 },
+    cooking:               { base: 2.0,  label: 'Cooking',                   icon: '🍳', intPct: 14 },
+    groceries:             { base: 2.5,  label: 'Carrying Groceries',        icon: '🛒', intPct: 18 },
+    playing_kids:          { base: 4.0,  label: 'Playing with Children',     icon: '👶', intPct: 35 },
+    standing:              { base: 1.8,  label: 'Standing',                   icon: '🧍', intPct: 10 },
+  };
+
+  const INTENSITY_MULT = { low: 0.82, moderate: 1.0, high: 1.2 };
+  const FITNESS_MULT = { beginner: 1.08, intermediate: 1.0, advanced: 0.93 };
+  const GENDER_MULT = { male: 1.0, female: 0.9 };
+
+  const TIPS = {
+    running_6: "Running at 6 mph burns about 9.8 times your resting energy. Stay hydrated and consider foam rolling afterward.",
+    running_8: "At 8 mph you're in vigorous territory — 13.8 MET. Build to this pace gradually to avoid injury.",
+    running_10: "Running at 10 mph (16.0 MET) approaches near-maximum exertion. Only sustainable for short intervals by most people.",
+    jogging: "Jogging at 4.5–5 mph builds aerobic base effectively. Aim for 3–4 sessions per week for consistent fat loss.",
+    walking_brisk: "Brisk walking is underrated — joint-friendly and sustainable. Adding arm swing increases calorie burn by 5–10%.",
+    walking_moderate: "Moderate walking improves metabolic health significantly. Walking after meals helps regulate blood sugar.",
+    walking_slow: "Even slow walking burns 2.5× your resting energy. Every step counts toward your daily calorie expenditure.",
+    incline_walking: "Incline walking at 5% grade burns roughly 40% more calories than flat walking at the same speed.",
+    cycling_outdoor_mod: "Moderate outdoor cycling is low-impact and great for knee health. Alternate terrain for better results.",
+    cycling_outdoor_vig: "Vigorous cycling at 10.0 MET matches running intensity with less joint stress.",
+    cycling_stationary_mod: "Stationary cycling is excellent for interval training. Try 20s sprint / 40s rest for maximum effect.",
+    cycling_stationary_vig: "Vigorous stationary cycling (10.5 MET) is one of the highest calorie-burning machine exercises.",
+    swimming_free_mod: "Swimming is a full-body, zero-impact workout — ideal if you have joint issues or are recovering from injury.",
+    swimming_free_vig: "Vigorous freestyle swimming matches running for calorie burn at 9.8 MET with zero joint impact.",
+    swimming_back: "Backstroke engages different muscle groups than freestyle — good for balanced upper body development.",
+    swimming_butterfly: "Butterfly stroke at 13.8 MET is one of the most demanding exercises — burns as many calories as sprinting.",
+    rowing_mod: "Rowing engages 86% of your muscles simultaneously. Focus on form — the drive comes from legs, not arms.",
+    rowing_vig: "Vigorous rowing at 12.0 MET delivers a full-body workout that rivals running for calorie expenditure.",
+    hiit: "HIIT creates an 'afterburn effect' (EPOC) — your body continues burning elevated calories for hours post-workout.",
+    circuit_training: "Circuit training at vigorous effort (8.0 MET) combines strength and cardio for efficient calorie burning.",
+    crossfit: "CrossFit combines strength and conditioning for maximum efficiency. Proper form is critical to avoid injury.",
+    boxing_bag: "Heavy bag work at 5.5 MET improves coordination, speed, and endurance alongside moderate calorie burn.",
+    boxing_sparring: "Sparring at 7.8 MET adds reactive movement that bag work doesn't — higher calorie burn and skill development.",
+    kickboxing: "Kickboxing at 10.3 MET is one of the highest-burning combat exercises. Full-body engagement every round.",
+    jump_rope: "Jump rope at 11.8 MET has the highest calorie-per-minute ratio of common exercises. Even 10 minutes delivers results.",
+    burpees: "Burpees at 8.0 MET combine pushing, squatting, and jumping in one movement — maximum efficiency.",
+    weight_training_mod: "Moderate weight training builds muscle that raises your resting metabolic rate — burning more calories 24/7.",
+    weight_training_vig: "Vigorous weight training (6.0 MET) with compound lifts maximizes both in-session and post-workout calorie burn through EPOC.",
+    squats: "Squats are a compound lift that recruits large leg and core muscles — one of the best calorie burners in the weight room.",
+    deadlifts: "Deadlifts (6.0 MET) engage nearly every muscle group, giving a high calorie burn and strong EPOC response.",
+    bench_press: "Bench press builds upper-body pushing strength. Pair it with compound leg work for a bigger overall calorie burn.",
+    leg_press: "Leg press (5.0 MET) trains your quads and glutes with heavy load — more total burn than isolation moves.",
+    leg_extension: "Leg extensions are an isolation move (3.5 MET) — lower calorie burn, but useful for targeting the quads.",
+    lunges: "Lunges work each leg independently and raise the heart rate — a solid moderate calorie burner.",
+    hip_thrust: "Hip thrusts (5.0 MET) overload the glutes directly. Add weight and shorten rest to raise the burn.",
+    bicep_curls: "Bicep curls are isolation work (3.5 MET) — low in-session burn; pair with compound lifts for more impact.",
+    abs_crunches: "Ab work like crunches and sit-ups burns about 3.8 MET — great for core strength, modest for calories.",
+    bodyweight_mod: "Bodyweight training is versatile and needs no equipment. Progressive overload through harder variations is key.",
+    bodyweight_vig: "Vigorous bodyweight work (8.0 MET) — think muscle-ups, pistol squats, plyo push-ups — rivals HIIT for intensity.",
+    powerlifting: "Powerlifting builds dense muscle mass. Compound lifts (squat, bench, deadlift) maximize overall calorie impact.",
+    kettlebell: "Kettlebell training combines strength and cardio elements — the swing alone activates your entire posterior chain.",
+    elliptical_mod: "Elliptical training mimics running with less joint stress. Add incline to increase calorie burn.",
+    elliptical_vig: "Vigorous elliptical at 7.5 MET delivers running-level cardio benefits with significantly lower impact.",
+    gazelle: "A Gazelle glider works like a low-impact elliptical (~5.0 MET) — easy on the joints for steady-state cardio.",
+    stair_climber: "Stair climbing at 9.0 MET targets glutes, quads, and calves. Even daily stair use adds up significantly.",
+    treadmill_walk: "Treadmill walking at 3.5 mph provides controlled, consistent calorie burn — great for recovery days.",
+    treadmill_run: "Treadmill running at 6 mph (9.8 MET) — note that most treadmill calorie displays assume a 155 lb user.",
+    football: "Football's stop-start nature is natural interval training. Sprint work builds explosive power alongside endurance.",
+    basketball: "Basketball at 8.0 MET improves agility, coordination, and cardiovascular fitness simultaneously.",
+    tennis_singles: "Singles tennis at 8.0 MET burns more than doubles — constant lateral movement and court coverage.",
+    tennis_doubles: "Doubles tennis at 5.0 MET is lower intensity but still provides good exercise with less physical demand.",
+    badminton: "Badminton's lateral movement patterns improve agility and burn significant calories in short sessions.",
+    volleyball: "Competitive volleyball at 6.0 MET combines jumping, sprinting, and upper body work.",
+    cricket: "Cricket provides moderate exercise at 5.0 MET. Fielding and running between wickets increases intensity.",
+    golf_carry: "Carrying clubs at 4.3 MET burns 50% more than using a cart. Four hours of carrying = a solid calorie burn.",
+    golf_cart: "Golf with a cart at 3.5 MET provides light exercise — mainly from swinging and short walks between shots.",
+    martial_arts: "Martial arts at 10.3 MET — judo, karate, taekwondo — combine high-intensity cardio with full-body strength.",
+    wrestling: "Wrestling at 6.0 MET builds functional strength and burns significant calories through sustained effort.",
+    squash: "Squash at 12.0 MET is one of the highest calorie-burning sports — constant explosive movement in a small court.",
+    skiing_downhill: "Downhill skiing at 6.8 MET engages legs and core continuously while navigating terrain.",
+    skiing_cross: "Cross-country skiing at 9.0 MET is a full-body endurance activity rivaling running for calorie expenditure.",
+    rock_climbing: "Rock climbing at 8.0 MET builds grip strength, upper body power, and burns substantial calories.",
+    yoga_hatha: "Hatha yoga's benefits extend beyond calories — it significantly reduces cortisol, helping prevent stress-related fat gain.",
+    yoga_power: "Power yoga at 4.0 MET burns nearly double hatha yoga and builds functional strength alongside flexibility.",
+    pilates: "Pilates builds core strength and postural muscles that enhance performance in all other exercise types.",
+    stretching: "Stretching at 2.3 MET has low calorie burn but is essential for mobility, injury prevention, and recovery.",
+    tai_chi: "Tai Chi at 3.0 MET improves balance, reduces stress, and provides gentle exercise suitable for all ages.",
+    dancing_gen: "Dancing is one of the most enjoyable ways to stay active. Consistency is easy when you love the activity.",
+    dancing_vig: "Vigorous dancing (Zumba, hip-hop) at 7.8 MET rivals jogging for calorie burn with far more fun.",
+    hiking: "Hiking builds endurance and mental health simultaneously. Elevation gain significantly boosts calorie burn.",
+    gardening: "Gardening at 3.8 MET provides moderate exercise — digging, planting, and weeding engage major muscle groups.",
+    housework: "General cleaning at 3.3 MET — vacuuming, mopping, scrubbing — adds meaningful daily activity when sustained.",
+    mowing: "Push-mowing at 5.5 MET is legitimate exercise. An hour of mowing burns more than many gym workouts.",
+    cooking: "Standing and cooking at 2.0 MET is light activity, but it still beats sitting. An hour of cooking burns roughly 100 calories.",
+    groceries: "Carrying groceries at 2.5 MET — especially up stairs — provides functional resistance training.",
+    playing_kids: "Active play with children at 4.0 MET is moderate exercise. Chasing, lifting, and carrying add up.",
+    standing: "Standing at 1.8 MET burns about 30% more than sitting. Over an 8-hour day, that difference adds up to 50–70 extra calories.",
+  };
+
+  function getFoodEquiv(cal) {
+    if (cal < 80) return '≈ ½ medium banana';
+    if (cal < 150) return '≈ 1 medium banana';
+    if (cal < 250) return '≈ 1 slice of cheese pizza';
+    if (cal < 350) return '≈ 1 chicken breast with rice';
+    if (cal < 450) return '≈ 1 large bagel with cream cheese';
+    if (cal < 600) return '≈ 1 fast food cheeseburger';
+    if (cal < 800) return '≈ 1 large restaurant meal';
+    return '≈ 1 full dinner plate + dessert';
+  }
+
+  function filterExercises(query) {
+    const sel = document.getElementById('exercise');
+    const q = query.toLowerCase().trim();
+    const optgroups = sel.querySelectorAll('optgroup');
+    optgroups.forEach(group => {
+      let groupHasVisible = false;
+      group.querySelectorAll('option').forEach(opt => {
+        const match = !q || opt.textContent.toLowerCase().includes(q);
+        opt.style.display = match ? '' : 'none';
+        if (match) groupHasVisible = true;
+      });
+      group.style.display = groupHasVisible ? '' : 'none';
+    });
+    if (q) {
+      const firstVisible = Array.from(sel.options).find(o => o.style.display !== 'none');
+      if (firstVisible) sel.value = firstVisible.value;
+    }
+  }
+
+  function setUnit(u) {
+    if (u === unit) return;
+    unit = u;
+    document.getElementById('btn-kg').classList.toggle('active', u === 'kg');
+    document.getElementById('btn-lb').classList.toggle('active', u === 'lb');
+    document.getElementById('weight-label').textContent = u === 'kg' ? 'Body Weight (kg)' : 'Body Weight (lbs)';
+    const wInput = document.getElementById('weight');
+    const cur = parseFloat(wInput.value);
+    if (!cur) return;
+    wInput.value = u === 'kg' ? Math.round(cur * 0.453592) : Math.round(cur / 0.453592);
+  }
+
+  function setIntensity(level) {
+    intensity = level;
+    ['low','moderate','high'].forEach(l => document.getElementById('int-' + l).classList.toggle('active', l === level));
+  }
+
+  function updateDuration(val) {
+    document.getElementById('dur-val').textContent = val >= 60
+      ? Math.floor(val/60) + 'h ' + (val%60 ? val%60 + 'm' : '')
+      : val + ' min';
+  }
+
+  function calculate() {
+    let w = parseFloat(document.getElementById('weight').value);
+    const dur = parseFloat(document.getElementById('duration').value);
+    const ex = document.getElementById('exercise').value;
+    const fitness = document.getElementById('fitness').value;
+    const gender = document.getElementById('gender').value;
+
+    if (!w || w <= 0) { alert('Please enter a valid body weight.'); return; }
+    if (unit === 'lb') w = w * 0.453592;
+
+    const met = MET_DATA[ex];
+    if (!met) return;
+
+    // ACSM formula: cal/min = MET * 3.5 * weight(kg) / 200, then * minutes (keeps tool, stated formula and content tables consistent)
+    const baseCal = (met.base * 3.5 * w / 200) * dur * INTENSITY_MULT[intensity] * FITNESS_MULT[fitness] * GENDER_MULT[gender];
+    const calories = Math.round(baseCal);
+    const perMin = (baseCal / dur).toFixed(1);
+    const fat = (baseCal / 7700 * 1000).toFixed(1);
+    const perHour = Math.round(baseCal / dur * 60);
+    const intPct = Math.min(100, Math.round(met.intPct * (intensity === 'high' ? 1.1 : intensity === 'low' ? 0.85 : 1)));
+
+    document.getElementById('res-cal').textContent = calories.toLocaleString();
+    document.getElementById('res-pm').textContent = perMin;
+    document.getElementById('res-fat').textContent = fat;
+    document.getElementById('res-hourly').textContent = perHour.toLocaleString() + ' cal';
+    document.getElementById('res-food').textContent = getFoodEquiv(calories);
+    document.getElementById('res-weekly').textContent = (calories * 4).toLocaleString() + ' cal';
+    document.getElementById('res-fatloss').textContent = (calories > 0 ? Math.ceil(3500 / calories) : '—') + ' sessions';
+
+    document.getElementById('bar-fill').style.width = intPct + '%';
+    document.getElementById('bar-pct').textContent = intPct + '%';
+    document.getElementById('tip-text').textContent = TIPS[ex] || 'Stay consistent — frequency matters more than intensity for long-term results.';
+
+    const compareKeys = ['running_6','hiit','cycling_outdoor_mod','weight_training_mod','walking_brisk'].filter(e => e !== ex);
+    compareKeys.unshift(ex);
+    const rowsEl = document.getElementById('breakdown-rows');
+    rowsEl.innerHTML = '';
+    compareKeys.slice(0,5).forEach(key => {
+      const d = MET_DATA[key];
+      if (!d) return;
+      const c = Math.round((d.base * 3.5 * w / 200) * dur * INTENSITY_MULT[intensity] * FITNESS_MULT[fitness] * GENDER_MULT[gender]);
+      const isSelected = key === ex;
+      const row = document.createElement('div');
+      row.className = 'breakdown-row';
+      row.innerHTML = '<div class="breakdown-left"><div class="breakdown-icon">' + d.icon + '</div><div><div class="breakdown-name" style="' + (isSelected ? 'color:var(--accent)' : '') + '">' + d.label + (isSelected ? ' ← you' : '') + '</div><div class="breakdown-met">MET ' + d.base + '</div></div></div><div class="breakdown-cal">' + c.toLocaleString() + ' <span>kcal</span></div>';
+      rowsEl.appendChild(row);
+    });
+
+    const res = document.getElementById('results');
+    res.classList.remove('hidden');
+    res.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+</script>
+</body>
+</html>
