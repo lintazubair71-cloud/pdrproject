@@ -126,9 +126,15 @@
   h1 { font-family: 'DM Serif Display', serif; font-size: clamp(2.4rem, 6vw, 4rem); line-height: 1.1; letter-spacing: -0.02em; color: var(--ink); }
   h1 .h1-accent { font-style: italic; color: var(--accent); }
   .subtitle { margin-top: 0.85rem; color: var(--ink-soft); font-size: 1.05rem; font-weight: 400; max-width: 620px; line-height: 1.6; }
-  .byline { margin-top: 1rem; font-size: 0.82rem; color: var(--ink-mute); line-height: 1.7; max-width: 680px; }
-  .byline a { color: var(--accent); text-decoration: none; }
-  .byline strong { color: var(--ink-soft); font-weight: 600; }
+  .authorbox { display: flex; gap: 14px; align-items: center; margin-top: 1.25rem; padding: 14px 18px; background: var(--card-bg); border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: 12px; max-width: 680px; box-shadow: 0 2px 12px rgba(0,0,0,0.05); }
+  .authorbox-badge { flex-shrink: 0; width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, #E02B2B, #ef4444); color: #fff; font-weight: 700; font-size: 15px; letter-spacing: 0.02em; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(224,43,43,0.3); }
+  .authorbox-meta { font-size: 0.85rem; line-height: 1.55; }
+  .authorbox-top { color: var(--ink); }
+  .authorbox-top strong { font-weight: 600; }
+  .authorbox-sub { color: var(--ink-mute); margin-top: 3px; }
+  .authorbox-sub a { color: var(--accent); text-decoration: none; }
+  .authorbox-sub a:hover { text-decoration: underline; }
+  @media (max-width: 480px) { .authorbox { align-items: flex-start; } }
 
   /* ---------- Calculator card ---------- */
   .card { background: var(--surface); border: 1px solid rgba(224,43,43,0.25); border-radius: 20px; overflow: hidden; color: var(--text); animation: fadeUp 0.6s 0.1s ease both; box-shadow: 0 20px 60px rgba(0,0,0,0.18); }
@@ -290,7 +296,13 @@
     <div class="badge"><span class="badge-dot"></span> Fitness Tool</div>
     <h1>Calorie Burn <span class="h1-accent">Calculator</span></h1>
     <p class="subtitle">How many calories did you burn? Estimate calories burned for running, walking, HIIT, weight training and 70+ activities. Enter your weight, pick an exercise, set the duration — the result is personalized by your age, sex and fitness level, using MET values from the Compendium of Physical Activities.</p>
-    <p class="byline">Written by the <strong>ExerciseMenu Team</strong> · Last updated: November 2026 · Method: the <a href="https://pubmed.ncbi.nlm.nih.gov/21681120/" target="_blank" rel="noopener">2011 Compendium of Physical Activities</a> (Ainsworth et al.), the reference standard in exercise science.</p>
+    <div class="authorbox">
+      <div class="authorbox-badge">EM</div>
+      <div class="authorbox-meta">
+        <div class="authorbox-top">Written by the <strong>ExerciseMenu Team</strong> · Last updated November 2026</div>
+        <div class="authorbox-sub">Method: the <a href="https://pubmed.ncbi.nlm.nih.gov/21681120/" target="_blank" rel="noopener">2011 Compendium of Physical Activities</a> (Ainsworth et al.) — the reference standard in exercise science.</div>
+      </div>
+    </div>
   </header>
 
   <div class="card">
