@@ -126,6 +126,9 @@
   h1 { font-family: 'DM Serif Display', serif; font-size: clamp(2.4rem, 6vw, 4rem); line-height: 1.1; letter-spacing: -0.02em; color: var(--ink); }
   h1 .h1-accent { font-style: italic; color: var(--accent); }
   .subtitle { margin-top: 0.85rem; color: var(--ink-soft); font-size: 1.05rem; font-weight: 400; max-width: 620px; line-height: 1.6; }
+  .byline { margin-top: 1rem; font-size: 0.82rem; color: var(--ink-mute); line-height: 1.7; max-width: 680px; }
+  .byline a { color: var(--accent); text-decoration: none; }
+  .byline strong { color: var(--ink-soft); font-weight: 600; }
 
   /* ---------- Calculator card ---------- */
   .card { background: var(--surface); border: 1px solid rgba(224,43,43,0.25); border-radius: 20px; overflow: hidden; color: var(--text); animation: fadeUp 0.6s 0.1s ease both; box-shadow: 0 20px 60px rgba(0,0,0,0.18); }
@@ -287,6 +290,7 @@
     <div class="badge"><span class="badge-dot"></span> Fitness Tool</div>
     <h1>Calorie Burn <span class="h1-accent">Calculator</span></h1>
     <p class="subtitle">How many calories did you burn? Estimate calories burned for running, walking, HIIT, weight training and 70+ activities. Enter your weight, pick an exercise, set the duration — the result is personalized by your age, sex and fitness level, using MET values from the Compendium of Physical Activities.</p>
+    <p class="byline">Written by the <strong>ExerciseMenu Team</strong> · Medically reviewed by <strong>[add reviewer name &amp; credentials]</strong> · Last updated: November 2026 · Method: the <a href="https://pubmed.ncbi.nlm.nih.gov/21681120/" target="_blank" rel="noopener">2011 Compendium of Physical Activities</a> (Ainsworth et al.), the reference standard in exercise science.</p>
   </header>
 
   <div class="card">
@@ -501,8 +505,65 @@
 
   <p class="card-footnote">Estimates based on MET values from the <a href="https://pubmed.ncbi.nlm.nih.gov/21681120/" target="_blank" rel="noopener">2011 Compendium of Physical Activities</a> · Results vary by individual physiology.</p>
 
+  <!-- ===================== DISTANCE CALCULATOR ===================== -->
+  <div class="card" style="margin-top:1.75rem">
+    <div class="card-header">
+      <div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div>
+      <span class="card-title">Calories Burned by Distance — walk, run or cycle</span>
+    </div>
+    <div class="card-body">
+      <p style="grid-column:1/-1;color:var(--muted2);font-size:13px;margin:-0.5rem 0 0.25rem;line-height:1.5">Estimate calories for covering a set distance — answers questions like "calories burned walking a mile" or "how far to run to burn 400 calories."</p>
+      <div class="field">
+        <label for="d-activity">Activity</label>
+        <select id="d-activity" onchange="dUpdatePace()">
+          <option value="walking">Walking</option>
+          <option value="running" selected>Running</option>
+          <option value="cycling">Cycling</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="d-pace">Pace / Speed</label>
+        <select id="d-pace"></select>
+      </div>
+      <div class="field">
+        <label for="d-distance">Distance</label>
+        <input type="number" id="d-distance" inputmode="decimal" value="5" min="0.1" step="0.1"/>
+      </div>
+      <div class="field">
+        <label for="d-dunit">Distance Unit</label>
+        <select id="d-dunit"><option value="mi">Miles</option><option value="km">Kilometers</option></select>
+      </div>
+      <div class="field">
+        <label for="d-weight">Body Weight</label>
+        <input type="number" id="d-weight" inputmode="decimal" value="70" min="20" max="300" step="1"/>
+      </div>
+      <div class="field">
+        <label for="d-wunit">Weight Unit</label>
+        <select id="d-wunit"><option value="kg">Kilograms (kg)</option><option value="lb">Pounds (lbs)</option></select>
+      </div>
+      <button type="button" class="calc-btn" onclick="calcDistance()">Calculate Calories by Distance →</button>
+    </div>
+    <div class="results hidden" id="d-results">
+      <div class="results-divider"></div>
+      <div class="results-grid">
+        <div class="metric-card main-metric"><div class="metric-label">Calories Burned</div><div class="metric-value" id="d-cal">—</div><div class="metric-unit">kilocalories (kcal)</div></div>
+        <div class="metric-card metric-small"><div class="metric-label">Estimated Time</div><div class="metric-value" id="d-time">—</div><div class="metric-unit" id="d-time-u">minutes</div></div>
+        <div class="metric-card metric-small"><div class="metric-label">Per Mile / Km</div><div class="metric-value" id="d-perunit">—</div><div class="metric-unit">kcal each</div></div>
+      </div>
+    </div>
+  </div>
+
   <!-- ===================== SEO CONTENT ===================== -->
   <article class="cbc-content">
+
+    <h2>What Do Your Calorie Results Mean?</h2>
+    <p>The number this calculator gives you is an <strong>estimate of the energy your body used</strong> during that activity, in kilocalories ("calories"). It is a useful, research-based guide — not a precise measurement — so treat it as a target range rather than an exact figure.</p>
+    <p>Here is how to use it:</p>
+    <ul style="color:var(--ink-soft);line-height:1.75;margin:0.5rem 0 0.5rem 1.1rem">
+      <li><strong>For weight loss:</strong> burning roughly 3,500 calories more than you eat equals about 1 lb (0.45 kg) of fat lost. Use your exercise burn as extra deficit on top of a sensible diet — don't "eat it all back."</li>
+      <li><strong>For fitness:</strong> aim for 150+ minutes of moderate activity a week (ACSM/WHO guidance). The calorie number helps you compare and progress your sessions.</li>
+      <li><strong>What's next:</strong> pair this with your daily calorie needs. Your workout is usually only 5–10% of your total daily burn — the rest is your resting metabolism and everyday movement.</li>
+    </ul>
 
     <h2>How Many Calories Do Common Exercises Burn?</h2>
     <p>Calorie burn depends on three things: <strong>what you do, how much you weigh, and how long you do it</strong>. The table below shows estimated calories burned during 30 minutes of common exercises, calculated using MET values from the 2011 Compendium of Physical Activities.</p>
@@ -607,6 +668,21 @@
     <p>This calculator also factors in your <strong>age, biological sex, and fitness level</strong> — details that most competing calculators ignore. These variables adjust the baseline resting metabolic rate (RMR), because a 25-year-old and a 55-year-old burn calories at different rates even during the same exercise.</p>
     <p>Other calorie estimation methods exist. The Harris-Benedict and Mifflin-St Jeor equations estimate your basal metabolic rate (BMR) — the total calories your body burns at complete rest over 24 hours — and are commonly used in TDEE calculators. Heart rate-based estimation, used by most fitness trackers, measures your actual pulse to infer oxygen consumption and calorie burn in real time. Each method has tradeoffs: MET-based calculations are consistent and research-standardized but rely on population averages. Heart rate-based tracking is more individualized but sensitive to device accuracy, caffeine, stress, and skin contact quality.</p>
     <p>Your <strong>total daily energy expenditure (TDEE)</strong> combines your BMR with all activity throughout the day — not just structured exercise. For most people, exercise accounts for only 5–10% of total daily calorie burn. The majority comes from BMR (60–70%) and non-exercise movement like walking, fidgeting, and daily tasks (NEAT).</p>
+
+    <h2>What Factors Affect How Many Calories You Burn?</h2>
+    <p>Two people doing the exact same workout can burn very different amounts. These are the variables that move the number — the first three are what the calculator uses directly, the rest explain why your real-world burn can differ:</p>
+    <ul style="color:var(--ink-soft);line-height:1.75;margin:0.5rem 0 0.5rem 1.1rem">
+      <li><strong>Body weight &amp; size:</strong> a heavier body does more work to move, so it burns more calories for the same activity. This is the single biggest driver.</li>
+      <li><strong>Intensity (MET):</strong> harder effort = higher MET = more calories per minute. Jogging burns far more than a stroll.</li>
+      <li><strong>Duration:</strong> the longer you sustain the activity, the more total calories you burn.</li>
+      <li><strong>Age:</strong> as you age you tend to lose lean muscle, which lowers your resting metabolism and slightly reduces calorie burn.</li>
+      <li><strong>Body composition:</strong> muscle is metabolically active and burns more than fat, so a more muscular person burns more at the same weight.</li>
+      <li><strong>Biological sex:</strong> men typically carry more lean mass than women of the same weight, so their burn is usually a little higher.</li>
+      <li><strong>Fitness level:</strong> a fitter, more efficient body uses slightly less energy to do the same work — so very fit people burn a touch fewer calories per session.</li>
+      <li><strong>Environment:</strong> heat, cold, altitude and terrain (hills, sand, wind) all change how hard your body works.</li>
+      <li><strong>Sleep &amp; diet:</strong> poor sleep and very low-calorie dieting can lower your metabolic rate over time, reducing total daily burn.</li>
+    </ul>
+    <p>The calculator above adjusts for weight, duration, intensity, age, sex and fitness level — the factors that have the biggest, most predictable effect. The others are real but harder to measure, which is one reason every calorie estimate carries a margin of error.</p>
 
     <h2>Are Calorie Burn Calculators Accurate?</h2>
     <p>No calorie calculator is perfectly accurate — this one included. Every MET-based calculator estimates energy expenditure from <strong>population averages</strong>, not from your individual physiology.</p>
@@ -959,6 +1035,49 @@
     res.classList.remove('hidden');
     res.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }
+
+  /* ── Distance-based calculator ── */
+  const D_PACE = {
+    walking: [['Slow (2.0 mph)', 2.0, 2.8], ['Moderate (3.0 mph)', 3.0, 3.5], ['Brisk (3.5 mph)', 3.5, 4.3], ['Fast (4.0 mph)', 4.0, 5.0]],
+    running: [['Easy jog (5 mph)', 5.0, 8.3], ['Moderate (6 mph)', 6.0, 9.8], ['Fast (7.5 mph)', 7.5, 11.5], ['Very fast (9 mph)', 9.0, 12.8]],
+    cycling: [['Light (10 mph)', 10, 6.0], ['Moderate (13 mph)', 13, 8.0], ['Vigorous (16 mph)', 16, 10.0], ['Fast (19 mph)', 19, 12.0]],
+  };
+
+  function dUpdatePace() {
+    const a = document.getElementById('d-activity').value;
+    const sel = document.getElementById('d-pace');
+    sel.innerHTML = '';
+    D_PACE[a].forEach((p, i) => { const o = document.createElement('option'); o.value = i; o.textContent = p[0]; sel.appendChild(o); });
+    sel.value = D_PACE[a].length > 1 ? 1 : 0;
+  }
+
+  function calcDistance() {
+    const a = document.getElementById('d-activity').value;
+    const pi = parseInt(document.getElementById('d-pace').value, 10) || 0;
+    const row = D_PACE[a][pi];
+    const speedMph = row[1], met = row[2];
+    let dist = parseFloat(document.getElementById('d-distance').value);
+    const du = document.getElementById('d-dunit').value;
+    let w = parseFloat(document.getElementById('d-weight').value);
+    const wu = document.getElementById('d-wunit').value;
+    if (!dist || dist <= 0 || !w || w <= 0) { alert('Please enter a valid distance and body weight.'); return; }
+    if (wu === 'lb') w = w * 0.453592;
+    const distMi = du === 'km' ? dist * 0.621371 : dist;
+    const timeMin = distMi / speedMph * 60;
+    const cal = Math.round(met * 3.5 * w / 200 * timeMin);
+
+    document.getElementById('d-cal').textContent = cal.toLocaleString();
+    const hrs = Math.floor(timeMin / 60), mins = Math.round(timeMin % 60);
+    document.getElementById('d-time').textContent = hrs > 0 ? hrs + 'h ' + mins + 'm' : mins;
+    document.getElementById('d-time-u').textContent = hrs > 0 ? 'hours & minutes' : 'minutes';
+    document.getElementById('d-perunit').textContent = Math.round(cal / dist).toLocaleString();
+
+    const r = document.getElementById('d-results');
+    r.classList.remove('hidden');
+    r.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  dUpdatePace();
 </script>
 </body>
 </html>
