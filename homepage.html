@@ -4,390 +4,515 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,700;1,6..96,400;1,6..96,500&family=Archivo:wght@400;500;600;700&display=swap">
 
+<!--
+  THE WOW STYLE — HOMEPAGE
+  Launch state: only the "How to Style" section exists (30 guides, 16 men / 13 women / 1 unisex).
+  The other six sections are not built yet and are deliberately absent from the header,
+  the footer and every link on this page.
+
+  DEVELOPER NOTES
+  1. Images: every <img> points at a real path and carries onerror="this.remove()".
+     Until the file exists, a designed placeholder showing the path and size is visible.
+     Drop the file in and it appears — no code change.
+  2. Tag pages /tag/mens-style/ and /tag/womens-style/ must carry
+     <meta name="robots" content="noindex,follow"> until each holds 25+ guides.
+  3. The newsletter form is inert. Wire the POST to your email provider.
+  4. Colours, type and spacing are all driven by the tokens in :root.
+-->
+
 <style>
-/* LAYOUT: full-bleed editorial hero, then a tight magazine grid — one live section only */
+/* ============================================================
+   DESIGN TOKENS
+   Palette: bone paper, true ink, oat band, deep crimson accent.
+   Type:    Bodoni Moda (display) + Archivo (body/UI).
+   Layout:  full-bleed editorial hero, then a tight magazine grid.
+   ============================================================ */
 :root{
-  --paper:#F6F5F3; --surface:#FFFFFF; --ink:#141418; --ink-soft:#54565D; --ink-faint:#8B8D95;
-  --rule:#E4E3E0; --accent:#B3123A; --accent-ink:#FFF; --wash:#F0E7E9; --tint:#EDEAE5;
+  --paper:#F3F3F1; --surface:#FFFFFF; --oat:#E8E4DC;
+  --ink:#101012; --ink-soft:#53555B; --ink-faint:#8A8B92;
+  --rule:#E1E0DC; --rule-strong:#C9C7C1;
+  --accent:#A8102E; --accent-ink:#FFFFFF; --accent-wash:#F6E9EC;
   --display:"Bodoni Moda",Georgia,"Times New Roman",serif;
-  --body:"Archivo",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  --body:"Archivo",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif;
   --maxw:1200px; --gl:max(16px,env(safe-area-inset-left,0px)); --gr:max(16px,env(safe-area-inset-right,0px));
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --paper:#101013; --surface:#17171B; --ink:#F1F0EE; --ink-soft:#A3A4AB; --ink-faint:#74757C;
-  --rule:#2A2A30; --accent:#FF5173; --accent-ink:#17060B; --wash:#2A1218; --tint:#1D1D22; color-scheme:dark}}
+  --paper:#0F0F11; --surface:#17171A; --oat:#1E1D1B;
+  --ink:#F0EFEC; --ink-soft:#A1A2A8; --ink-faint:#73747B;
+  --rule:#2A2A2F; --rule-strong:#3C3C42;
+  --accent:#F0506E; --accent-ink:#17060B; --accent-wash:#2A1218; color-scheme:dark}}
 :root[data-theme="dark"]{
-  --paper:#101013; --surface:#17171B; --ink:#F1F0EE; --ink-soft:#A3A4AB; --ink-faint:#74757C;
-  --rule:#2A2A30; --accent:#FF5173; --accent-ink:#17060B; --wash:#2A1218; --tint:#1D1D22; color-scheme:dark}
+  --paper:#0F0F11; --surface:#17171A; --oat:#1E1D1B;
+  --ink:#F0EFEC; --ink-soft:#A1A2A8; --ink-faint:#73747B;
+  --rule:#2A2A2F; --rule-strong:#3C3C42;
+  --accent:#F0506E; --accent-ink:#17060B; --accent-wash:#2A1218; color-scheme:dark}
 
 *{box-sizing:border-box}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--surface)}
 img{max-width:100%;display:block}
 a{color:inherit}
-h1,h2,h3{margin:0;text-wrap:balance}
+h1,h2,h3,h4{margin:0;text-wrap:balance}
+p{margin:0}
 .wrap{max-width:var(--maxw);margin:0 auto;padding-left:var(--gl);padding-right:var(--gr)}
-.eyebrow{font:600 11px/1 var(--body);letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
-.eyebrow.q{color:var(--ink-faint)}
+.kicker{font:600 11px/1 var(--body);letter-spacing:.17em;text-transform:uppercase;color:var(--accent)}
+.kicker.quiet{color:var(--ink-faint)}
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
-/* ---------- MODEL IMAGE SLOT ----------
-   Drop your file at  images/model-female-01.jpg  and it appears automatically.
-   Until then the designed placeholder behind it shows.                        */
+/* ---------- IMAGE SLOTS ---------- */
 .shot{position:relative;overflow:hidden;background:
-  radial-gradient(120% 90% at 70% 15%, var(--wash) 0%, transparent 58%),
-  linear-gradient(168deg, var(--tint) 0%, var(--paper) 55%, var(--wash) 100%);
-  border:1px solid var(--rule)}
+  linear-gradient(170deg,var(--oat) 0%,var(--paper) 58%,var(--accent-wash) 100%);border:1px solid var(--rule)}
 .shot img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
-.shot .mark{position:absolute;inset:0;display:grid;place-content:center;gap:8px;text-align:center;padding:18px}
-.shot .mark b{font:600 10px/1.5 var(--body);letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint)}
-.shot .mark span{font-family:var(--display);font-style:italic;font-size:15px;color:var(--ink-faint)}
-.shot .mark i{display:block;width:34px;height:1px;background:var(--rule);margin:4px auto}
+.shot .slot{position:absolute;inset:0;display:grid;place-content:center;gap:7px;text-align:center;padding:16px}
+.shot .slot b{font:600 9.5px/1.5 var(--body);letter-spacing:.19em;text-transform:uppercase;color:var(--ink-faint)}
+.shot .slot span{font-family:var(--display);font-style:italic;font-size:14px;color:var(--ink-faint);line-height:1.5}
+.shot .slot hr{width:30px;height:1px;background:var(--rule-strong);border:0;margin:3px auto}
 .r23{aspect-ratio:2/3}.r34{aspect-ratio:3/4}.r43{aspect-ratio:4/3}.r11{aspect-ratio:1/1}
 
 /* ---------- HEADER ---------- */
-.ann{background:var(--ink);color:var(--paper);font:500 11.5px/1 var(--body);letter-spacing:.09em;text-transform:uppercase}
-.ann .wrap{padding-block:10px;text-align:center}
+.announce{background:var(--ink);color:var(--paper)}
+.announce .wrap{padding-block:10px;text-align:center;font:500 11px/1.4 var(--body);letter-spacing:.14em;text-transform:uppercase}
 header.site{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--surface);border-bottom:1px solid var(--rule)}
-.bar{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px;padding-block:17px}
-.brand{grid-column:2;font-family:var(--display);font-weight:700;font-size:clamp(22px,5vw,33px);letter-spacing:.07em;
-  text-transform:uppercase;text-decoration:none;text-align:center;white-space:nowrap}
+.masthead{display:flex;flex-direction:column;align-items:center;gap:14px;padding-block:20px 0}
+.brand{font-family:var(--display);font-weight:700;font-size:clamp(24px,5.4vw,38px);letter-spacing:.08em;
+  text-transform:uppercase;text-decoration:none;line-height:1}
 .brand i{font-style:normal;color:var(--accent)}
-.navl,.navr{display:flex;align-items:center;gap:22px}
-.navr{justify-content:flex-end}
-.navl a,.navr a{font:600 11.5px/1 var(--body);letter-spacing:.13em;text-transform:uppercase;text-decoration:none;color:var(--ink-soft)}
-.navl a:hover,.navr a:hover{color:var(--accent)}
-.tbtn{background:none;border:1px solid var(--rule);color:var(--ink);width:33px;height:33px;border-radius:999px;cursor:pointer;display:grid;place-items:center;font-size:13px}
-.tbtn:hover{border-color:var(--ink)}
-@media(max-width:720px){
-  .bar{grid-template-columns:1fr;justify-items:center;gap:13px;padding-block:14px}
-  .brand{grid-column:1}
-  .navl,.navr{gap:18px}.navr{order:3}
+.brand .tag{display:block;font:500 9px/1 var(--body);letter-spacing:.3em;text-transform:uppercase;
+  color:var(--ink-faint);text-align:center;margin-top:7px}
+nav.primary{width:100%;border-top:1px solid var(--rule);margin-top:4px}
+nav.primary ul{list-style:none;margin:0;padding:0;display:flex;gap:30px;justify-content:center;flex-wrap:wrap;padding-block:13px}
+nav.primary a{font:600 11.5px/1 var(--body);letter-spacing:.15em;text-transform:uppercase;text-decoration:none;
+  color:var(--ink-soft);padding-bottom:4px;border-bottom:1px solid transparent}
+nav.primary a:hover,nav.primary a[aria-current]{color:var(--ink);border-color:var(--accent)}
+.themeBtn{position:absolute;right:var(--gr);top:22px;background:none;border:1px solid var(--rule);color:var(--ink);
+  width:32px;height:32px;border-radius:999px;cursor:pointer;font-size:12px;line-height:1}
+.themeBtn:hover{border-color:var(--ink)}
+header.site .wrap{position:relative}
+@media(max-width:620px){
+  nav.primary ul{gap:20px;padding-block:11px}
+  .themeBtn{top:14px;width:29px;height:29px}
 }
 
 /* ---------- HERO ---------- */
-.hero{position:relative;background:var(--surface);border-bottom:1px solid var(--rule);overflow:hidden}
-.hero .wrap{display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:stretch;min-height:clamp(440px,66vh,640px)}
-.hero-copy{display:flex;flex-direction:column;justify-content:center;gap:18px;padding-block:52px;padding-right:46px}
-.hero-copy h1{font-family:var(--display);font-weight:700;font-size:clamp(36px,6.4vw,70px);line-height:1}
+.hero{background:var(--surface);border-bottom:1px solid var(--rule)}
+.hero .wrap{display:grid;grid-template-columns:1fr 1fr;align-items:stretch;min-height:clamp(430px,62vh,610px)}
+.hero-copy{display:flex;flex-direction:column;justify-content:center;gap:19px;padding-block:52px;padding-right:48px}
+.hero-copy h1{font-family:var(--display);font-weight:700;font-size:clamp(34px,6.1vw,66px);line-height:1.02;letter-spacing:-.005em}
 .hero-copy h1 em{font-style:italic;font-weight:500;color:var(--accent)}
-.hero-copy p{margin:0;color:var(--ink-soft);font-size:17.5px;max-width:40ch;line-height:1.6}
+.hero-copy p{color:var(--ink-soft);font-size:17px;max-width:42ch;line-height:1.62}
 .hero-shot{position:relative;margin-right:calc(-1 * var(--gr))}
 .hero-shot .shot{height:100%;border:0;border-left:1px solid var(--rule)}
-.tag{position:absolute;left:18px;bottom:18px;background:var(--surface);border:1px solid var(--rule);
-  padding:11px 15px;max-width:230px;box-shadow:0 10px 30px rgba(0,0,0,.09)}
-.tag b{display:block;font:600 9.5px/1 var(--body);letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:5px}
-.tag span{font-family:var(--display);font-size:15px;line-height:1.25;display:block}
-@media(max-width:820px){
+.pricetag{position:absolute;left:20px;bottom:20px;background:var(--surface);border:1px solid var(--rule);
+  padding:12px 16px;max-width:240px;box-shadow:0 12px 34px rgba(0,0,0,.10)}
+.pricetag b{display:block;font:600 9px/1 var(--body);letter-spacing:.19em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+.pricetag span{font-family:var(--display);font-size:14.5px;line-height:1.3;display:block;color:var(--ink)}
+@media(max-width:860px){
   .hero .wrap{grid-template-columns:1fr;min-height:0}
-  .hero-copy{padding-right:0;padding-block:36px 26px;order:2;text-align:left}
+  .hero-copy{padding-right:0;padding-block:34px 30px;order:2}
   .hero-shot{order:1;margin-right:calc(-1 * var(--gr));margin-left:calc(-1 * var(--gl))}
   .hero-shot .shot{border-left:0;border-bottom:1px solid var(--rule);aspect-ratio:4/3}
+  .pricetag{left:var(--gl);bottom:16px}
 }
 
 .btn{display:inline-block;background:var(--ink);color:var(--paper);border:0;font:600 11.5px/1 var(--body);
-  letter-spacing:.13em;text-transform:uppercase;padding:15px 30px;text-decoration:none;cursor:pointer}
+  letter-spacing:.15em;text-transform:uppercase;padding:16px 32px;text-decoration:none;cursor:pointer}
 .btn:hover{background:var(--accent);color:var(--accent-ink)}
-.btn.g{background:none;color:var(--ink);border:1px solid var(--ink)}
-.btn.g:hover{background:var(--ink);color:var(--paper)}
-.cta{display:flex;gap:11px;flex-wrap:wrap;margin-top:4px}
+.btn.outline{background:none;color:var(--ink);border:1px solid var(--rule-strong)}
+.btn.outline:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.btnrow{display:flex;gap:11px;flex-wrap:wrap;margin-top:3px}
 
-/* ---------- MARQUEE STRIP ---------- */
-.strip{background:var(--ink);color:var(--paper);overflow:hidden}
-.strip .wrap{padding-block:14px;display:flex;gap:40px;justify-content:center;flex-wrap:wrap;
-  font:600 11px/1 var(--body);letter-spacing:.17em;text-transform:uppercase}
-.strip span{display:flex;gap:11px;align-items:center;color:#C9CACE}
-.strip s{text-decoration:none;color:var(--accent)}
+/* ---------- PROOF STRIP ---------- */
+.proof{background:var(--ink);color:var(--paper)}
+.proof .wrap{padding-block:15px;display:flex;gap:34px;justify-content:center;flex-wrap:wrap;
+  font:600 10.5px/1.6 var(--body);letter-spacing:.18em;text-transform:uppercase;color:#C7C8CC;text-align:center}
+.proof s{text-decoration:none;color:var(--accent);margin-right:9px}
 
-/* ---------- SECTIONS ---------- */
-section.band{padding-block:62px}
-.sechead{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:30px}
-.sechead h2{font-family:var(--display);font-weight:700;font-size:clamp(25px,4vw,38px);line-height:1.05}
+/* ---------- SECTION FURNITURE ---------- */
+section.band{padding-block:64px}
+section.band.tint{background:var(--surface);border-block:1px solid var(--rule)}
+.sechead{margin-bottom:32px;display:flex;align-items:flex-end;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.sechead h2{font-family:var(--display);font-weight:700;font-size:clamp(25px,3.9vw,37px);line-height:1.06}
 .sechead h2 em{font-style:italic;font-weight:500;color:var(--accent)}
-.sechead p{margin:7px 0 0;color:var(--ink-soft);font-size:15px;max-width:52ch}
-.sechead a{font:600 11.5px/1 var(--body);letter-spacing:.13em;text-transform:uppercase;color:var(--accent);text-decoration:none;white-space:nowrap;border-bottom:1px solid currentColor;padding-bottom:3px}
+.sechead .lede{margin-top:9px;color:var(--ink-soft);font-size:15.5px;max-width:58ch;line-height:1.6}
+.sechead .more{font:600 11px/1 var(--body);letter-spacing:.15em;text-transform:uppercase;color:var(--accent);
+  text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:3px;white-space:nowrap}
 
-/* featured: one large + three small */
-.feat{display:grid;grid-template-columns:1.35fr 1fr;gap:28px}
-@media(max-width:860px){.feat{grid-template-columns:1fr}}
-.feat .side{display:grid;gap:22px;align-content:start}
-.fcard{text-decoration:none;display:block;min-width:0}
-.fcard .shot{margin-bottom:13px}
-.fcard.lg .shot{max-height:470px}
-.fcard .k{font:600 10.5px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);display:flex;gap:9px;align-items:center;margin-bottom:8px}
-.fcard .k b{color:var(--accent);font-weight:700}
-.fcard h3{font-family:var(--display);font-weight:500;line-height:1.18}
-.fcard.lg h3{font-size:clamp(22px,3.2vw,31px)}
-.fcard.sm{display:grid;grid-template-columns:118px 1fr;gap:15px;align-items:center}
-.fcard.sm .shot{margin:0}
-.fcard.sm h3{font-size:17.5px}
-.fcard:hover h3{color:var(--accent)}
+/* ---------- GUIDE CARDS ---------- */
+.cards{display:grid;gap:34px 26px;grid-template-columns:repeat(3,1fr)}
+@media(max-width:860px){.cards{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.cards{grid-template-columns:1fr}}
+.card{text-decoration:none;display:block;min-width:0}
+.card .shot{margin-bottom:14px}
+.card .cat{font:600 10px/1 var(--body);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);
+  display:flex;gap:9px;align-items:center;margin-bottom:9px}
+.card .cat b{color:var(--accent);font-weight:700}
+.card h3{font-family:var(--display);font-weight:500;font-size:19.5px;line-height:1.22}
+.card p{margin-top:7px;font-size:14.5px;color:var(--ink-soft);line-height:1.55}
+.card:hover h3{color:var(--accent)}
 
-/* grid of guides */
-.grid{display:grid;gap:34px 26px;grid-template-columns:repeat(4,1fr)}
-@media(max-width:940px){.grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:520px){.grid{grid-template-columns:1fr}}
-
-/* editorial promise */
-.promise{background:var(--surface);border-block:1px solid var(--rule)}
-.promise .wrap{padding-block:54px;display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
-@media(max-width:800px){.promise .wrap{grid-template-columns:1fr;gap:28px}}
-.promise .n{font-family:var(--display);font-style:italic;font-size:30px;color:var(--accent);line-height:1;margin-bottom:11px}
-.promise h3{font-family:var(--display);font-weight:500;font-size:20px;margin-bottom:7px}
-.promise p{margin:0;color:var(--ink-soft);font-size:15px}
-
-/* him / her */
-.two{display:grid;grid-template-columns:1fr 1fr;gap:26px}
-@media(max-width:760px){.two{grid-template-columns:1fr}}
+/* ---------- HIM / HER ---------- */
+.audience{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+@media(max-width:720px){.audience{grid-template-columns:1fr}}
 .pane{position:relative;text-decoration:none;display:block;overflow:hidden;border:1px solid var(--rule)}
-.pane .shot{border:0;max-height:520px}
-.pane .cap{position:absolute;left:0;right:0;bottom:0;padding:24px 22px;
-  background:linear-gradient(to top,rgba(10,10,12,.86),rgba(10,10,12,.3) 60%,transparent);color:#fff}
-.pane .cap h3{font-family:var(--display);font-weight:700;font-size:clamp(23px,3.4vw,31px);margin-bottom:4px}
-.pane .cap span{font:600 11px/1 var(--body);letter-spacing:.13em;text-transform:uppercase;opacity:.85}
-.pane:hover .cap h3{color:#FF8FA3}
+.pane .shot{border:0;width:100%;height:clamp(380px,46vw,530px);aspect-ratio:auto}
+.pane .cap{position:absolute;left:0;right:0;bottom:0;padding:26px 24px;
+  background:linear-gradient(to top,rgba(10,10,12,.88),rgba(10,10,12,.34) 58%,transparent);color:#fff}
+.pane .cap h3{font-family:var(--display);font-weight:700;font-size:clamp(24px,3.6vw,33px);margin-bottom:5px}
+.pane .cap p{font-size:14px;color:#D6D6D9;max-width:34ch;line-height:1.5;margin-bottom:10px}
+.pane .cap .n{font:600 10.5px/1 var(--body);letter-spacing:.16em;text-transform:uppercase;color:#fff;
+  border-bottom:1px solid rgba(255,255,255,.45);padding-bottom:4px;display:inline-block}
+.pane:hover .cap .n{border-color:#fff}
 
-/* newsletter */
-.sub{background:var(--ink);color:var(--paper)}
-.sub .wrap{padding-block:56px;display:grid;grid-template-columns:1fr 1fr;gap:38px;align-items:center}
-@media(max-width:780px){.sub .wrap{grid-template-columns:1fr;gap:22px}}
-.sub h2{font-family:var(--display);font-weight:700;font-size:clamp(26px,4.4vw,40px);line-height:1.05;margin-bottom:10px}
-.sub h2 em{font-style:italic;font-weight:500;color:#FF8FA3}
-.sub p{margin:0;color:#B4B5BA;font-size:15.5px;max-width:40ch}
-form{display:flex;gap:9px;flex-wrap:wrap}
-form input{flex:1 1 210px;min-width:0;padding:15px 16px;border:1px solid #3A3A42;background:#1C1C21;color:var(--paper);font-family:var(--body);font-size:15px}
-form input::placeholder{color:#7C7D85}
-form button{background:var(--accent);color:var(--accent-ink);border:0;padding:15px 28px;font:600 11.5px/1 var(--body);letter-spacing:.13em;text-transform:uppercase;cursor:pointer}
-.msg{font-size:13.5px;color:#B4B5BA;margin:10px 0 0;min-height:19px}
+/* ---------- METHOD ---------- */
+.method{display:grid;grid-template-columns:repeat(3,1fr);gap:42px}
+@media(max-width:820px){.method{grid-template-columns:1fr;gap:28px}}
+.method .step{display:flex;flex-direction:column;gap:9px}
+.method .num{font-family:var(--display);font-style:italic;font-size:27px;color:var(--accent);line-height:1}
+.method h3{font-family:var(--display);font-weight:500;font-size:20px}
+.method p{color:var(--ink-soft);font-size:15px;line-height:1.6}
 
-/* footer */
+/* ---------- LIBRARY ---------- */
+.library{display:grid;grid-template-columns:1fr 1fr;gap:0 48px}
+@media(max-width:760px){.library{grid-template-columns:1fr;gap:0}}
+.library h3{font-family:var(--display);font-weight:700;font-size:21px;padding-bottom:11px;
+  border-bottom:2px solid var(--ink);margin-bottom:4px}
+.library h3 span{font:600 10.5px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);float:right;padding-top:9px}
+.library ul{list-style:none;margin:0 0 34px;padding:0}
+.library li{border-bottom:1px solid var(--rule)}
+.library a{display:flex;gap:13px;align-items:baseline;padding-block:12px;text-decoration:none;font-size:15.5px}
+.library a:hover{color:var(--accent)}
+.library .i{font:600 10.5px var(--body);color:var(--ink-faint);min-width:20px;font-variant-numeric:tabular-nums}
+
+/* ---------- NEWSLETTER ---------- */
+.signup{background:var(--ink);color:var(--paper)}
+.signup .wrap{padding-block:58px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+@media(max-width:800px){.signup .wrap{grid-template-columns:1fr;gap:24px}}
+.signup h2{font-family:var(--display);font-weight:700;font-size:clamp(26px,4.3vw,39px);line-height:1.06;margin-bottom:11px}
+.signup h2 em{font-style:italic;font-weight:500;color:#F0506E}
+.signup p{color:#B2B3B8;font-size:15.5px;max-width:42ch;line-height:1.6}
+.signup form{display:flex;gap:9px;flex-wrap:wrap}
+.signup input{flex:1 1 210px;min-width:0;padding:16px;border:1px solid #393940;background:#1B1B20;color:var(--paper);font-family:var(--body);font-size:15px}
+.signup input::placeholder{color:#7A7B83}
+.signup button{background:var(--accent);color:#fff;border:0;padding:16px 30px;font:600 11.5px/1 var(--body);letter-spacing:.15em;text-transform:uppercase;cursor:pointer}
+.signup button:hover{background:#C4153A}
+.signup .fineprint{margin-top:12px;font-size:12.5px;color:#8A8B93}
+.signup .msg{margin-top:10px;font-size:13.5px;color:#B2B3B8;min-height:19px}
+
+/* ---------- FOOTER ---------- */
 footer.site{background:var(--surface);border-top:1px solid var(--rule)}
-.fg{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:38px;padding-block:52px}
-@media(max-width:760px){.fg{grid-template-columns:1fr 1fr;gap:28px}}
-@media(max-width:480px){.fg{grid-template-columns:1fr}}
-.fg h4{font:600 10.5px/1 var(--body);letter-spacing:.15em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:15px}
-.fg ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
-.fg a{text-decoration:none;font-size:14.5px;color:var(--ink-soft)}
-.fg a:hover{color:var(--accent)}
-.fb{font-family:var(--display);font-weight:700;font-size:26px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:12px}
-.fb i{font-style:normal;color:var(--accent)}
-.fg>div:first-child p{margin:0 0 18px;font-size:14.5px;color:var(--ink-soft);max-width:36ch}
-.soc{display:flex;gap:8px}
-.soc a{width:34px;height:34px;border:1px solid var(--rule);border-radius:999px;display:grid;place-items:center;font:600 11px var(--body)}
-.soc a:hover{border-color:var(--accent);color:var(--accent)}
-.fbot{border-top:1px solid var(--rule)}
-.fbot .wrap{padding-block:20px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:13px;color:var(--ink-faint)}
-.fbot a{text-decoration:none}
+.fgrid{display:grid;grid-template-columns:1.7fr 1fr 1fr;gap:42px;padding-block:54px}
+@media(max-width:760px){.fgrid{grid-template-columns:1fr 1fr;gap:30px}}
+@media(max-width:460px){.fgrid{grid-template-columns:1fr}}
+.fgrid h4{font:600 10.5px/1 var(--body);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:16px}
+.fgrid ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px}
+.fgrid a{text-decoration:none;font-size:14.5px;color:var(--ink-soft)}
+.fgrid a:hover{color:var(--accent)}
+.fbrand{font-family:var(--display);font-weight:700;font-size:25px;letter-spacing:.07em;text-transform:uppercase;margin-bottom:13px}
+.fbrand i{font-style:normal;color:var(--accent)}
+.fabout{font-size:14.5px;color:var(--ink-soft);max-width:38ch;line-height:1.6;margin-bottom:19px}
+.social{display:flex;gap:9px}
+.social a{width:35px;height:35px;border:1px solid var(--rule);border-radius:999px;display:grid;place-items:center;font:600 10.5px var(--body);letter-spacing:.04em}
+.social a:hover{border-color:var(--accent);color:var(--accent)}
+.fdisclose{border-top:1px solid var(--rule);padding-block:18px;font-size:13px;color:var(--ink-faint);line-height:1.6;max-width:80ch}
+.fbottom{border-top:1px solid var(--rule)}
+.fbottom .wrap{padding-block:20px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:13px;color:var(--ink-faint)}
+.fbottom a{text-decoration:none}
+.fbottom a:hover{color:var(--accent)}
 </style>
 
-<div class="ann"><div class="wrap">New styling guides every Monday &amp; Thursday</div></div>
+<!-- =================== ANNOUNCEMENT =================== -->
+<div class="announce"><div class="wrap">New styling guides every Monday and Thursday</div></div>
 
+<!-- =================== HEADER =================== -->
 <header class="site">
   <div class="wrap">
-    <div class="bar">
-      <nav class="navl">
-        <a href="#top">Home</a>
-        <a href="#guides">How to Style</a>
-      </nav>
-      <a class="brand" href="#top">The W<i>o</i>w Style</a>
-      <nav class="navr">
-        <a href="#about">About</a>
-        <button class="tbtn" id="themeBtn" aria-label="Switch theme">◐</button>
+    <button class="themeBtn" id="themeBtn" aria-label="Switch between light and dark">◐</button>
+    <div class="masthead">
+      <a class="brand" href="/">The W<i>o</i>w Style
+        <span class="tag">Outfit ideas for men &amp; women</span>
+      </a>
+      <nav class="primary" aria-label="Main">
+        <ul>
+          <li><a href="/" aria-current="page">Home</a></li>
+          <li><a href="/fashion/how-to-style/">How to Style</a></li>
+          <li><a href="/tag/mens-style/">Men</a></li>
+          <li><a href="/tag/womens-style/">Women</a></li>
+          <li><a href="/about/">About</a></li>
+        </ul>
       </nav>
     </div>
   </div>
 </header>
 
-<main id="top">
+<main>
 
-  <!-- ===================== HERO ===================== -->
+  <!-- =================== HERO =================== -->
   <section class="hero">
     <div class="wrap">
       <div class="hero-copy">
-        <span class="eyebrow">How to Style — Guide 01</span>
+        <span class="kicker">How to Style · Guide 01</span>
         <h1>One pair.<br>Fifteen <em>ways</em><br>to wear them.</h1>
-        <p>Khaki shorts are the most useful thing in a summer wardrobe and the easiest to get wrong. Here is every outfit that works, with the length rule that makes the difference.</p>
-        <div class="cta">
-          <a class="btn" href="#guides">Read the guide</a>
-          <a class="btn g" href="#guides">Browse all styling guides</a>
+        <p>Khaki shorts are the most useful thing in a summer wardrobe and the easiest to get wrong. Every outfit that works is here, along with the length rule that makes the difference.</p>
+        <div class="btnrow">
+          <a class="btn" href="/fashion/how-to-style/khaki-shorts-women/">Read the guide</a>
+          <a class="btn outline" href="/fashion/how-to-style/">All 30 guides</a>
         </div>
       </div>
       <div class="hero-shot">
         <div class="shot">
-          <img src="images/model-female-01.jpg" alt="Styled outfit: khaki shorts with a cream knit and white trainers" onerror="this.remove()">
-          <div class="mark"><b>Hero model shot</b><i></i><span>images/model-female-01.jpg<br>1000 × 1500 · 2:3</span></div>
+          <img src="/images/hero-khaki-shorts.jpg" alt="Khaki shorts styled with a cream knit and white leather trainers" onerror="this.remove()">
+          <div class="slot"><b>Hero shot</b><hr><span>/images/hero-khaki-shorts.jpg<br>1000 × 1500 · 2:3</span></div>
         </div>
-        <div class="tag">
-          <b>Shop the look</b>
-          <span>Cream knit, khaki short, white leather trainer</span>
+        <div class="pricetag">
+          <b>In this look</b>
+          <span>Cream knit · khaki short · white leather trainer</span>
         </div>
       </div>
     </div>
   </section>
 
-  <div class="strip">
+  <!-- =================== PROOF STRIP =================== -->
+  <div class="proof">
     <div class="wrap">
-      <span><s>◆</s> Men &amp; women</span>
-      <span><s>◆</s> Every look costed</span>
-      <span><s>◆</s> Real fit notes</span>
-      <span><s>◆</s> Shoppable</span>
+      <span><s>◆</s>Men and women</span>
+      <span><s>◆</s>15+ outfits per guide</span>
+      <span><s>◆</s>Fit notes, not just photos</span>
+      <span><s>◆</s>Every piece linked</span>
     </div>
   </div>
 
-  <!-- ===================== FEATURED ===================== -->
-  <section class="band" id="guides">
+  <!-- =================== NEW THIS WEEK =================== -->
+  <section class="band">
     <div class="wrap">
       <div class="sechead">
         <div>
-          <h2>This week in <em>How to Style</em></h2>
-          <p>One garment at a time. What it goes with, what it doesn't, and how to wear it at any age.</p>
+          <h2>New this <em>week</em></h2>
+          <p class="lede">One garment at a time — what it goes with, what it fights, and how to wear it without thinking about it again.</p>
         </div>
-        <a href="#guides">All guides</a>
+        <a class="more" href="/fashion/how-to-style/">Browse all</a>
       </div>
-
-      <div class="feat">
-        <a class="fcard lg" href="#guides">
-          <div class="shot r43">
-            <img src="images/model-female-02.jpg" alt="Leather skirt styled three ways" onerror="this.remove()">
-            <div class="mark"><b>Feature</b><i></i><span>images/model-female-02.jpg<br>1200 × 900</span></div>
-          </div>
-          <div class="k"><b>How to Style</b> · Women</div>
-          <h3>How to Style Leather Skirt Women: 15 Outfits</h3>
+      <div class="cards">
+        <a class="card" href="/fashion/how-to-style/leather-skirt-women/">
+          <div class="shot r34"><img src="/images/leather-skirt-women.jpg" alt="Leather skirt styled for women" onerror="this.remove()"><div class="slot"><b>Guide</b><hr><span>/images/leather-skirt-women.jpg<br>900 × 1200</span></div></div>
+          <div class="cat"><b>How to Style</b> · Women</div>
+          <h3>How to Style Leather Skirt Women</h3>
+          <p>Fifteen outfits that take a leather skirt from a Tuesday coffee to a Saturday dinner.</p>
         </a>
-        <div class="side">
-          <a class="fcard sm" href="#guides">
-            <div class="shot r11">
-              <img src="images/model-male-01.jpg" alt="Brown suit styled for men" onerror="this.remove()">
-              <div class="mark"><b>male-01</b></div>
-            </div>
-            <div><div class="k"><b>How to Style</b> · Men</div><h3>How to Style Brown Suit Men: 15 Outfits</h3></div>
-          </a>
-          <a class="fcard sm" href="#guides">
-            <div class="shot r11">
-              <img src="images/model-female-03.jpg" alt="Gladiator sandals styled for women" onerror="this.remove()">
-              <div class="mark"><b>female-03</b></div>
-            </div>
-            <div><div class="k"><b>How to Style</b> · Women</div><h3>How to Style Gladiator Sandals for Women</h3></div>
-          </a>
-          <a class="fcard sm" href="#guides">
-            <div class="shot r11">
-              <img src="images/model-male-02.jpg" alt="Beige pants styled for men" onerror="this.remove()">
-              <div class="mark"><b>male-02</b></div>
-            </div>
-            <div><div class="k"><b>How to Style</b> · Men</div><h3>How to Style Beige Pants Men: 15 Outfits</h3></div>
-          </a>
-        </div>
+        <a class="card" href="/fashion/how-to-style/brown-suit-men/">
+          <div class="shot r34"><img src="/images/brown-suit-men.jpg" alt="Brown suit styled for men" onerror="this.remove()"><div class="slot"><b>Guide</b><hr><span>/images/brown-suit-men.jpg<br>900 × 1200</span></div></div>
+          <div class="cat"><b>How to Style</b> · Men</div>
+          <h3>How to Style Brown Suit Men</h3>
+          <p>The shirt colours that work with brown, the ones that don't, and what to do about shoes.</p>
+        </a>
+        <a class="card" href="/fashion/how-to-style/gladiator-sandals-for-women/">
+          <div class="shot r34"><img src="/images/gladiator-sandals-women.jpg" alt="Gladiator sandals styled for women" onerror="this.remove()"><div class="slot"><b>Guide</b><hr><span>/images/gladiator-sandals-women.jpg<br>900 × 1200</span></div></div>
+          <div class="cat"><b>How to Style</b> · Women</div>
+          <h3>How to Style Gladiator Sandals for Women</h3>
+          <p>Where the strap should sit on your leg, and the three hem lengths that flatter it.</p>
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- ===================== PROMISE ===================== -->
-  <section class="promise" id="about">
+  <!-- =================== FOR HIM, FOR HER =================== -->
+  <section class="band tint">
     <div class="wrap">
-      <div><div class="n">i.</div><h3>Both wardrobes</h3><p>Men and women, side by side. No separate site, no afterthought section — the same care goes into each.</p></div>
-      <div><div class="n">ii.</div><h3>Wearable, not runway</h3><p>Every outfit is built from pieces you can actually buy, in sizes that exist, at prices we name.</p></div>
-      <div><div class="n">iii.</div><h3>The fit note</h3><p>Length, proportion, what to tuck. The small decisions that separate a good outfit from a nearly-good one.</p></div>
+      <div class="sechead">
+        <div>
+          <h2>For <em>him</em>, for <em>her</em></h2>
+          <p class="lede">Both wardrobes get the same attention. Pick your side and start anywhere — every guide stands on its own.</p>
+        </div>
+      </div>
+      <div class="audience">
+        <a class="pane" href="/tag/mens-style/">
+          <div class="shot r34">
+            <img src="/images/audience-men.jpg" alt="Men's styling guides" onerror="this.remove()">
+            <div class="slot"><b>Men's panel</b><hr><span>/images/audience-men.jpg<br>900 × 1200 · 3:4</span></div>
+          </div>
+          <div class="cap">
+            <h3>Men</h3>
+            <p>Suits, trousers, trainers and the colours most guides skip.</p>
+            <span class="n">16 styling guides</span>
+          </div>
+        </a>
+        <a class="pane" href="/tag/womens-style/">
+          <div class="shot r34">
+            <img src="/images/audience-women.jpg" alt="Women's styling guides" onerror="this.remove()">
+            <div class="slot"><b>Women's panel</b><hr><span>/images/audience-women.jpg<br>900 × 1200 · 3:4</span></div>
+          </div>
+          <div class="cap">
+            <h3>Women</h3>
+            <p>Skirts, shorts, suits and shoes — with the fit notes that matter.</p>
+            <span class="n">13 styling guides</span>
+          </div>
+        </a>
+      </div>
     </div>
   </section>
 
-  <!-- ===================== HIM / HER ===================== -->
+  <!-- =================== METHOD =================== -->
   <section class="band">
     <div class="wrap">
-      <div class="sechead"><div><h2>For <em>him</em>, for <em>her</em></h2></div></div>
-      <div class="two">
-        <a class="pane" href="#guides">
-          <div class="shot r34">
-            <img src="images/model-male-hero.jpg" alt="Men's styling guides" onerror="this.remove()">
-            <div class="mark"><b>Men's panel</b><i></i><span>images/model-male-hero.jpg<br>900 × 1200 · 3:4</span></div>
-          </div>
-          <div class="cap"><h3>Men</h3><span>Styling guides</span></div>
-        </a>
-        <a class="pane" href="#guides">
-          <div class="shot r34">
-            <img src="images/model-female-hero.jpg" alt="Women's styling guides" onerror="this.remove()">
-            <div class="mark"><b>Women's panel</b><i></i><span>images/model-female-hero.jpg<br>900 × 1200 · 3:4</span></div>
-          </div>
-          <div class="cap"><h3>Women</h3><span>Styling guides</span></div>
-        </a>
+      <div class="sechead">
+        <div>
+          <h2>How every guide is <em>built</em></h2>
+          <p class="lede">The same three rules, on every page. It is why these read differently from a gallery of pictures.</p>
+        </div>
+      </div>
+      <div class="method">
+        <div class="step">
+          <span class="num">i.</span>
+          <h3>One garment, fifteen outfits</h3>
+          <p>Each guide takes a single piece you already own and builds a full rotation around it, instead of showing you fifteen things to buy.</p>
+        </div>
+        <div class="step">
+          <span class="num">ii.</span>
+          <h3>The fit note comes first</h3>
+          <p>Length, proportion, what to tuck and where the hem should fall. These are the decisions that separate a good outfit from a nearly-good one.</p>
+        </div>
+        <div class="step">
+          <span class="num">iii.</span>
+          <h3>Every piece is linked</h3>
+          <p>If a look includes it, you can find it. We name the price range and say plainly when the cheaper version is the better buy.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ===================== LATEST ===================== -->
-  <section class="band" style="padding-top:0">
+  <!-- =================== COMPLETE LIBRARY =================== -->
+  <section class="band tint">
     <div class="wrap">
-      <div class="sechead"><div><h2>Latest guides</h2></div><a href="#guides">Archive</a></div>
-      <div class="grid">
-        <a class="fcard" href="#guides"><div class="shot r34"><img src="images/guide-01.jpg" alt="" onerror="this.remove()"><div class="mark"><b>guide-01</b><i></i><span>900 × 1200</span></div></div>
-          <div class="k" style="margin-top:12px"><b>Women</b></div><h3 style="font-size:18px">How to Style Khaki Shorts Women</h3></a>
-        <a class="fcard" href="#guides"><div class="shot r34"><img src="images/guide-02.jpg" alt="" onerror="this.remove()"><div class="mark"><b>guide-02</b><i></i><span>900 × 1200</span></div></div>
-          <div class="k" style="margin-top:12px"><b>Men</b></div><h3 style="font-size:18px">How to Style Brown Pants Outfit Men</h3></a>
-        <a class="fcard" href="#guides"><div class="shot r34"><img src="images/guide-03.jpg" alt="" onerror="this.remove()"><div class="mark"><b>guide-03</b><i></i><span>900 × 1200</span></div></div>
-          <div class="k" style="margin-top:12px"><b>Men</b></div><h3 style="font-size:18px">How to Style Pink Button Up Shirt Men</h3></a>
-        <a class="fcard" href="#guides"><div class="shot r34"><img src="images/guide-04.jpg" alt="" onerror="this.remove()"><div class="mark"><b>guide-04</b><i></i><span>900 × 1200</span></div></div>
-          <div class="k" style="margin-top:12px"><b>Women</b></div><h3 style="font-size:18px">How to Style Princess Dress for Women</h3></a>
+      <div class="sechead">
+        <div>
+          <h2>Every styling guide</h2>
+          <p class="lede">The complete How to Style section — all 30 guides, published and updated weekly.</p>
+        </div>
+        <a class="more" href="/fashion/how-to-style/">Section home</a>
+      </div>
+      <div class="library">
+        <div>
+          <h3>For men <span>16 guides</span></h3>
+          <ul>
+            <li><a href="/fashion/how-to-style/brown-suit-men/"><span class="i">01</span>Brown Suit Men</a></li>
+            <li><a href="/fashion/how-to-style/brown-pants-outfit-men/"><span class="i">02</span>Brown Pants Outfit Men</a></li>
+            <li><a href="/fashion/how-to-style/beige-pants-men/"><span class="i">03</span>Beige Pants Men</a></li>
+            <li><a href="/fashion/how-to-style/grey-pants-men/"><span class="i">04</span>Grey Pants Men</a></li>
+            <li><a href="/fashion/how-to-style/white-pants-for-men/"><span class="i">05</span>White Pants for Men</a></li>
+            <li><a href="/fashion/how-to-style/green-pants-outfit-men/"><span class="i">06</span>Green Pants Outfit Men</a></li>
+            <li><a href="/fashion/how-to-style/purple-jeans-men/"><span class="i">07</span>Purple Jeans Men</a></li>
+            <li><a href="/fashion/how-to-style/men-stacked-jeans/"><span class="i">08</span>Men Stacked Jeans</a></li>
+            <li><a href="/fashion/how-to-style/leather-pants-men/"><span class="i">09</span>Leather Pants Men</a></li>
+            <li><a href="/fashion/how-to-style/grey-sweatpants-men/"><span class="i">10</span>Grey Sweatpants Men</a></li>
+            <li><a href="/fashion/how-to-style/white-suits-for-men/"><span class="i">11</span>White Suits for Men</a></li>
+            <li><a href="/fashion/how-to-style/pink-button-up-shirt-men/"><span class="i">12</span>Pink Button Up Shirt Men</a></li>
+            <li><a href="/fashion/how-to-style/casual-dress-for-men/"><span class="i">13</span>Casual Dress for Men</a></li>
+            <li><a href="/fashion/how-to-style/men-in-dresses/"><span class="i">14</span>Men in Dresses</a></li>
+            <li><a href="/fashion/how-to-style/chunky-shoes-men/"><span class="i">15</span>Chunky Shoes Men</a></li>
+            <li><a href="/fashion/how-to-style/red-bottom-shoes-for-men/"><span class="i">16</span>Red Bottom Shoes for Men</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>For women <span>13 guides</span></h3>
+          <ul>
+            <li><a href="/fashion/how-to-style/khaki-shorts-women/"><span class="i">01</span>Khaki Shorts Women</a></li>
+            <li><a href="/fashion/how-to-style/khaki-cargo-pants-for-women/"><span class="i">02</span>Khaki Cargo Pants for Women</a></li>
+            <li><a href="/fashion/how-to-style/cargo-jeans-women/"><span class="i">03</span>Cargo Jeans Women</a></li>
+            <li><a href="/fashion/how-to-style/denim-outfits-for-women/"><span class="i">04</span>Denim Outfits for Women</a></li>
+            <li><a href="/fashion/how-to-style/leather-skirt-women/"><span class="i">05</span>Leather Skirt Women</a></li>
+            <li><a href="/fashion/how-to-style/linen-suit-women/"><span class="i">06</span>Linen Suit Women</a></li>
+            <li><a href="/fashion/how-to-style/white-suit-for-women/"><span class="i">07</span>White Suit for Women</a></li>
+            <li><a href="/fashion/how-to-style/crochet-tops-for-women/"><span class="i">08</span>Crochet Tops for Women</a></li>
+            <li><a href="/fashion/how-to-style/varsity-jacket-women/"><span class="i">09</span>Varsity Jacket Women</a></li>
+            <li><a href="/fashion/how-to-style/lavender-dresses-for-women/"><span class="i">10</span>Lavender Dresses for Women</a></li>
+            <li><a href="/fashion/how-to-style/princess-dress-for-women/"><span class="i">11</span>Princess Dress for Women</a></li>
+            <li><a href="/fashion/how-to-style/gladiator-sandals-for-women/"><span class="i">12</span>Gladiator Sandals for Women</a></li>
+            <li><a href="/fashion/how-to-style/white-loafers-women/"><span class="i">13</span>White Loafers Women</a></li>
+          </ul>
+          <h3>For everyone <span>1 guide</span></h3>
+          <ul>
+            <li><a href="/fashion/how-to-style/how-to-style-a-leather-jacket/"><span class="i">01</span>How to Style a Leather Jacket</a></li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ===================== NEWSLETTER ===================== -->
-  <section class="sub">
+  <!-- =================== NEWSLETTER =================== -->
+  <section class="signup">
     <div class="wrap">
       <div>
         <h2>The <em>Friday</em> Edit</h2>
-        <p>Six outfits a week, built from pieces you already own. No spam, unsubscribe any time.</p>
+        <p>Six outfits a week, built from pieces you already own. One email, every Friday morning.</p>
       </div>
       <div>
-        <form id="f">
-          <label for="em" style="position:absolute;left:-9999px">Email address</label>
-          <input id="em" type="email" placeholder="your@email.com" required>
+        <!-- DEV: wire this POST to your email provider. -->
+        <form id="signupForm">
+          <label class="sr" for="signupEmail">Email address</label>
+          <input id="signupEmail" name="email" type="email" placeholder="your@email.com" autocomplete="email" required>
           <button type="submit">Subscribe</button>
         </form>
-        <p class="msg" id="m"></p>
+        <p class="fineprint">No spam. Unsubscribe in one click.</p>
+        <p class="msg" id="signupMsg" role="status"></p>
       </div>
     </div>
   </section>
 </main>
 
+<!-- =================== FOOTER =================== -->
 <footer class="site">
   <div class="wrap">
-    <div class="fg">
+    <div class="fgrid">
       <div>
-        <div class="fb">The W<i>o</i>w Style</div>
-        <p>Outfit ideas and styling guides for men and women. Every look is wearable, costed and shoppable.</p>
-        <div class="soc"><a href="#top" aria-label="Pinterest">Pi</a><a href="#top" aria-label="Instagram">Ig</a></div>
+        <div class="fbrand">The W<i>o</i>w Style</div>
+        <p class="fabout">Styling guides for men and women. One garment at a time, with the fit notes that actually change how an outfit sits.</p>
+        <div class="social">
+          <a href="https://pinterest.com/" aria-label="Pinterest">Pin</a>
+          <a href="https://instagram.com/" aria-label="Instagram">Ig</a>
+        </div>
       </div>
-      <div><h4>Guides</h4><ul>
-        <li><a href="#guides">How to Style</a></li>
-        <li><a href="#guides">Men's outfits</a></li>
-        <li><a href="#guides">Women's outfits</a></li>
-        <li><a href="#guides">Latest</a></li>
-      </ul></div>
-      <div><h4>Site</h4><ul>
-        <li><a href="#about">About</a></li><li><a href="#about">Contact</a></li>
-        <li><a href="#about">Privacy Policy</a></li><li><a href="#about">Disclaimer</a></li>
-        <li><a href="#about">Terms of Use</a></li>
-      </ul></div>
+      <div>
+        <h4>Guides</h4>
+        <ul>
+          <li><a href="/fashion/how-to-style/">How to Style</a></li>
+          <li><a href="/tag/mens-style/">Men's guides</a></li>
+          <li><a href="/tag/womens-style/">Women's guides</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <ul>
+          <li><a href="/about/">About</a></li>
+          <li><a href="/contact/">Contact</a></li>
+          <li><a href="/privacy-policy/">Privacy Policy</a></li>
+          <li><a href="/disclaimer/">Disclaimer</a></li>
+          <li><a href="/terms/">Terms of Use</a></li>
+          <li><a href="/editorial-policy/">Editorial Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="fdisclose">The Wow Style is reader-supported. Some links on this site earn us a commission if you buy through them, at no extra cost to you. It never affects which pieces we recommend.</p>
+  </div>
+  <div class="fbottom">
+    <div class="wrap">
+      <span>© 2026 The Wow Style</span>
+      <span><a href="/editorial-policy/">How we make money</a></span>
     </div>
   </div>
-  <div class="fbot"><div class="wrap">
-    <span>© 2026 The Wow Style. All rights reserved.</span>
-    <span>Some links earn a commission. <a href="#about">How we make money</a></span>
-  </div></div>
 </footer>
 
 <script>
 (function(){
   var t=document.getElementById('themeBtn');
   t.addEventListener('click',function(){
-    var c=document.documentElement.getAttribute('data-theme');
-    var dark=c?c==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;
-    document.documentElement.setAttribute('data-theme',dark?'light':'dark');
+    var cur=document.documentElement.getAttribute('data-theme');
+    var isDark=cur?cur==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;
+    document.documentElement.setAttribute('data-theme',isDark?'light':'dark');
   });
-  document.getElementById('f').addEventListener('submit',function(e){
+  document.getElementById('signupForm').addEventListener('submit',function(e){
     e.preventDefault();
-    document.getElementById('m').textContent='Demo only — connect this to your email provider.';
+    document.getElementById('signupMsg').textContent='Not connected yet — wire this form to your email provider.';
   });
 })();
 </script>
