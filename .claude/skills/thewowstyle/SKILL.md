@@ -1,5 +1,5 @@
 ---
-name: thewowstyle-content-system
+name: thewowstyle
 description: >-
   Content system for thewowstyle.co.uk (The Wow Style) — fashion and outfit-ideas
   styling guides for men and women. Use whenever researching, planning,
@@ -15,7 +15,7 @@ description: >-
 ## Site Overview
 
 - **Site:** thewowstyle.co.uk
-- **Author / brand:** Aria Vance — Founder and Editor. Writes styling guides for men and women. (Source: site schema. Do **not** invent extra credentials — years, client counts, awards. If Aria adds real ones later, use those.)
+- **Author / brand:** Aria James — Founder and Editor. Writes styling guides for men and women. Write in her first-person editorial voice where natural (this is a personal, expert-led brand — see Personal Voice & E-E-A-T below). (Do **not** invent extra credentials — years, client counts, awards. If Aria adds real ones later, use those.)
 - **Niche:** Fashion and outfit ideas — image-led styling guides (how to style a garment, what to wear to an occasion, aesthetics, decade looks, accessories, seasonal, dress codes), for men and women.
 - **Target audience:** US/UK, general fashion readers, beginner to intermediate. They arrive with one specific question ("how do I wear X?", "what do I wear to Y?") and want copy-able outfits, not theory.
 - **Voice reference:** Who What Wear, Byrdie, InStyle (women/general); He Spoke Style, Real Men Real Style (men); The Trend Spotter (listicle format). Expert, specific, warm — never influencer-breathless. *(Not fixed in CLAUDE.md; adjust if Aria prefers others.)*
@@ -36,7 +36,22 @@ description: >-
 - **`TheWowStyle_120_Article_Roadmap.xlsx`** — the canonical plan: Tab 2 PILLAR MAP (every pillar + its sub-topics), Tab 4 Article Details (title, primary + secondary keywords, audience, URL), Tab 5 Internal Linking (exact up/down/sideways/across links per article), Tab 6 Keyword Map (one keyword → one article). This file already eliminated topic overlap. **Do not re-invent the cluster, keyword ownership, or linking — read it.**
 - `FEMALE-MODEL-PROMPT.md` / `MALE-MODEL-PROMPT.md` — model, poses, details, slot sizes for images.
 
-> **First priority, above everything:** the reader's article, their intent, their need, their real queries, the solution to their problem. Every rule below exists to serve that. SEO/AEO/GEO are how the right reader finds the answer — never a reason to pad or distort it.
+> **First priority, above everything:** the reader's article, their intent, their need, their real queries, the solution to their problem. Every rule below exists to serve that. SEO/AEO/GEO/semantic are how the right reader finds the answer — never a reason to pad or distort it.
+
+---
+
+## OPERATING PRINCIPLES (apply to every step, every instruction)
+
+These govern the whole workflow. If any later section seems to conflict, these win.
+
+1. **Verify, never assume.** Every fact, URL, live-status, competitor, keyword, source, and claim is confirmed by actually checking — fetch the sitemap, fetch and read each competitor in full, open each source, search the SERP. Never act on memory, a snippet, or "probably". If something can't be verified, say so plainly and label it — do not fill the gap with a guess.
+2. **Structure = user intent + what already ranks, fused — but intent wins.** Build every article's structure from both: what the reader needs answered (Step 3) and what Google already rewards for this query (Step 4 competitor structure). Where they agree, follow it; where a competitor pattern doesn't serve intent, drop it. The final structure must fulfil the searcher's intent completely — that is the test it has to pass.
+3. **Write like a high-authority expert — personal voice.** The reader should feel within the first lines that a real expert (Aria James / The Wow Style) wrote this, not a generic content mill. First-hand styling judgment, specific calls, a consistent editorial voice — this is personal branding / E-E-A-T, and it is a ranking and trust asset. (Details in Personal Voice & E-E-A-T.)
+4. **Every line earns engagement.** Every sentence gives the reader information or moves them forward; nothing is filler. The reader should want to keep reading to the end. Every H2 clearly and directly answers a real user query.
+5. **Complete, not long.** Cover everything the reader needs — and stop. No extra length without a reason, no repeated information without a reason. Depth and completeness, never padding.
+6. **Natural over forced — always.** Keywords (short/mid/long-tail), entities, LSI/semantic terms, and internal links go in only where they read naturally — the way a high-authority site drops a link mid-explanation or uses a term because the sentence needed it. If it has to be forced, it doesn't go in.
+7. **Semantic + SEO + AEO + GEO on every article.** Topically complete (all the entities and sub-questions a knowledgeable reader expects), snippet-ready answers within the AEO character/word limits, and every factual claim backed by a strong, verified, authentic external source.
+8. **Fill competitor gaps only where they genuinely help the reader.** A gap competitors missed is an opportunity *if* covering it serves this reader's intent and need. Don't add a section just because competitors lack it — add it because it helps.
 
 ---
 
@@ -190,7 +205,7 @@ Content need sets length, not a preset number. **House anchor (CLAUDE.md): guide
 
 **Intro** — 2 paragraphs max, no filler. The reader clicked a specific question; within 2–3 sentences they must feel "this is exactly my answer." Front-load the core insight, then expand. No history, no "X is important because", no slow build.
 
-**[Brand Authority Block — PILLAR PAGES ONLY]** — Aria Vance, Founder and Editor of The Wow Style, styling guides for men and women. **Credentials only, no "trust me" language.** Use only real attributes; do not fabricate years/clients. Omit entirely on sub-topics and standalones.
+**[Brand Authority Block — PILLAR PAGES ONLY]** — Aria James, Founder and Editor of The Wow Style, styling guides for men and women. **Credentials only, no "trust me" language.** Use only real attributes; do not fabricate years/clients. Omit entirely on sub-topics and standalones.
 
 **[Quick Reference Table — only where data warrants]** — for dress-code comparisons, colour/season breakdowns, decade signatures, fit guides, or "X vs Y". Skip if the article has no comparative/structured data.
 
@@ -206,7 +221,7 @@ Keep looks genuinely distinct — no two that are the same outfit reworded. For 
 
 **[Affiliate Disclosure — where affiliate links appear]** — replaces the fitness site's medical disclaimer (fashion styling carries no injury risk). Per CLAUDE.md, the disclosure sits **above the first affiliate link**, not in the footer. 1 line, natural tone, e.g. "The Wow Style is reader-supported — some links earn us a commission at no cost to you." Omit if the article has no affiliate links.
 
-**Author Attribution** — end of article (Aria Vance).
+**Author Attribution** — end of article (Aria James).
 
 **Schema markup** — Article + FAQPage JSON-LD on every article; add **ItemList** for outfit/ways-to-wear listicles; ImageObject where images are primary. FAQPage answer text must match the rendered FAQ answers **word for word** — after any FAQ edit, re-sync the schema in the same pass.
 
@@ -216,10 +231,17 @@ Keep looks genuinely distinct — no two that are the same outfit reworded. For 
 
 ## WRITING STANDARDS
 
-### Voice and tone
+### Voice and tone — Personal Voice & E-E-A-T
 Write like Who What Wear, Byrdie, or He Spoke Style — an editor speaking directly to the reader's specific question. Expertise shows through **specificity, precision, and genuinely good styling judgment**, never through claiming it. Demonstrate, don't announce.
 
-Every section connects to the next — the reader should feel pulled forward. The last 1–2 sentences of an H2 should raise the question the next section answers (content-driven, not a forced "Now let's look at…"). If two H2s sit next to each other and the reader feels a gap, the transition is broken. **A section must never end on an internal link** — that sends the reader away exactly when the next section needs them.
+**This is a personal, expert-led brand (Aria James / The Wow Style).** The reader should be able to tell a real expert wrote the piece — the way you can tell on a high-authority site — within the first few lines. How that shows up:
+- **A clear point of view.** Make specific calls ("tuck the front hem only", "skip the belt here"), not hedged both-ways advice. A confident, defensible recommendation reads as expertise; "you could do X or Y or Z" reads as a content mill.
+- **First-hand framing where natural.** First-person editorial voice is welcome ("I'd reach for a loafer over a trainer here, and here's why") — it signals real experience (the first E in E-E-A-T). Never fabricate a personal anecdote, but a genuine stylist's perspective is the voice to write in.
+- **Specific over generic every time.** Name the exact garment, colour, fabric, fit, and shoe. "A rust-brown suede loafer" beats "nice shoes". Specificity *is* the authority signal.
+- **Consistent editorial voice** across the whole piece and ideally the whole pillar — same confidence, same register, so the brand feels like one expert, not many templates.
+- **Reader-first, not SEO-first on the surface.** It must read as if written purely to help the reader dress well; the optimisation is invisible underneath.
+
+**Engagement — every line pulls the reader forward.** Every sentence delivers information or advances the look; cut anything that doesn't. Open each section on the answer, keep paragraphs tight, and make the reader want the next line. Every section connects to the next — the reader should feel pulled forward. The last 1–2 sentences of an H2 should raise the question the next section answers (content-driven, not a forced "Now let's look at…"). If two H2s sit next to each other and the reader feels a gap, the transition is broken. **A section must never end on an internal link** — that sends the reader away exactly when the next section needs them.
 
 ### Content rules
 - User intent is the top priority — answer the question completely.
@@ -255,10 +277,11 @@ The surrounding sentence must stay useful even if the link is removed. If a sent
 ### Keyword and entity placement
 Place all keywords/entities from the analysis **naturally** — it must read correctly with SEO awareness removed. Priority: target keyword in intro + 1–2 H2s + conclusion; LSI/semantic terms across body; entities where contextually relevant. If a keyword can't fit naturally anywhere, don't use it.
 
-### SEO / AEO / GEO
+### SEO / AEO / GEO / Semantic
 - **SEO:** target keyword in H1, meta description, intro, and naturally through the body; variations in H2s where natural.
-- **AEO:** `[AEO BLOCK]` sections open with a 40–60-word self-contained direct answer; Quick Answer box on every article.
+- **AEO:** `[AEO BLOCK]` sections open with a 40–60-word self-contained direct answer; Quick Answer box on every article, kept strictly within the limit (under 60 words **and** under 320 characters). Target the actual snippet format Google rewards for this query (paragraph / list / table).
 - **GEO:** every claim that references a study, stat, historical fact, or dress-code authority includes a named, verified, linked source — generative engines extract cited content better.
+- **Semantic:** cover the topic *completely* — all the entities, sub-questions and related concepts a knowledgeable reader (and the Step 4 entity map + PAA) expect — so the page reads as topically complete. "Semantically optimised" means depth and entity coverage, **not** repeating the keyword. Related terms appear because the subject genuinely calls for them.
 
 ---
 
