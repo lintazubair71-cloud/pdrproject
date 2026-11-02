@@ -256,3 +256,127 @@ same wall in the same light looks like a shoot — and that is what makes a new 
 read as a real publication.
 
 Change the room between guides if you like. Never inside one.
+
+---
+
+## CHANGING THE OUTFIT FOR A SPECIFIC SLOT ON THE SITE
+
+Each slot crops differently and some have text sitting over the picture, so the
+composition has to suit the slot — not just the outfit.
+
+### What each slot needs
+
+| Slot | File size | Crop | What the composition must allow |
+|---|---|---|---|
+| **Hero** | 1000 × 1500 (2:3) | shown nearly whole | Clean wall behind. Subject slightly off-centre so the frame does not feel posed. |
+| **Guide card** | 900 × 1200 (3:4) | top-anchored | Head must sit in the upper third. Feet may be cut. |
+| **Audience panel** | 900 × 1200 (3:4) | top-anchored, **caption covers the bottom 25%** | Nothing important in the lower quarter. Face high in frame. Shoes will be hidden. |
+| **Pinterest pin** | 1000 × 1500 (2:3) | shown whole | Leave headroom at the top for a text overlay. |
+| **In-article look** | 1000 × 1500 (2:3) | shown whole | Full body, shoes visible — the shoes are half the styling advice. |
+
+The one that catches people out is the **audience panel**: the caption sits over the
+bottom of the picture, so a full-length shot loses its shoes and half the trousers.
+Frame that one from the knee up.
+
+### The prompt
+
+```
+Keep the exact same face, hair, glasses and body from the attached photo.
+Change only the clothing.
+
+SUBJECT: Man in his mid twenties, mixed race, medium-brown skin with a warm
+undertone and natural texture. Dark brown tightly curled hair, short at the sides,
+a few inches of loose curls on top. Thin round pale-gold wire-frame glasses. Fine
+moustache and a small neat chin beard. Small stud earring. Calm neutral expression.
+Slim build, narrow frame.
+
+OUTFIT: [PICK A LINE FROM THE TABLE BELOW]
+
+POSE: [ROTATE from the pose table]
+
+DETAIL: [ONE imperfection from the list]
+
+SETTING: Cream panelled wall with simple wainscoting, herringbone parquet floor
+in warm oak.
+
+LIGHT: Soft even daylight from camera left, gentle shadow on the wall behind,
+no harsh contrast.
+
+CAMERA: [SEE SLOT TABLE — full body / knee up / waist up]
+Shot on 85mm at f/4, eye level.
+
+STYLE: Editorial menswear photography. Natural colour, realistic fabric drape,
+visible texture in knitwear and cotton. No beauty retouching.
+
+FORMAT: [2:3 for hero, pin and in-article · 3:4 for cards and panels]
+
+AVOID: Changing the face. Removing the glasses. Altering hair texture. Cartoon or
+3D render look. Plastic skin. Extra fingers. Logos or brand names. Text or
+watermarks. Harsh flash. The same pose as the previous image. Perfect symmetry.
+```
+
+### Outfit lines for the men's guides
+
+Written in the detail the model needs — garment, colour, fabric, fit, and shoes.
+
+| Guide | Outfit line |
+|---|---|
+| Brown Suit Men | Chocolate brown wool suit, single breasted, with a crisp white shirt open at the collar and dark brown leather loafers |
+| Beige Pants Men | Beige cotton chinos, straight leg, with a white crew-neck t-shirt and white leather trainers |
+| Grey Pants Men | Mid-grey wool trousers, pleated, with a navy fine-gauge knit and black leather derbies |
+| White Pants for Men | White cotton trousers, straight leg, with a pale blue oxford shirt, sleeves rolled, and tan suede loafers |
+| Green Pants Outfit Men | Olive green cotton trousers, relaxed fit, with a cream knit polo and white trainers |
+| Purple Jeans Men | Deep purple straight-leg jeans with a plain black t-shirt and black leather boots |
+| Men Stacked Jeans | Dark indigo jeans stacked over the ankle, with an oversized grey sweatshirt and white high-top trainers |
+| Leather Pants Men | Black leather trousers, slim straight, with a white ribbed vest and black Chelsea boots |
+| Grey Sweatpants Men | Heather grey sweatpants, cuffed, with a cream hoodie and white running trainers |
+| White Suits for Men | Off-white linen suit, unlined, with a plain white t-shirt underneath and tan leather sandals |
+| Pink Button Up Shirt Men | Pale pink cotton shirt, sleeves rolled to the elbow, with cream chinos and brown suede loafers |
+| Casual Dress for Men | Navy knitted polo with beige pleated trousers and brown leather loafers |
+| Chunky Shoes Men | Chunky-soled black leather trainers with straight-leg black jeans and a grey crew-neck knit |
+
+### Worked example — Men's audience panel
+
+Note the framing: knee up, because the caption will cover the bottom of the frame.
+
+```
+Keep the exact same face, hair, glasses and body from the attached photo.
+Change only the clothing.
+
+SUBJECT: [paste the subject block above]
+
+OUTFIT: Beige cotton chinos, straight leg, with a white crew-neck t-shirt and a
+navy overshirt worn open.
+
+POSE: Standing three-quarter turn to camera left, one hand in a pocket, looking
+back toward the lens.
+
+DETAIL: The overshirt collar sitting slightly uneven.
+
+SETTING: Cream panelled wall with simple wainscoting.
+
+LIGHT: Soft even daylight from camera left, gentle shadow on the wall behind.
+
+CAMERA: Framed from the knee up, subject slightly right of centre, headroom above.
+Shot on 85mm at f/4, eye level.
+
+STYLE: Editorial menswear photography. Natural colour, realistic fabric drape.
+No beauty retouching.
+
+FORMAT: Vertical 3:4.
+
+AVOID: Changing the face. Removing the glasses. Placing anything important in the
+lower quarter of the frame. Cartoon look. Plastic skin. Extra fingers. Logos.
+Text or watermarks.
+```
+
+### Saving it
+
+| Slot | Filename |
+|---|---|
+| Men's audience panel | `images/audience-men.jpg` |
+| Tan shorts card | `images/khaki-shorts-men.jpg` |
+| Any new men's guide card | `images/<guide-slug>-men.jpg` |
+
+Use the same slug as the article URL. The site loads these paths already, so a
+correctly named file appears without touching the code.
