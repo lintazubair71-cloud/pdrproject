@@ -27,21 +27,26 @@ The pack must state, for that specific article:
 
 Write it so it can be pasted into ChatGPT one block at a time with no assembly.
 
-Source of truth for the models, poses, details and slot sizes:
+**Default image style is the mirror-selfie + flat-lay** (the phone covers the face, so
+no reference photo is needed and the model can't drift). Use it for every article image:
+- `MIRROR-SELFIE-FLATLAY-PROMPT.md`
+
+Face-locked portraits — only for images where a face IS shown (e.g. an author portrait):
 - `FEMALE-MODEL-PROMPT.md`
 - `MALE-MODEL-PROMPT.md`
 
-Keep those two files in sync if a model's look changes.
+Keep these files in sync if a model's look changes.
 
 ## Image rules that apply everywhere
 
-- The reference photo must be attached to **every** ChatGPT message, not just the
-  first. Text alone will not hold a face.
+- **The default style hides the face (the phone covers it), so no reference photo is
+  needed and the model can't drift.** Only when an image actually shows a face (e.g. an
+  author portrait) must the reference photo be attached to every ChatGPT message.
 - **Give every image a different background colour** — a different plain studio-wall
   colour — so no two images in a guide or on a page share one. Keep the lighting soft,
   natural daylight and the colour grade natural.
-- **Every model image uses a different face angle** (straight, three-quarter,
-  over-the-shoulder, tilted) — never the same angle twice in one guide.
+- **Vary the pose and phone position every image** — the face is hidden, so there is no
+  face angle to vary. (For any face-shown image, vary the face angle instead.)
 - **Every article has a featured image at 1200×700, saved as WebP** (`.webp`).
 - **Orientation:** outfit/look images and Pinterest pins are vertical 2:3 (1000×1500);
   the featured image is horizontal 1200×700.

@@ -2,6 +2,10 @@
 
 Everything you need for her images. Male model is in a separate file.
 
+> **Default image style is now the mirror-selfie + flat-lay** (`MIRROR-SELFIE-FLATLAY-PROMPT.md`),
+> where the phone hides the face and no reference photo is needed. Use THIS file only for
+> images that actually show her face (e.g. an author portrait).
+
 ---
 
 ## HOW TO USE THIS (ChatGPT)
