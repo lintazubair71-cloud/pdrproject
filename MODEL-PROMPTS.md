@@ -1,7 +1,117 @@
 # Model Prompt Kit — The Wow Style
 
-Two locked models. Same face, same room, same light in every image, with only the
-outfit changing. Copy a block, swap the outfit line, done.
+## WHAT THIS PROMPT IS FOR
+
+You are not asking for "a nice fashion photo". You are running a **photoshoot that
+never happened**, and the prompt is the thing holding it together.
+
+It does five jobs at once:
+
+| Job | Which part does it | Why it matters |
+|---|---|---|
+| Keeps the **same person** in every image | SUBJECT block + the attached reference | Two different faces across one guide and the site stops looking real |
+| Keeps the **same room and light** | SETTING + LIGHT | Fifteen looks in fifteen rooms is a mood board; fifteen in one room is a shoot |
+| Changes **only the clothes** | OUTFIT | This is the only line that should move between images in a guide |
+| Stops it **looking AI-made** | POSE + DETAIL + AVOID | Identical poses and flawless fabric are the real giveaway, not the face |
+| Produces the **right shape for the slot** | CAMERA + FORMAT | A panel crops the bottom away; an article look needs the shoes |
+
+Lose any one of those and the set falls apart — usually the room, which people
+forget to lock.
+
+---
+
+## QUICK START — copy one of these two
+
+Attach the model's reference photo to **every** message. Then paste the block.
+Between images change **only the three lines marked →**.
+
+### FEMALE MODEL
+
+```
+Keep the exact same face, hair and body from the attached photo.
+Change only the clothing.
+
+SUBJECT: Woman in her late twenties. Light olive skin, warm undertone, natural
+skin texture with visible pores. Dark chestnut-brown hair, shoulder length, blunt
+cut, straight with a soft wave, centre-parted, worn loose. Oval face, defined dark
+brows, brown eyes, straight nose, full lips, relaxed neutral expression. Slim
+build, narrow shoulders. Minimal makeup, bare skin, no lipstick.
+
+→ OUTFIT: Tailored khaki cotton shorts, mid-thigh, with a cream ribbed knit tucked
+at the front only, and white leather trainers.
+
+→ POSE: Standing straight to camera, weight on one leg, arms relaxed at her sides.
+
+→ DETAIL: A soft crease at the elbow where the knit has been sitting.
+
+SETTING: Plain warm-grey studio wall, pale oak floor.
+
+LIGHT: Large soft window light from camera left, gentle falloff to the right, soft
+shadow under the feet. Daylight, no flash.
+
+CAMERA: Full body, head to shoes, nothing cropped. Shot on 85mm at f/4, eye level.
+
+STYLE: Editorial fashion photography. Natural colour, no heavy grading, no beauty
+retouching. Garments drape realistically with visible fabric weight and creasing.
+
+FORMAT: Vertical 2:3.
+
+AVOID: Changing the face. Altering hair length or colour. Cartoon or 3D render
+look. Plastic skin. Extra fingers. Logos or brand names. Text or watermarks.
+Harsh flash. Heavy makeup. The same pose as the previous image. Perfect symmetry.
+```
+
+### MALE MODEL
+
+```
+Keep the exact same face, hair, glasses and body from the attached photo.
+Change only the clothing.
+
+SUBJECT: Man in his mid twenties, mixed race, medium-brown skin with a warm
+undertone and natural texture. Dark brown tightly curled hair, short at the sides,
+a few inches of loose curls on top. Thin round pale-gold wire-frame glasses. Fine
+moustache and a small neat chin beard. Small stud earring in one ear. Oval face,
+dark brown eyes, calm neutral expression. Slim build, narrow frame.
+
+→ OUTFIT: Tan pleated cotton shorts with turn-up cuffs, a cream cricket knit with
+navy striped trim, white crew socks and black leather penny loafers.
+
+→ POSE: Standing straight to camera, both hands loosely in pockets.
+
+→ DETAIL: One sleeve pushed slightly higher than the other.
+
+SETTING: Cream panelled wall with simple wainscoting, herringbone parquet floor in
+warm oak.
+
+LIGHT: Soft even daylight from camera left, gentle shadow on the wall behind, no
+harsh contrast.
+
+CAMERA: Full body, head to shoes, nothing cropped. Shot on 85mm at f/4, eye level.
+
+STYLE: Editorial menswear photography. Natural colour, realistic fabric drape,
+visible texture in knitwear and cotton. No beauty retouching.
+
+FORMAT: Vertical 2:3.
+
+AVOID: Changing the face. Removing the glasses. Altering hair texture. Cartoon or
+3D render look. Plastic skin. Extra fingers. Logos or brand names. Text or
+watermarks. Harsh flash. The same pose as the previous image. Perfect symmetry.
+```
+
+### The three lines you change
+
+- **OUTFIT** — the garment, colour, fabric, fit and **the shoes**. Never leave the
+  shoes out; the model will invent something that fights the look.
+- **POSE** — a different one each time, from the pose table further down.
+- **DETAIL** — one small imperfection, from the list further down.
+
+Everything else stays byte-for-byte identical. That is what makes a set.
+
+### When the slot is not 2:3
+
+Swap the CAMERA and FORMAT lines using the slot table near the end of this file.
+The audience panels are the exception worth remembering: the caption covers the
+bottom quarter, so frame those from the knee up.
 
 ---
 
