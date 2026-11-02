@@ -41,6 +41,12 @@ Keep those two files in sync if a model's look changes.
 - **Every model image uses a different face angle** (straight, three-quarter,
   over-the-shoulder, tilted) — never the same angle twice in one guide.
 - **Every article has a featured image at 1200×700, saved as WebP** (`.webp`).
+- **Orientation:** outfit/look images and Pinterest pins are vertical 2:3 (1000×1500);
+  the featured image is horizontal 1200×700.
+- **Watermark every image with `thewowstyle.co.uk`** — added *after* generation (a
+  WordPress watermark plugin or a batch step), never drawn by the AI. Small, bottom-right,
+  ~55% opacity. The AI prompt still says no text/watermark, so the model never renders
+  text itself.
 - Every outfit line names the shoes.
 - Audience panels crop to the bottom quarter behind a caption — frame those from
   the knee up.

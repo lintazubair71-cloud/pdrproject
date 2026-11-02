@@ -171,6 +171,14 @@ skirt. Frame that one from the knee up.
 
 **Inside an article, always show the shoes.** Half of styling advice is the shoes.
 
+**Watermark.** Every finished image gets a small `thewowstyle.co.uk` watermark,
+bottom-right, ~55% opacity — added *after* generation (a WordPress watermark plugin,
+or a batch step), never drawn by the AI. The prompt keeps "no text or watermarks" so
+the model doesn't render garbled text itself.
+
+**Orientation.** Outfit and pin images are vertical 2:3 (1000×1500); the featured
+image is horizontal 1200×700.
+
 ---
 
 ## FILENAMES THE SITE EXPECTS
