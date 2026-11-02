@@ -12,6 +12,7 @@ Work out the count and what each image supports from the article's own outfits/s
 RULES (every image)
 - Mirror-selfie: the phone FULLY covers the face (no visible face); full body, head to shoes; shoes CLEARLY VISIBLE; LEFT worn, RIGHT flat-lay of the SAME outfit (same pieces, same colours).
 - Every outfit NAMES THE SHOES.
+- VARY THE ACCESSORY every image — one or two pieces, or none: a necklace, a watch, sunglasses, a belt, earrings, a cap, a small bag or rings. NEVER put the same accessory (e.g. a watch) in every image.
 - A DIFFERENT pose & phone position every image (see list). A DIFFERENT background colour every image (see list).
 - Vertical 2:3 (1000x1500) for looks and pins; the featured image is horizontal 1200x700, WebP.
 - Keep ONE consistent one-line body + hair description for the model through the whole article.
@@ -33,7 +34,7 @@ MODEL DESCRIPTIONS (keep consistent across the article)
 MEN — mirror-selfie template
 A single vertical fashion image in two parts — the outfit worn on the left, the same outfit as a flat-lay on the right. Clean, minimal, editorial.
 LEFT - THE LOOK: A slim young man in his mid-twenties, medium-brown skin, dark tousled hair, standing and holding a smartphone up to take a mirror selfie so the phone covers his face. The face is HIDDEN by the phone, not visible. Full body, head to shoes, shoes clearly visible.
-OUTFIT: <top - garment, colour, fabric, fit> over <layer, if any>, <bottoms>, <shoes>, with <accessory>.
+OUTFIT: <top - garment, colour, fabric, fit> over <layer, if any>, <bottoms>, <shoes>, with <accessory - vary each image, or none>.
 POSE & PHONE: <stance and phone position>.
 RIGHT - THE FLAT-LAY: The exact same outfit laid out neatly on a plain surface, shot from directly above - the <top> arranged with collar and sleeves, the <bottoms> folded below, the <shoes> at the bottom, and <accessory> to one side. Same pieces, same colours as worn.
 SETTING: Plain <background colour> wall behind the figure, the same <background colour> surface for the flat-lay - one continuous, warm, minimal scene.
@@ -46,7 +47,7 @@ AVOID: A visible face - the phone must fully cover it. Cartoon or 3D render look
 WOMEN — mirror-selfie template
 A single vertical fashion image in two parts — the outfit worn on the left, the same outfit as a flat-lay on the right. Clean, minimal, editorial.
 LEFT - THE LOOK: A slim young woman in her mid-twenties, dark chestnut shoulder-length hair, standing and holding a smartphone up to take a mirror selfie so the phone covers her face. The face is HIDDEN by the phone, not visible. Full body, head to shoes, shoes clearly visible.
-OUTFIT: <top - garment, colour, fabric, fit>, <bottoms>, <shoes>, with <accessory>.
+OUTFIT: <top - garment, colour, fabric, fit>, <bottoms>, <shoes>, with <accessory - vary each image, or none>.
 POSE & PHONE: <stance and phone position>.
 RIGHT - THE FLAT-LAY: The exact same outfit laid out neatly on a plain surface, shot from directly above - the <top> arranged, the <bottoms> folded below, the <shoes> at the bottom, and <accessory> to one side. Same pieces, same colours as worn.
 SETTING: Plain <background colour> wall behind the figure, the same <background colour> surface for the flat-lay - one continuous, warm, minimal scene.
@@ -72,6 +73,9 @@ POSE & PHONE (rotate; never the same two in a row)
 04 Phone high, free hand adjusting a cuff or resting at the side, mid-stance
 05 Phone up, slight lean, ankles close
 06 Phone at eye height, one knee soft, relaxed shoulders
+
+ACCESSORY (rotate; a different one each image, or none)
+a thin necklace, a watch, sunglasses, a leather belt, small earrings, a cap, a small shoulder bag, a couple of rings, a silk scarf — or no accessory at all
 
 BACKGROUND colours (a different one each image)
 soft warm-grey, muted sage green, pale clay (muted terracotta), dusty muted blue, warm oatmeal beige, soft greige, muted olive, pale blush-stone
