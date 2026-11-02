@@ -29,6 +29,68 @@ Without step 1 you will get a different person who merely looks similar.
   reference. Quality drifts if you keep re-referencing the original.
 - If a face starts drifting, go back to the original reference and start again.
 
+
+---
+
+## MAKING IT NOT LOOK AI-GENERATED
+
+The single biggest giveaway is not the face — it is **fifteen photographs of the
+same person standing in exactly the same position**. No real shoot produces that.
+
+So vary three things on every image. Keep everything else locked.
+
+### 1. Rotate the pose
+
+Never use the same pose twice in a row. Work down this list and start again:
+
+| # | Pose line to paste |
+|---|---|
+| 01 | Standing straight to camera, weight on one leg, arms relaxed at her sides |
+| 02 | Standing three-quarter turn to camera left, looking back over the shoulder at the lens |
+| 03 | Mid-step walking toward the camera, one arm swinging naturally, looking just past the lens |
+| 04 | Standing with one hand in a pocket, the other adjusting a sleeve or collar |
+| 05 | Leaning lightly against the wall, shoulders square, ankles crossed |
+| 06 | Standing with arms loosely folded, chin slightly down, looking at the lens |
+| 07 | Turning away from camera, caught mid-turn, head coming back toward the lens |
+| 08 | Seated on a plain wooden stool, one foot on the rung, hands resting on the knee |
+| 09 | Standing in profile, head turned to the camera, hands clasped in front |
+| 10 | Standing with one hand lifting the hem or holding a bag strap, looking slightly off-camera |
+
+### 2. Change the framing
+
+Do not shoot every look head-to-toe. Mix these in:
+
+| Framing line | Use it for |
+|---|---|
+| Full body, head to shoes, nothing cropped | the main look shot |
+| Three-quarter crop, mid-thigh up | when the top half is the point |
+| Waist-up, closer | collars, necklines, layering |
+| Low angle from just below waist height, full body | makes trousers and shoes look longer |
+| Detail crop — hands, hem, shoe and ankle only | breaks up a long gallery, very pinnable |
+
+A guide of fifteen identical full-body shots reads as AI. Eleven full-body, two
+waist-up and two detail crops reads as a shoot.
+
+### 3. Add one imperfection
+
+Pick one per image and write it into the prompt:
+
+- *a soft crease at the elbow and across the lap where the fabric has been sitting*
+- *one sleeve pushed slightly higher than the other*
+- *a few strands of hair out of place across the cheek*
+- *the shirt hem sitting slightly uneven*
+- *a shoe turned very slightly inward, natural stance*
+- *fabric caught mid-movement, a little lift at the hem*
+
+Perfect symmetry and flawless fabric is what makes an image feel generated. One
+small asymmetry fixes most of it.
+
+### Keep these locked — never vary them
+
+The face, the hair, the glasses, the wall, the floor, the light direction and the
+colour grade. Vary the person and the room and you no longer have a brand; you
+have a stock library.
+
 ---
 
 ## MODEL A — FEMALE
@@ -55,16 +117,17 @@ lips, relaxed neutral expression. Slim build, narrow shoulders. Minimal makeup.
 
 OUTFIT: [YOUR OUTFIT HERE]
 
-POSE: Standing, straight to camera, weight on one leg, arms relaxed at her sides,
-looking directly at the lens.
+POSE: [ROTATE — pick a different one from the pose table each time]
+
+DETAIL: [ONE imperfection from the list — e.g. a soft crease at the elbow]
 
 SETTING: Plain warm-grey studio wall, pale oak floor.
 
 LIGHT: Large soft window light from camera left, gentle falloff to the right,
 soft shadow under the feet. Daylight, no flash.
 
-CAMERA: Full body, head to shoes, nothing cropped. Shot on 85mm at f/4, eye level,
-slight distance so proportions are natural.
+CAMERA: [ROTATE framing — full body / three-quarter / waist-up / low angle / detail crop]
+Shot on 85mm at f/4.
 
 STYLE: Editorial fashion photography. Natural colour, no heavy grading, no beauty
 retouching. Garments must drape realistically with visible fabric weight and
@@ -74,7 +137,7 @@ FORMAT: Vertical 2:3.
 
 AVOID: Changing the face. Altering hair length or colour. Cartoon or 3D render
 look. Plastic skin. Extra fingers. Logos or brand names. Text or watermarks.
-Harsh flash. Heavy makeup. Cropping the feet.
+Harsh flash. Heavy makeup. The same pose as the previous image. Perfect symmetry.
 ```
 
 ---
@@ -104,8 +167,9 @@ Slim build, narrow frame.
 
 OUTFIT: [YOUR OUTFIT HERE]
 
-POSE: Standing, straight to camera, both hands loosely in pockets, shoulders
-relaxed, looking directly at the lens.
+POSE: [ROTATE — pick a different one from the pose table each time]
+
+DETAIL: [ONE imperfection from the list — e.g. one sleeve pushed higher than the other]
 
 SETTING: Cream panelled wall with simple wainscoting, herringbone parquet floor in
 warm oak.
@@ -113,7 +177,8 @@ warm oak.
 LIGHT: Soft even daylight from camera left, gentle shadow on the wall behind,
 no harsh contrast.
 
-CAMERA: Full body, head to shoes, nothing cropped. Shot on 85mm at f/4, eye level.
+CAMERA: [ROTATE framing — full body / three-quarter / waist-up / low angle / detail crop]
+Shot on 85mm at f/4.
 
 STYLE: Editorial menswear photography. Natural colour, realistic fabric drape,
 visible texture in knitwear and cotton. No beauty retouching.
@@ -122,7 +187,7 @@ FORMAT: Vertical 2:3.
 
 AVOID: Changing the face. Removing the glasses. Altering hair texture. Cartoon or
 3D render look. Plastic skin. Extra fingers. Logos or brand names. Text or
-watermarks. Harsh flash. Cropping the feet.
+watermarks. Harsh flash. The same pose as the previous image. Perfect symmetry.
 ```
 
 ---
