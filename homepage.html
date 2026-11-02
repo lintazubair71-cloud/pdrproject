@@ -173,18 +173,6 @@ section.band.tint{background:var(--surface);border-block:1px solid var(--rule)}
 .method h3{font-family:var(--display);font-weight:500;font-size:20px}
 .method p{color:var(--ink-soft);font-size:15px;line-height:1.6}
 
-/* ---------- LIBRARY ---------- */
-.library{display:grid;grid-template-columns:1fr 1fr;gap:0 48px}
-@media(max-width:760px){.library{grid-template-columns:1fr;gap:0}}
-.library h3{font-family:var(--display);font-weight:700;font-size:21px;padding-bottom:11px;
-  border-bottom:2px solid var(--ink);margin-bottom:4px}
-.library h3 span{font:600 10.5px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);float:right;padding-top:9px}
-.library ul{list-style:none;margin:0 0 34px;padding:0}
-.library li{border-bottom:1px solid var(--rule)}
-.library a{display:flex;gap:13px;align-items:baseline;padding-block:12px;text-decoration:none;font-size:15.5px}
-.library a:hover{color:var(--accent)}
-.library .i{font:600 10.5px var(--body);color:var(--ink-faint);min-width:20px;font-variant-numeric:tabular-nums}
-
 /* ---------- NEWSLETTER ---------- */
 .signup{background:var(--ink);color:var(--paper)}
 .signup .wrap{padding-block:58px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
@@ -236,7 +224,7 @@ footer.site{background:var(--surface);border-top:1px solid var(--rule)}
       <nav class="primary" aria-label="Main">
         <ul>
           <li><a href="/" aria-current="page">Home</a></li>
-          <li><a href="/fashion/how-to-style/">How to Style</a></li>
+          <li><a href="/how-to-style/">How to Style</a></li>
           <li><a href="/tag/mens-style/">Men</a></li>
           <li><a href="/tag/womens-style/">Women</a></li>
           <li><a href="/about/">About</a></li>
@@ -256,8 +244,8 @@ footer.site{background:var(--surface);border-top:1px solid var(--rule)}
         <h1>One pair.<br>Fifteen <em>ways</em><br>to wear them.</h1>
         <p>Khaki shorts are the most useful thing in a summer wardrobe and the easiest to get wrong. Every outfit that works is here, along with the length rule that makes the difference.</p>
         <div class="btnrow">
-          <a class="btn" href="/fashion/how-to-style/khaki-shorts-women/">Read the guide</a>
-          <a class="btn outline" href="/fashion/how-to-style/">All 30 guides</a>
+          <a class="btn" href="/how-to-style/khaki-shorts-women/">Read the guide</a>
+          <a class="btn outline" href="/how-to-style/">All 30 guides</a>
         </div>
       </div>
       <div class="hero-shot">
@@ -291,22 +279,22 @@ footer.site{background:var(--surface);border-top:1px solid var(--rule)}
           <h2>New this <em>week</em></h2>
           <p class="lede">One garment at a time — what it goes with, what it fights, and how to wear it without thinking about it again.</p>
         </div>
-        <a class="more" href="/fashion/how-to-style/">Browse all</a>
+        <a class="more" href="/how-to-style/">Browse all</a>
       </div>
       <div class="cards">
-        <a class="card" href="/fashion/how-to-style/leather-skirt-women/">
+        <a class="card" href="/how-to-style/leather-skirt-women/">
           <div class="shot r34"><img src="/images/leather-skirt-women.jpg" alt="Leather skirt styled for women" onerror="this.remove()"><div class="slot"><b>Guide</b><hr><span>/images/leather-skirt-women.jpg<br>900 × 1200</span></div></div>
           <div class="cat"><b>How to Style</b> · Women</div>
           <h3>How to Style Leather Skirt Women</h3>
           <p>Fifteen outfits that take a leather skirt from a Tuesday coffee to a Saturday dinner.</p>
         </a>
-        <a class="card" href="/fashion/how-to-style/brown-suit-men/">
+        <a class="card" href="/how-to-style/brown-suit-men/">
           <div class="shot r34"><img src="/images/brown-suit-men.jpg" alt="Brown suit styled for men" onerror="this.remove()"><div class="slot"><b>Guide</b><hr><span>/images/brown-suit-men.jpg<br>900 × 1200</span></div></div>
           <div class="cat"><b>How to Style</b> · Men</div>
           <h3>How to Style Brown Suit Men</h3>
           <p>The shirt colours that work with brown, the ones that don't, and what to do about shoes.</p>
         </a>
-        <a class="card" href="/fashion/how-to-style/gladiator-sandals-for-women/">
+        <a class="card" href="/how-to-style/gladiator-sandals-for-women/">
           <div class="shot r34"><img src="/images/gladiator-sandals-women.jpg" alt="Gladiator sandals styled for women" onerror="this.remove()"><div class="slot"><b>Guide</b><hr><span>/images/gladiator-sandals-women.jpg<br>900 × 1200</span></div></div>
           <div class="cat"><b>How to Style</b> · Women</div>
           <h3>How to Style Gladiator Sandals for Women</h3>
@@ -322,7 +310,7 @@ footer.site{background:var(--surface);border-top:1px solid var(--rule)}
       <div class="sechead">
         <div>
           <h2>For <em>him</em>, for <em>her</em></h2>
-          <p class="lede">Both wardrobes get the same attention. Pick your side and start anywhere — every guide stands on its own.</p>
+          <p class="lede">Both wardrobes get the same attention. Pick your side to see every guide written for it.</p>
         </div>
       </div>
       <div class="audience">
@@ -334,7 +322,7 @@ footer.site{background:var(--surface);border-top:1px solid var(--rule)}
           <div class="cap">
             <h3>Men</h3>
             <p>Suits, trousers, trainers and the colours most guides skip.</p>
-            <span class="n">16 styling guides</span>
+            <span class="n">Browse all 16 guides</span>
           </div>
         </a>
         <a class="pane" href="/tag/womens-style/">
@@ -345,7 +333,7 @@ footer.site{background:var(--surface);border-top:1px solid var(--rule)}
           <div class="cap">
             <h3>Women</h3>
             <p>Skirts, shorts, suits and shoes — with the fit notes that matter.</p>
-            <span class="n">13 styling guides</span>
+            <span class="n">Browse all 13 guides</span>
           </div>
         </a>
       </div>
@@ -376,64 +364,6 @@ footer.site{background:var(--surface);border-top:1px solid var(--rule)}
           <span class="num">iii.</span>
           <h3>Every piece is linked</h3>
           <p>If a look includes it, you can find it. We name the price range and say plainly when the cheaper version is the better buy.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- =================== COMPLETE LIBRARY =================== -->
-  <section class="band tint">
-    <div class="wrap">
-      <div class="sechead">
-        <div>
-          <h2>Every styling guide</h2>
-          <p class="lede">The complete How to Style section — all 30 guides, published and updated weekly.</p>
-        </div>
-        <a class="more" href="/fashion/how-to-style/">Section home</a>
-      </div>
-      <div class="library">
-        <div>
-          <h3>For men <span>16 guides</span></h3>
-          <ul>
-            <li><a href="/fashion/how-to-style/brown-suit-men/"><span class="i">01</span>Brown Suit Men</a></li>
-            <li><a href="/fashion/how-to-style/brown-pants-outfit-men/"><span class="i">02</span>Brown Pants Outfit Men</a></li>
-            <li><a href="/fashion/how-to-style/beige-pants-men/"><span class="i">03</span>Beige Pants Men</a></li>
-            <li><a href="/fashion/how-to-style/grey-pants-men/"><span class="i">04</span>Grey Pants Men</a></li>
-            <li><a href="/fashion/how-to-style/white-pants-for-men/"><span class="i">05</span>White Pants for Men</a></li>
-            <li><a href="/fashion/how-to-style/green-pants-outfit-men/"><span class="i">06</span>Green Pants Outfit Men</a></li>
-            <li><a href="/fashion/how-to-style/purple-jeans-men/"><span class="i">07</span>Purple Jeans Men</a></li>
-            <li><a href="/fashion/how-to-style/men-stacked-jeans/"><span class="i">08</span>Men Stacked Jeans</a></li>
-            <li><a href="/fashion/how-to-style/leather-pants-men/"><span class="i">09</span>Leather Pants Men</a></li>
-            <li><a href="/fashion/how-to-style/grey-sweatpants-men/"><span class="i">10</span>Grey Sweatpants Men</a></li>
-            <li><a href="/fashion/how-to-style/white-suits-for-men/"><span class="i">11</span>White Suits for Men</a></li>
-            <li><a href="/fashion/how-to-style/pink-button-up-shirt-men/"><span class="i">12</span>Pink Button Up Shirt Men</a></li>
-            <li><a href="/fashion/how-to-style/casual-dress-for-men/"><span class="i">13</span>Casual Dress for Men</a></li>
-            <li><a href="/fashion/how-to-style/men-in-dresses/"><span class="i">14</span>Men in Dresses</a></li>
-            <li><a href="/fashion/how-to-style/chunky-shoes-men/"><span class="i">15</span>Chunky Shoes Men</a></li>
-            <li><a href="/fashion/how-to-style/red-bottom-shoes-for-men/"><span class="i">16</span>Red Bottom Shoes for Men</a></li>
-          </ul>
-        </div>
-        <div>
-          <h3>For women <span>13 guides</span></h3>
-          <ul>
-            <li><a href="/fashion/how-to-style/khaki-shorts-women/"><span class="i">01</span>Khaki Shorts Women</a></li>
-            <li><a href="/fashion/how-to-style/khaki-cargo-pants-for-women/"><span class="i">02</span>Khaki Cargo Pants for Women</a></li>
-            <li><a href="/fashion/how-to-style/cargo-jeans-women/"><span class="i">03</span>Cargo Jeans Women</a></li>
-            <li><a href="/fashion/how-to-style/denim-outfits-for-women/"><span class="i">04</span>Denim Outfits for Women</a></li>
-            <li><a href="/fashion/how-to-style/leather-skirt-women/"><span class="i">05</span>Leather Skirt Women</a></li>
-            <li><a href="/fashion/how-to-style/linen-suit-women/"><span class="i">06</span>Linen Suit Women</a></li>
-            <li><a href="/fashion/how-to-style/white-suit-for-women/"><span class="i">07</span>White Suit for Women</a></li>
-            <li><a href="/fashion/how-to-style/crochet-tops-for-women/"><span class="i">08</span>Crochet Tops for Women</a></li>
-            <li><a href="/fashion/how-to-style/varsity-jacket-women/"><span class="i">09</span>Varsity Jacket Women</a></li>
-            <li><a href="/fashion/how-to-style/lavender-dresses-for-women/"><span class="i">10</span>Lavender Dresses for Women</a></li>
-            <li><a href="/fashion/how-to-style/princess-dress-for-women/"><span class="i">11</span>Princess Dress for Women</a></li>
-            <li><a href="/fashion/how-to-style/gladiator-sandals-for-women/"><span class="i">12</span>Gladiator Sandals for Women</a></li>
-            <li><a href="/fashion/how-to-style/white-loafers-women/"><span class="i">13</span>White Loafers Women</a></li>
-          </ul>
-          <h3>For everyone <span>1 guide</span></h3>
-          <ul>
-            <li><a href="/fashion/how-to-style/how-to-style-a-leather-jacket/"><span class="i">01</span>How to Style a Leather Jacket</a></li>
-          </ul>
         </div>
       </div>
     </div>
@@ -475,7 +405,7 @@ footer.site{background:var(--surface);border-top:1px solid var(--rule)}
       <div>
         <h4>Guides</h4>
         <ul>
-          <li><a href="/fashion/how-to-style/">How to Style</a></li>
+          <li><a href="/how-to-style/">How to Style</a></li>
           <li><a href="/tag/mens-style/">Men's guides</a></li>
           <li><a href="/tag/womens-style/">Women's guides</a></li>
         </ul>
