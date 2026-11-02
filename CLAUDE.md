@@ -21,6 +21,8 @@ The pack must state, for that specific article:
 | **Background** | A different background colour per image, never the same twice in one guide |
 | **Details** | One small imperfection per image |
 | **Framing & format** | Per image: full body / three-quarter / waist-up / low angle / detail crop, and 2:3 or 3:4 |
+| **Alt text** | A written alt text per image — the outfit described, with the keyword where natural |
+| **Section / placement** | Which section of the article each image goes in |
 | **Filenames** | The exact path each file saves to, matching the article slug |
 
 Write it so it can be pasted into ChatGPT one block at a time with no assembly.
