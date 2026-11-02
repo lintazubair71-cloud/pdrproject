@@ -16,7 +16,7 @@ The pack must state, for that specific article:
 | **Featured image** | One featured image at 1200×700, exported as WebP (`.webp`) |
 | **Variations** | Which model, and how many images each |
 | **Outfits** | A written outfit line per image — garment, colour, fabric, fit **and the shoes** |
-| **Accessories** | A different accessory per image, or none — never the same one (e.g. a watch) in every image |
+| **Accessories** | Only the accessories the content names for that look — nothing extra; none if the content names none |
 | **Poses** | A different pose per image, rotated, never repeating consecutively |
 | **Face angle** | A different face angle per image (straight, three-quarter, over-the-shoulder, tilted), never the same twice in one guide |
 | **Background** | A different background colour per image, never the same twice in one guide |

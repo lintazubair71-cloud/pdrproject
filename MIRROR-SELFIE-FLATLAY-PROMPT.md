@@ -104,7 +104,7 @@ warm oatmeal beige · soft greige · muted olive · pale blush-stone
 
 - **Face hidden by the phone** — never a visible face (this is what stops the model drifting).
 - **Shoes shown worn AND in the flat-lay.**
-- **Vary the accessory every image** — a necklace, a watch, sunglasses, a belt, earrings, a cap, a small bag or rings, or none. Never the same accessory in every image.
+- **Only what the content describes.** The image shows the exact garments, shoes and accessories named in that section's outfit line — nothing added. If the content names no accessory, the image has none. (Variety comes from the article, not from inventing extras.)
 - **Vertical 2:3** (1000×1500) for the look. The **featured image is separate: horizontal 1200×700, WebP**.
 - The **flat-lay must match the worn outfit exactly** — same pieces, same colours.
 - **Watermark `thewowstyle.co.uk`** added after generation, bottom-right, ~55% opacity (WordPress plugin). The prompt keeps "no text/watermark".
