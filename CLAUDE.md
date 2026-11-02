@@ -1,0 +1,60 @@
+# The Wow Style — project instructions
+
+Fashion and outfit-ideas site: thewowstyle.co.uk. Styling guides for men and
+women. Launch state is one section, **How to Style**, with 30 guides.
+
+## Standing instruction — image prompt pack with every article
+
+**Whenever an article is written, end it with a ChatGPT image prompt pack** —
+but only when asked for it. Do not append one unprompted.
+
+The pack must state, for that specific article:
+
+| Item | What to give |
+|---|---|
+| **How many images** | Total count for the article, broken down by type (hero, looks, detail crops, pins) |
+| **Variations** | Which model, and how many images each |
+| **Outfits** | A written outfit line per image — garment, colour, fabric, fit **and the shoes** |
+| **Poses** | A different pose per image, rotated, never repeating consecutively |
+| **Details** | One small imperfection per image |
+| **Framing & format** | Per image: full body / three-quarter / waist-up / low angle / detail crop, and 2:3 or 3:4 |
+| **Filenames** | The exact path each file saves to, matching the article slug |
+
+Write it so it can be pasted into ChatGPT one block at a time with no assembly.
+
+Source of truth for the models, poses, details and slot sizes:
+- `FEMALE-MODEL-PROMPT.md`
+- `MALE-MODEL-PROMPT.md`
+
+Keep those two files in sync if a model's look changes.
+
+## Image rules that apply everywhere
+
+- The reference photo must be attached to **every** ChatGPT message, not just the
+  first. Text alone will not hold a face.
+- Keep the wall, floor, light direction and colour grade **identical** inside one
+  guide. Change them between guides if you like, never within one.
+- Every outfit line names the shoes.
+- Audience panels crop to the bottom quarter behind a caption — frame those from
+  the knee up.
+- Inside an article the shoes must be visible.
+- Never reuse one photograph in two slots on the same page.
+
+## Site files
+
+| File | Purpose |
+|---|---|
+| `index.html` | Homepage, production. Loads from `images/` |
+| `preview.html` | Same page with images inlined, for viewing only |
+| `images/` | Live photographs |
+| `TheWowStyle_120_Article_Roadmap.xlsx` | 120 articles, 7 pillars, zero topic overlap |
+
+## Content and SEO conventions
+
+- Permalinks: `/how-to-style/<slug>/` — one category level, no dates
+- Article titles 60 characters or fewer
+- Slugs are the primary keyword only, set by hand, never WordPress's default
+- Internal links: one up to the pillar in the first 150 words, 2-3 siblings in the
+  same pillar, cross-pillar only where a shared term makes it natural
+- Guides are image-led: 25-40 images, 900-1,400 words
+- Affiliate disclosure sits above the first affiliate link, not in the footer
