@@ -10,7 +10,7 @@ Everything you need for her images. Male model is in a separate file.
    do not start a new one each time.
 2. **Attach her reference photo** to the message. Every message, not just the first.
 3. Copy the prompt below and paste it under the photo.
-4. Before pasting, change the **three → lines** (outfit, pose, detail).
+4. Before pasting, change the **five → lines** (outfit, pose, face, detail, background).
 5. Send. Download the image. Crop to the size you need.
 
 **If you skip step 2 you will get a different woman who merely looks similar.**
@@ -38,9 +38,11 @@ at the front only, and white leather trainers.
 
 POSE: Standing straight to camera, weight on one leg, arms relaxed at her sides.
 
+FACE: Face turned straight to the camera, chin level, eyes to the lens.
+
 DETAIL: A soft crease at the elbow where the knit has been sitting.
 
-SETTING: Plain warm-grey studio wall, pale oak floor.
+SETTING: Plain soft warm-grey studio wall, pale oak floor.  (use a different wall colour every image)
 
 LIGHT: Large soft window light from camera left, gentle falloff to the right, soft
 shadow under the feet. Daylight, no flash.
@@ -59,7 +61,7 @@ Harsh flash. Heavy makeup. The same pose as the previous image. Perfect symmetry
 
 ---
 
-## CHANGE THESE THREE LINES ONLY
+## CHANGE THESE LINES ONLY
 
 Everything else stays word for word identical. That is what makes the set hold
 together.
@@ -125,6 +127,28 @@ One per image. This is what stops it looking generated.
 - a shoe turned very slightly inward, natural stance
 - fabric caught mid-movement, a little lift at the hem
 
+### 4. FACE ANGLE
+
+A different one every image — never the same angle twice in a guide.
+
+| # | Face line |
+|---|---|
+| 01 | Face turned straight to the camera, chin level, eyes to the lens |
+| 02 | Face in three-quarter view, turned to camera right, eyes to the lens |
+| 03 | Face in three-quarter view, turned to camera left, eyes to the lens |
+| 04 | Face glancing back over the shoulder to the lens |
+| 05 | Face tilted slightly down, eyes just past the lens |
+| 06 | Chin lifted slightly, looking at the lens |
+| 07 | Face in near-profile, eyes to the lens |
+
+### 5. BACKGROUND
+
+A different plain studio-wall colour every image — never the same twice in a guide.
+Keep the light soft and natural; only the wall colour changes.
+
+soft warm-grey · muted sage green · pale clay (muted terracotta) · dusty muted blue ·
+warm oatmeal beige · soft greige · muted olive · pale blush-stone
+
 ---
 
 ## CHANGING THE SIZE FOR DIFFERENT PARTS OF THE SITE
@@ -135,6 +159,7 @@ swap the CAMERA and FORMAT lines.
 | Where it goes | Save as | FORMAT line | CAMERA line |
 |---|---|---|---|
 | Homepage hero | 1000 × 1500 | `Vertical 2:3.` | `Full body, head to shoes, nothing cropped.` |
+| Featured image | 1200 × 700 (WebP) | `Horizontal 12:7.` | `Waist-up or wider, landscape, the look clearly visible.` |
 | Guide card | 900 × 1200 | `Vertical 3:4.` | `Full body, head in the upper third of the frame.` |
 | Women's panel | 900 × 1200 | `Vertical 3:4.` | `Framed from the knee up, headroom above.` |
 | Pinterest pin | 1000 × 1500 | `Vertical 2:3.` | `Full body with clear space at the top for a text overlay.` |
@@ -156,16 +181,19 @@ skirt. Frame that one from the knee up.
 | Women's panel | `images/audience-women.jpg` |
 | Author portrait | `images/author-portrait.jpg` |
 | Guide card | `images/<article-slug>.jpg` |
+| Featured image | `images/<article-slug>-featured.webp` |
 
 Use the article's own URL slug. The site already points at these paths, so a
 correctly named file appears with no code change.
 
 ---
 
-## THE ONE RULE THAT MATTERS MOST
+## THE RULES THAT MATTER MOST
 
-Keep the **wall and the light identical** through a whole guide. Fifteen outfits in
-fifteen rooms looks like a Pinterest board. Fifteen against the same wall looks
-like a shoot — and that is what makes a new site read as a real publication.
-
-Change the room between guides if you like. Never inside one.
+- **A different background colour in every image**, and **a different face angle in
+  every image** — never repeat either within a guide. Keep the light soft, natural
+  daylight and the colour grade natural, so the set still reads as one shoot even as
+  the wall colour changes.
+- **Every article gets a featured image at 1200×700, saved as WebP.**
+- Only the clothing, pose, face, detail and wall colour change between images — her
+  face, hair and body stay held by the attached reference photo.

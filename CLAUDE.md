@@ -13,9 +13,12 @@ The pack must state, for that specific article:
 | Item | What to give |
 |---|---|
 | **How many images** | Total count for the article, broken down by type (hero, looks, detail crops, pins) |
+| **Featured image** | One featured image at 1200×700, exported as WebP (`.webp`) |
 | **Variations** | Which model, and how many images each |
 | **Outfits** | A written outfit line per image — garment, colour, fabric, fit **and the shoes** |
 | **Poses** | A different pose per image, rotated, never repeating consecutively |
+| **Face angle** | A different face angle per image (straight, three-quarter, over-the-shoulder, tilted), never the same twice in one guide |
+| **Background** | A different background colour per image, never the same twice in one guide |
 | **Details** | One small imperfection per image |
 | **Framing & format** | Per image: full body / three-quarter / waist-up / low angle / detail crop, and 2:3 or 3:4 |
 | **Filenames** | The exact path each file saves to, matching the article slug |
@@ -32,8 +35,12 @@ Keep those two files in sync if a model's look changes.
 
 - The reference photo must be attached to **every** ChatGPT message, not just the
   first. Text alone will not hold a face.
-- Keep the wall, floor, light direction and colour grade **identical** inside one
-  guide. Change them between guides if you like, never within one.
+- **Give every image a different background colour** — a different plain studio-wall
+  colour — so no two images in a guide or on a page share one. Keep the lighting soft,
+  natural daylight and the colour grade natural.
+- **Every model image uses a different face angle** (straight, three-quarter,
+  over-the-shoulder, tilted) — never the same angle twice in one guide.
+- **Every article has a featured image at 1200×700, saved as WebP** (`.webp`).
 - Every outfit line names the shoes.
 - Audience panels crop to the bottom quarter behind a caption — frame those from
   the knee up.

@@ -52,6 +52,7 @@ These govern the whole workflow. If any later section seems to conflict, these w
 6. **Natural over forced — always.** Keywords (short/mid/long-tail), entities, LSI/semantic terms, and internal links go in only where they read naturally — the way a high-authority site drops a link mid-explanation or uses a term because the sentence needed it. If it has to be forced, it doesn't go in.
 7. **Semantic + SEO + AEO + GEO on every article.** Topically complete (all the entities and sub-questions a knowledgeable reader expects), snippet-ready answers within the AEO character/word limits, and every factual claim backed by a strong, verified, authentic external source.
 8. **Fill competitor gaps only where they genuinely help the reader.** A gap competitors missed is an opportunity *if* covering it serves this reader's intent and need. Don't add a section just because competitors lack it — add it because it helps.
+9. **Deliver in Word.** Article content and image-prompt packs are delivered as a Word (`.docx`) file, unless the user asks for another format.
 
 ---
 
@@ -292,9 +293,9 @@ This is a visual, image-led site — images are central, not optional decoration
 - **Outfit / ways-to-wear / occasion / decade / aesthetic articles:** every look gets an image placeholder right after its outfit line. Specify what it shows and alt text with the keyword where natural (e.g. `alt="how to style khaki shorts women — linen shirt and tan sandals look"`). **Shoes must be visible** in the shot (CLAUDE.md).
 - **Comparison / dress-code articles:** mark a placeholder for a comparison table or visual (e.g. a dress-code spectrum).
 - **Pure explainers with nothing to show** (rare here): skip decorative placeholders.
-- **Consistency (CLAUDE.md):** keep wall, floor, light direction and colour grade identical **within one guide**; one image style across a whole pillar; never reuse one photograph in two slots on the same page; audience panels frame from the knee up.
+- **Consistency & variety (CLAUDE.md):** give **every image a different background colour** and **every model image a different face angle** — never repeat either within a guide; keep the light soft, natural daylight and the colour grade natural so the set still reads as one shoot; never reuse one photograph in two slots on the same page; audience panels frame from the knee up.
 - **Image prompts enforce the outfit line.** Every outfit the text describes must appear in the prompt as an explicit garment/colour/fabric/fit + shoes; a different pose per image, rotated; one small imperfection per image; per-image framing (full body / three-quarter / waist-up / low angle / detail crop) and format (2:3 or 3:4); filenames matching the article slug. If a described look changes during the audit, update the matching image prompt in the same pass.
-- **ChatGPT image-prompt pack (CLAUDE.md standing instruction):** when — **and only when** — asked, end the article with the full image-prompt pack (counts by type, variations per model, outfit line per image including shoes, poses, details, framing/format, exact filenames), pasteable one block at a time. Source of truth for models/poses/details/slots: `FEMALE-MODEL-PROMPT.md`, `MALE-MODEL-PROMPT.md`. Do not append the pack unprompted.
+- **ChatGPT image-prompt pack (CLAUDE.md standing instruction):** when — **and only when** — asked, end the article with the full image-prompt pack: a **featured image (1200×700, exported as WebP)**, counts by type, variations per model, an outfit line per image (including shoes), a **different pose, a different face angle and a different background colour per image**, one detail, framing/format, and exact filenames — pasteable one block at a time. Source of truth for models/poses/face angles/backgrounds/slots: `FEMALE-MODEL-PROMPT.md`, `MALE-MODEL-PROMPT.md`. Do not append the pack unprompted.
 
 ---
 
