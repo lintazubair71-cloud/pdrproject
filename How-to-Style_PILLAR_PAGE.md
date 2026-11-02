@@ -28,7 +28,7 @@ You don't need more clothes to look better put together — you need to wear the
 This guide walks through those habits in the order that matters: fit, then proportion, colour, building an outfit, and the shoes and details that finish it. At the end you'll find our full library of styling guides — one garment at a time, fifteen real outfits each — so you can go straight from the principle to a worked example.
 
 <!-- BRAND AUTHORITY BLOCK — pillar page only. Credentials only. -->
-*Written by **Aria James**, founder and editor of The Wow Style, who spends her days writing styling guides for men and women — one garment, fifteen real outfits at a time.*
+*Written by **Aria James**, founder and editor of The Wow Style, who writes the site's styling guides for men and women.*
 
 <!-- IMAGE: hero — a man and a woman side by side in well-fitted neutral outfits (both shoes visible), three-quarter, 3:2.
      alt="how to style clothes — a man and a woman in well-fitted neutral outfits" -->
@@ -81,6 +81,8 @@ Shoes set the register of an outfit more than any other piece — the same jeans
 
 After the shoes, keep the details few and intentional. A belt that broadly agrees with your shoes, a watch, one or two pieces of jewellery — enough to look finished, not stacked. If you're unsure, take one thing off before you leave.
 
+One thing sits under all of it: clean and pressed reads as styled. A creased shirt or a bobbled knit quietly undoes the fit and colour you got right, so pressing a piece often does more for it than buying a new one.
+
 ## Find your personal style (so you stop guessing)
 
 Personal style isn't a look you're born with — it's the set of choices you keep coming back to. Once you've noticed the common thread in the outfits you love (from the copying habit above), give it a couple of plain words — *relaxed and neutral*, *sharp and classic*, *bold and colourful* — and use them as a filter when you shop or get dressed. If a piece doesn't fit those words or your actual week, it's not for you, however nice it is.
@@ -119,20 +121,20 @@ Pick the one piece you wear most, open its guide, and try a single new outfit fr
 **Is styling different for men and women?**
 The principles are identical — fit first, balanced proportions, a tight colour palette, and the right shoes. Only the pieces change. Every guide on this site is built the same way for both.
 
-**How can I look stylish on a budget?**
-Spend on fit, not labels. A well-fitted high-street outfit in two colours beats an expensive one that's too big, and a £10 alteration often does more than a £100 purchase. Fewer pieces that match each other go further than a full wardrobe that doesn't.
+**How long does it take to get better at styling?**
+You'll usually look better within a week, because fixing fit and editing out what doesn't work is fast. Reaching for good combinations without having to think about it takes a couple of months of putting outfits together on purpose.
 
 **What's the fastest way to look more put-together today?**
-Three ten-second changes: tuck the front of your top into your waistband, add a belt, and swap to your cleanest pair of shoes. You've added shape and intention without changing the clothes.
+Three ten-second changes: tuck the front of your top into your waistband, add a belt, and swap to your cleanest pair of shoes. You've added shape and intention without touching the clothes themselves.
 
-**How many outfits do I need?**
-Far fewer than most wardrobes hold. Aim for a dozen pieces you genuinely wear, each of which works at least three ways — that quietly produces more outfits than a rail of one-offs ever will.
+**How do I stop buying clothes I never wear?**
+Before you buy, name three things you already own that it will go with and one place you'll wear it. If you can't do both, leave it on the rail. That single test removes most of the buys that end up unworn.
 
-**What's the most common styling mistake?**
-Wearing everything the same volume — all loose or all tight — so there's no contrast, and then forgetting the shoes. Fix the balance and finish with the right footwear and most outfits come right.
+**Can I follow trends and still have my own style?**
+Yes — treat trends as optional. Run each one through your style words and your real week, then take the shape or colour that suits you and leave the rest. A trend you've adapted reads as style; one you've copied whole reads as costume.
 
-**Do I need to follow seasonal colour analysis?**
-No. It's a useful way to notice which colours flatter you near your face, but it's a starting point, not a rule. Wear colours you like, hold them up in daylight, and keep the ones that look good to you.
+**Should I buy versatile basics or statement pieces?**
+Mostly basics, with a few statements. Well-fitted neutrals do the heavy lifting and go with everything, while one or two bolder pieces stop a wardrobe looking flat. If a new piece only works one way, it has to earn the space.
 
 ---
 
@@ -145,11 +147,11 @@ No. It's a useful way to notice which colours flatter you near your face, but it
   "@type": "FAQPage",
   "mainEntity": [
     {"@type":"Question","name":"Is styling different for men and women?","acceptedAnswer":{"@type":"Answer","text":"The principles are identical — fit first, balanced proportions, a tight colour palette, and the right shoes. Only the pieces change. Every guide on this site is built the same way for both."}},
-    {"@type":"Question","name":"How can I look stylish on a budget?","acceptedAnswer":{"@type":"Answer","text":"Spend on fit, not labels. A well-fitted high-street outfit in two colours beats an expensive one that's too big, and a £10 alteration often does more than a £100 purchase. Fewer pieces that match each other go further than a full wardrobe that doesn't."}},
-    {"@type":"Question","name":"What's the fastest way to look more put-together today?","acceptedAnswer":{"@type":"Answer","text":"Three ten-second changes: tuck the front of your top into your waistband, add a belt, and swap to your cleanest pair of shoes. You've added shape and intention without changing the clothes."}},
-    {"@type":"Question","name":"How many outfits do I need?","acceptedAnswer":{"@type":"Answer","text":"Far fewer than most wardrobes hold. Aim for a dozen pieces you genuinely wear, each of which works at least three ways — that quietly produces more outfits than a rail of one-offs ever will."}},
-    {"@type":"Question","name":"What's the most common styling mistake?","acceptedAnswer":{"@type":"Answer","text":"Wearing everything the same volume — all loose or all tight — so there's no contrast, and then forgetting the shoes. Fix the balance and finish with the right footwear and most outfits come right."}},
-    {"@type":"Question","name":"Do I need to follow seasonal colour analysis?","acceptedAnswer":{"@type":"Answer","text":"No. It's a useful way to notice which colours flatter you near your face, but it's a starting point, not a rule. Wear colours you like, hold them up in daylight, and keep the ones that look good to you."}}
+    {"@type":"Question","name":"How long does it take to get better at styling?","acceptedAnswer":{"@type":"Answer","text":"You'll usually look better within a week, because fixing fit and editing out what doesn't work is fast. Reaching for good combinations without having to think about it takes a couple of months of putting outfits together on purpose."}},
+    {"@type":"Question","name":"What's the fastest way to look more put-together today?","acceptedAnswer":{"@type":"Answer","text":"Three ten-second changes: tuck the front of your top into your waistband, add a belt, and swap to your cleanest pair of shoes. You've added shape and intention without touching the clothes themselves."}},
+    {"@type":"Question","name":"How do I stop buying clothes I never wear?","acceptedAnswer":{"@type":"Answer","text":"Before you buy, name three things you already own that it will go with and one place you'll wear it. If you can't do both, leave it on the rail. That single test removes most of the buys that end up unworn."}},
+    {"@type":"Question","name":"Can I follow trends and still have my own style?","acceptedAnswer":{"@type":"Answer","text":"Yes — treat trends as optional. Run each one through your style words and your real week, then take the shape or colour that suits you and leave the rest. A trend you've adapted reads as style; one you've copied whole reads as costume."}},
+    {"@type":"Question","name":"Should I buy versatile basics or statement pieces?","acceptedAnswer":{"@type":"Answer","text":"Mostly basics, with a few statements. Well-fitted neutrals do the heavy lifting and go with everything, while one or two bolder pieces stop a wardrobe looking flat. If a new piece only works one way, it has to earn the space."}}
   ]
 }
 ```
@@ -162,7 +164,8 @@ No. It's a useful way to notice which colours flatter you near your face, but it
 
 - **Intent (verified via live SERP + competitor read):** "how to style clothes" is **foundational**, not a single-garment listicle. Searchers want to learn to put clothes together — fit, proportion, colour, building outfits, personal style — men and women, beginner level. The page is built to teach that *and* act as the hub to the specific guides.
 - **Competitors fetched and read in full (Step 4):** Real Men Real Style — *How To Dress Well* (2,736 words, deep; fit → edit → silhouette → core 12 → 3 colours → shoes → fit cheat-sheet → 30-day plan → FAQ), Tata Neu — *How to Style Clothes* (basics → mix & match → body type → accessories → seasonal → FAQ), Blavity — *Find Your Clothing Style* (preferences → body shape → style keywords → lifestyle), The Concept Wardrobe (hub model: Build a Wardrobe / Develop Personal Style / Care for Clothes). Who What Wear fetched (personal-style angle); Masterclass returned 403; The Trend Spotter blocks bots (403).
-- **Table stakes (3+ competitors):** fit, body shape/proportion, building/mixing outfits, colour, accessories & shoes, personal style, FAQ. **All included.**
+- **Table stakes (3+ competitors):** fit, body shape/proportion, building/mixing outfits, colour, accessories & shoes, personal style, **clothing care (clean/pressed)**, FAQ. **All included** (care added as one earned line in "Finish with shoes").
+- **Deliberately excluded (scope/no-overlap):** deep **seasonal** content (that is its own pillar, Seasonal Outfits) and deep **accessories** content (its own pillar, Accessories) — competitors cover them, but covering them here would duplicate other pillars and break the roadmap's no-overlap rule. **Trends** are handled in one FAQ rather than a section, to stay in scope.
 - **Gaps used as differentiators:** (1) every competitor is men-only, women-only, or generic — **none is a unified men+women hub**; (2) none routes to specific garment guides — our 8-guide directory does; (3) borrowed the strongest formats: a **fit pass/fail table** (Real Men Real Style) and a short **action plan** ("Your first two weeks").
 
 ## 2. Keyword & entity placement
@@ -237,7 +240,7 @@ No citation is attached to a styling opinion. No absolute ("the only way", "neve
 - ✅ Banned phrases searched term-by-term (script), headings included. First pass found one hit — "actually" in four body spots and a FAQ question — all removed; re-run confirms **0 hits** across the publishable content ("effortlessly", "elevate", "dive in", "in conclusion", "game changer", "it's worth noting", "very/really/actually", "turn heads", etc.).
 - ✅ Quick Answer: **52 words / 303 characters** — under 60 words **and** under 320.
 - ✅ Key Takeaways summarise body sections; none previews a FAQ answer.
-- ✅ FAQ answers are new vs body (men-vs-women, budget, fastest-today, wardrobe size, the specific mistake, colour-analysis) — searched body for each FAQ's key terms; no restatement.
+- ✅ FAQ uniqueness re-audited (adversarial). First FAQ set had **four answers that the body already gave** — budget (= the £20-vs-£200 takeaway), "how many outfits" (= the capsule point), "most common mistake" (= the proportion section's loose/tight line), and "colour analysis" (= the colour section). **All four replaced** with questions whose answers are not in the body: how long it takes to improve, how to stop buying unworn clothes, trends vs personal style, basics vs statement pieces. Kept: men-vs-women, fastest-today. Each new answer's key terms searched against the body — no restatement.
 - ✅ FAQ JSON-LD text matches rendered answers word for word.
 - ✅ Every H2 answers one clear question; transitions read in sequence without gaps; no section ends on an internal link.
 - ✅ Keywords/entities placed naturally; none forced.
