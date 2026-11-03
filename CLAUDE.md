@@ -13,7 +13,7 @@ The pack must state, for that specific article:
 | Item | What to give |
 |---|---|
 | **How many images** | Total count for the article, broken down by type (hero, looks, detail crops, pins) |
-| **Featured image** | One featured image at 1200×700, exported as WebP (`.webp`) |
+| **Featured image** | One featured image at 1200×800, exported as WebP (`.webp`) |
 | **Variations** | Which model, and how many images each |
 | **Outfits** | A written outfit line per image — garment, colour, fabric, fit **and the shoes** |
 | **Accessories** | Only the accessories the content names for that look — nothing extra; none if the content names none |
@@ -24,7 +24,7 @@ The pack must state, for that specific article:
 | **Framing & format** | Per image: full body / three-quarter / waist-up / low angle / detail crop, and 2:3 or 3:4 |
 | **Alt text** | A written alt text per image — the outfit described, with the keyword where natural |
 | **Section / placement** | Which section of the article each image goes in |
-| **Filenames** | The exact path each file saves to, matching the article slug |
+| **Filenames** | A descriptive path per image, matching the outfit/heading (e.g. `images/khaki-shorts-women-white-tee-trainers.jpg`) — not generic numbers |
 
 Write it so it can be pasted into ChatGPT one block at a time with no assembly.
 
@@ -49,8 +49,8 @@ Keep these files in sync if a model's look changes.
 - **Vary the pose and phone position every image** — the face is hidden, so there is no
   face angle to vary. (For any face-shown image, vary the face angle instead.)
 - **Every article has a featured image at 1200×700, saved as WebP** (`.webp`).
-- **Orientation:** outfit/look images and Pinterest pins are vertical 2:3 (1000×1500);
-  the featured image is horizontal 1200×700.
+- **Size:** every image — featured and inner alike — is **1200×800** (horizontal 3:2).
+  (If you also want Pinterest pins, export a separate vertical 2:3 version.)
 - **Watermark every image with `thewowstyle.co.uk`** — added *after* generation (a
   WordPress watermark plugin or a batch step), never drawn by the AI. Small, bottom-right,
   ~55% opacity. The AI prompt still says no text/watermark, so the model never renders

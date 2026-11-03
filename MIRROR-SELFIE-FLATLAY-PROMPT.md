@@ -31,7 +31,7 @@ Everything else stays word-for-word so the set holds together.
 ## MEN — template
 
 ```
-A single vertical fashion image in two parts — the outfit worn on the left, the same outfit as a flat-lay on the right. Clean, minimal, editorial.
+A single horizontal fashion image in two parts — the outfit worn on the left, the same outfit as a flat-lay on the right. Clean, minimal, editorial.
 
 LEFT — THE LOOK: A slim young man in his mid-twenties, medium-brown skin, dark tousled hair, standing and holding a smartphone up to take a mirror selfie so the phone covers his face. The face is HIDDEN by the phone, not visible. Full body, head to shoes, shoes clearly visible.
 
@@ -49,7 +49,7 @@ CAMERA: Left — full length, head to shoes, eye level. Right — top-down flat-
 
 STYLE: Editorial menswear photography. Natural colour, realistic fabric texture and drape, no beauty retouching, no heavy grading.
 
-FORMAT: Vertical 2:3.
+FORMAT: Horizontal 3:2 (1200×800) — the look full-length on the left, the flat-lay on the right.
 
 AVOID: A visible face — the phone must fully cover it. Cartoon or 3D render look. Plastic textures. Extra fingers. Logos or brand names. Text or watermarks. Harsh flash. The flat-lay not matching the worn outfit.
 ```
@@ -57,7 +57,7 @@ AVOID: A visible face — the phone must fully cover it. Cartoon or 3D render lo
 ## WOMEN — template
 
 ```
-A single vertical fashion image in two parts — the outfit worn on the left, the same outfit as a flat-lay on the right. Clean, minimal, editorial.
+A single horizontal fashion image in two parts — the outfit worn on the left, the same outfit as a flat-lay on the right. Clean, minimal, editorial.
 
 LEFT — THE LOOK: A slim young woman in her mid-twenties, dark chestnut shoulder-length hair, standing and holding a smartphone up to take a mirror selfie so the phone covers her face. The face is HIDDEN by the phone, not visible. Full body, head to shoes, shoes clearly visible.
 
@@ -75,7 +75,7 @@ CAMERA: Left — full length, head to shoes, eye level. Right — top-down flat-
 
 STYLE: Editorial womenswear photography. Natural colour, realistic fabric texture and drape, no beauty retouching, no heavy grading.
 
-FORMAT: Vertical 2:3.
+FORMAT: Horizontal 3:2 (1200×800) — the look full-length on the left, the flat-lay on the right.
 
 AVOID: A visible face — the phone must fully cover it. Cartoon or 3D render look. Plastic textures. Extra fingers. Logos or brand names. Text or watermarks. Harsh flash. The flat-lay not matching the worn outfit.
 ```
@@ -105,8 +105,8 @@ warm oatmeal beige · soft greige · muted olive · pale blush-stone
 - **Face hidden by the phone** — never a visible face (this is what stops the model drifting).
 - **Shoes shown worn AND in the flat-lay.**
 - **Only what the content describes.** The image shows the exact garments, shoes and accessories named in that section's outfit line — nothing added. If the content names no accessory, the image has none. (Variety comes from the article, not from inventing extras.)
-- **Vertical 2:3** (1000×1500) for the look. The **featured image is separate: horizontal 1200×700, WebP**.
+- **Every image is 1200×800 (horizontal 3:2)** — featured and inner alike; the featured image is saved as WebP. Compose the split as the full-length look on the left and the flat-lay on the right.
 - The **flat-lay must match the worn outfit exactly** — same pieces, same colours.
 - **Watermark `thewowstyle.co.uk`** added after generation, bottom-right, ~55% opacity (WordPress plugin). The prompt keeps "no text/watermark".
 - Keep a **consistent one-line body + hair description** through a guide so the person reads as the same model.
-- Every image in a pack states its **filename, alt text and the section** it goes in.
+- Every image in a pack states its **filename, alt text and the section** it goes in. Filenames are **descriptive, from the outfit** (e.g. `khaki-shorts-women-white-tee-trainers.jpg`), not generic numbers.
