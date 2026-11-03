@@ -213,8 +213,28 @@ Content need sets length, not a preset number. **House anchor (CLAUDE.md): guide
 **The Outfits / Looks (the body — this is the article):** For listicles, each look is a compact unit:
 - A short outfit line — **garment, colour, fabric, fit, and the shoes** (CLAUDE.md: every outfit names the shoes; shoes must be visible in-article).
 - One or two lines on *why* it works and *when* to wear it (occasion, season, body-type note where genuinely helpful).
+- **A per-look styling tip — the differentiator module (see below). Mandatory on every look in a styling listicle.**
 - Image placeholder for that look.
 Keep looks genuinely distinct — no two that are the same outfit reworded. For explainer/comparison/dress-code articles, replace "looks" with the intent-matched H2s (definition → rules → examples → mistakes).
+
+**PER-LOOK TIP MODULE (standing rule — The Wow Style's core differentiator).** Competitors give the reader a look and a photo and stop. We give the look **and the reasoning**, so the reader can build their own outfits — this is the site's edge and it goes on **every look of every styling listicle**. One tight, bold-labelled sentence directly under the outfit line.
+
+- **One sentence, labelled.** A bold micro-label + one sentence. Skimmable and snippet-friendly. Density is the value, not length — never a paragraph.
+- **Rotate the tip type across the looks** so it never reads mechanical, and so the set covers more intents. Rotate through:
+  - **The move:** — the proportion/balance/styling *principle* that makes this look work (teaches the rule, not just the outfit).
+  - **Avoid:** — the specific mistake that makes *this* look fall flat (wrong length, wrong shoe weight, baggy-on-baggy, etc.).
+  - **Petite / Curvy / Tall:** — how to adjust *this* look for a body shape (specific, defensible effect — never a contested "rule" stated as settled; see Styling & Fact Claim Verification).
+  - **Day → night:** — the one swap that shifts this exact look between occasions.
+  - **Colour / Fabric:** — why this pairing or this fabric/sheen works, or the swap that keeps it working.
+- **Every tip is a different lever — no repeats.** The single biggest failure mode: the same advice ("add a belt", "tuck it in") appearing on five looks. That reads as thin padding to the reader and to Google. Across the whole guide, each tip must teach a *different* thing. Audit this mechanically (see checklist).
+- **No overlap with the article's own sections.** If each look already carries an **Avoid:** tip, do not also run a standalone "common mistakes" H2 repeating them — same rule as FAQ-vs-body. Per-look tips replace the standalone block; keep any summary section genuinely new or drop it.
+- **No overlap with the FAQ or Key Takeaways** either — a per-look tip, a takeaway, and a FAQ answer must never say the same thing.
+- **Same banned-phrase and fact rules apply** — tips are article content: no banned words, no contested body/colour rule as settled, no invented fact.
+
+Example:
+> **7. Ribbed tank and combat boots**
+> A fitted black ribbed tank with black cargo jeans and black combat boots. Utility, done sharp.
+> **Avoid:** a long, loose tank here — it hides the waist and the volume reads shapeless top to bottom.
 
 **FAQ** — 5–6 questions, 1–2 lines each, every answer genuinely **new** (not restating the body), self-contained (no "as above"), FAQPage JSON-LD ready.
 
@@ -416,6 +436,9 @@ Run mechanical checks by **searching** the text, not by reading it.
 - [ ] No contested body-type/colour claim stated as settled; no absolute ("the only way", "never", "completely") unearned
 - [ ] No decade/dress-code/cultural fact wrong; no body claim contradicts a fact cited elsewhere
 - [ ] **Article-type balance correct — the outfits/looks are the largest part of the body**, not theory or fact-corrections
+- [ ] **Per-look tip on every look** (styling listicles) — one bold-labelled sentence under each outfit line
+- [ ] **Per-look tips rotate type and never repeat a lever** — searched the tips against each other; no two teach the same thing; tip types varied (move/avoid/body/day→night/colour-fabric), not all the same label
+- [ ] **Per-look tips don't overlap a standalone section, the FAQ, or Key Takeaways** — no "common mistakes" H2 repeating the Avoid: tips; no tip restating a FAQ/takeaway
 - [ ] Image placeholders present where warranted; every outfit names the shoes and shoes are visible; prompts match final outfit lines (including any changed in the audit); one image style across the pillar
 - [ ] No identical sentence structure opening every section; no look is another look reworded
 - [ ] Internal-link sentences useful even without the link
