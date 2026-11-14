@@ -1,29 +1,28 @@
 # How to Style Brown Suit Men — Image-Prompt Pack
 
-> Slug from the article URL /how-to-style/brown-suit-men/ → files use `brown-suit-men` (numbered format). Alt text carries the keyword "brown suit men" in each.
-> Brown suit is the hero; the article's rules — shade sets formality, shoes a shade darker than the suit, never black, light blue the most flattering shirt — are honoured. Nearly every piece is named in the article.
+> File names follow each look's heading (not numbers), each unique, with the keyword slug `brown-suit-men-` kept for SEO. Alt text carries "brown suit men" in each.
+> Brown suit is the hero; the article's rules — shade sets formality, shoes a shade darker than the suit, never black, light blue the most flattering shirt — are honoured.
 > **Colour picks** (article gave "A or B" or left a colour open): #3 tie → rust (rust/olive) · #7 knit tie → olive (colour unstated) · #8 → white sneakers (sneakers/woven loafers) · #11 roll-neck → charcoal ("dark" unstated).
-> **Backgrounds:** cool/neutral only (warm-grey, sage, dusty blue, blush-stone) so they don't blend with the brown suit; olive avoided so the olive ties (#7, #14) stand out.
-> **No extra accessories** — only what the article names (ties, the #15 waistcoat).
+> **Backgrounds:** cool/neutral only so they don't blend with the brown suit; olive avoided so the olive ties stand out. **No extra accessories** — only the ties and the three-piece waistcoat the article names.
 
 | Image | Section | File | Size |
 |---|---|---|---|
 | Featured | Intro / shade & formality | images/brown-suit-men-featured.webp | 1200×700 (WebP) |
-| 01 | 1. Chocolate suit, white shirt, navy tie | images/brown-suit-men-01.jpg | 1000×1500 |
-| 02 | 2. Medium brown suit and a light blue shirt | images/brown-suit-men-02.jpg | 1000×1500 |
-| 03 | 3. Tan suit, cream shirt, rust tie | images/brown-suit-men-03.jpg | 1000×1500 |
-| 04 | 4. Brown suit, white shirt, no tie | images/brown-suit-men-04.jpg | 1000×1500 |
-| 05 | 5. Brown suit and a pink shirt | images/brown-suit-men-05.jpg | 1000×1500 |
-| 06 | 6. The jacket on its own | images/brown-suit-men-06.jpg | 1000×1500 |
-| 07 | 7. Dark brown tweed suit | images/brown-suit-men-07.jpg | 1000×1500 |
-| 08 | 8. Tan linen suit, no tie | images/brown-suit-men-08.jpg | 1000×1500 |
-| 09 | 9. Brown suit and suede loafers | images/brown-suit-men-09.jpg | 1000×1500 |
-| 10 | 10. Brown suit under a navy coat | images/brown-suit-men-10.jpg | 1000×1500 |
-| 11 | 11. Brown suit and a roll-neck | images/brown-suit-men-11.jpg | 1000×1500 |
-| 12 | 12. Brown suit, white shirt, burgundy tie | images/brown-suit-men-12.jpg | 1000×1500 |
-| 13 | 13. Corduroy brown suit and a knit | images/brown-suit-men-13.jpg | 1000×1500 |
-| 14 | 14. Brown suit and an olive tie | images/brown-suit-men-14.jpg | 1000×1500 |
-| 15 | 15. Three-piece brown suit | images/brown-suit-men-15.jpg | 1000×1500 |
+| 1 | Chocolate suit, white shirt, navy tie | images/brown-suit-men-chocolate-white-shirt-navy-tie.jpg | 1000×1500 |
+| 2 | Medium brown suit and a light blue shirt | images/brown-suit-men-medium-brown-light-blue-shirt.jpg | 1000×1500 |
+| 3 | Tan suit, cream shirt, rust tie | images/brown-suit-men-tan-cream-shirt-rust-tie.jpg | 1000×1500 |
+| 4 | Brown suit, white shirt, no tie | images/brown-suit-men-white-shirt-no-tie.jpg | 1000×1500 |
+| 5 | Brown suit and a pink shirt | images/brown-suit-men-pink-shirt.jpg | 1000×1500 |
+| 6 | The jacket on its own | images/brown-suit-men-jacket-on-its-own.jpg | 1000×1500 |
+| 7 | Dark brown tweed suit | images/brown-suit-men-dark-brown-tweed.jpg | 1000×1500 |
+| 8 | Tan linen suit, no tie | images/brown-suit-men-tan-linen-no-tie.jpg | 1000×1500 |
+| 9 | Brown suit and suede loafers | images/brown-suit-men-suede-loafers.jpg | 1000×1500 |
+| 10 | Brown suit under a navy coat | images/brown-suit-men-navy-coat.jpg | 1000×1500 |
+| 11 | Brown suit and a roll-neck | images/brown-suit-men-roll-neck.jpg | 1000×1500 |
+| 12 | Brown suit, white shirt, burgundy tie | images/brown-suit-men-white-shirt-burgundy-tie.jpg | 1000×1500 |
+| 13 | Corduroy brown suit and a knit | images/brown-suit-men-corduroy-knit.jpg | 1000×1500 |
+| 14 | Brown suit and an olive tie | images/brown-suit-men-olive-tie.jpg | 1000×1500 |
+| 15 | Three-piece brown suit | images/brown-suit-men-three-piece.jpg | 1000×1500 |
 
 ---
 
@@ -45,10 +44,10 @@ AVOID: 3D render or cartoon look. Plastic textures. Logos or brand names. Text o
 
 ---
 
-## 01 — Chocolate suit, white shirt, navy tie
+## Chocolate suit, white shirt, navy tie
 
 **Section:** 1. Chocolate suit, white shirt, navy tie
-**File:** images/brown-suit-men-01.jpg
+**File:** images/brown-suit-men-chocolate-white-shirt-navy-tie.jpg
 **Alt text:** "A man in a chocolate brown suit with a white shirt, a navy tie and dark brown oxfords, the formal evening default for a brown suit men"
 
 ```
@@ -67,10 +66,10 @@ AVOID: A visible face - the phone must fully cover it. Cartoon or 3D render look
 
 ---
 
-## 02 — Medium brown suit and a light blue shirt
+## Medium brown suit and a light blue shirt
 
 **Section:** 2. Medium brown suit and a light blue shirt
-**File:** images/brown-suit-men-02.jpg
+**File:** images/brown-suit-men-medium-brown-light-blue-shirt.jpg
 **Alt text:** "A man in a medium brown suit with a light blue shirt, a navy knit tie and brown derbies, a business-smart look for a brown suit men"
 
 ```
@@ -89,10 +88,10 @@ AVOID: A visible face - the phone must fully cover it. Cartoon or 3D render look
 
 ---
 
-## 03 — Tan suit, cream shirt, rust tie
+## Tan suit, cream shirt, rust tie
 
 **Section:** 3. Tan suit, cream shirt, rust tie
-**File:** images/brown-suit-men-03.jpg
+**File:** images/brown-suit-men-tan-cream-shirt-rust-tie.jpg
 **Alt text:** "A man in a tan suit with a cream shirt, a rust tie and tan loafers, a summer daytime-wedding look for a brown suit men"
 
 ```
@@ -111,10 +110,10 @@ AVOID: A visible face - the phone must fully cover it. Cartoon or 3D render look
 
 ---
 
-## 04 — Brown suit, white shirt, no tie
+## Brown suit, white shirt, no tie
 
 **Section:** 4. Brown suit, white shirt, no tie
-**File:** images/brown-suit-men-04.jpg
+**File:** images/brown-suit-men-white-shirt-no-tie.jpg
 **Alt text:** "A man in a medium brown suit with a white shirt open at the collar, no tie, and brown loafers, a relaxed-smart look for a brown suit men"
 
 ```
@@ -133,10 +132,10 @@ AVOID: A visible face - the phone must fully cover it. Cartoon or 3D render look
 
 ---
 
-## 05 — Brown suit and a pink shirt
+## Brown suit and a pink shirt
 
 **Section:** 5. Brown suit and a pink shirt
-**File:** images/brown-suit-men-05.jpg
+**File:** images/brown-suit-men-pink-shirt.jpg
 **Alt text:** "A man in a brown suit with a pale pink shirt, a burgundy tie and burgundy loafers, a cocktail autumn-event look for a brown suit men"
 
 ```
@@ -155,10 +154,10 @@ AVOID: A visible face - the phone must fully cover it. Cartoon or 3D render look
 
 ---
 
-## 06 — The jacket on its own
+## The jacket on its own
 
 **Section:** 6. The jacket on its own
-**File:** images/brown-suit-men-06.jpg
+**File:** images/brown-suit-men-jacket-on-its-own.jpg
 **Alt text:** "A man in a brown suit jacket over a white tee with indigo jeans and brown boots, a casual separates look for a brown suit men"
 
 ```
@@ -177,10 +176,10 @@ AVOID: A visible face - the phone must fully cover it. Cartoon or 3D render look
 
 ---
 
-## 07 — Dark brown tweed suit
+## Dark brown tweed suit
 
 **Section:** 7. Dark brown tweed suit
-**File:** images/brown-suit-men-07.jpg
+**File:** images/brown-suit-men-dark-brown-tweed.jpg
 **Alt text:** "A man in a dark brown tweed suit with a white shirt, a knit tie and brown brogues, an autumn-winter texture look for a brown suit men"
 
 ```
@@ -199,10 +198,10 @@ AVOID: A visible face - the phone must fully cover it. Cartoon or 3D render look
 
 ---
 
-## 08 — Tan linen suit, no tie
+## Tan linen suit, no tie
 
 **Section:** 8. Tan linen suit, no tie
-**File:** images/brown-suit-men-08.jpg
+**File:** images/brown-suit-men-tan-linen-no-tie.jpg
 **Alt text:** "A man in a tan linen suit with a white shirt open at the collar and white sneakers, a summer-casual look for a brown suit men"
 
 ```
@@ -221,10 +220,10 @@ AVOID: A visible face - the phone must fully cover it. Cartoon or 3D render look
 
 ---
 
-## 09 — Brown suit and suede loafers
+## Brown suit and suede loafers
 
 **Section:** 9. Brown suit and suede loafers
-**File:** images/brown-suit-men-09.jpg
+**File:** images/brown-suit-men-suede-loafers.jpg
 **Alt text:** "A man in a medium brown suit with a light blue shirt, no tie, and brown suede loafers, a modern smart-casual look for a brown suit men"
 
 ```
@@ -243,10 +242,10 @@ AVOID: A visible face - the phone must fully cover it. Cartoon or 3D render look
 
 ---
 
-## 10 — Brown suit under a navy coat
+## Brown suit under a navy coat
 
 **Section:** 10. Brown suit under a navy coat
-**File:** images/brown-suit-men-10.jpg
+**File:** images/brown-suit-men-navy-coat.jpg
 **Alt text:** "A man in a brown suit with a white shirt, a navy knit tie and a navy overcoat with dark brown shoes, a winter-formal look for a brown suit men"
 
 ```
@@ -265,10 +264,10 @@ AVOID: A visible face - the phone must fully cover it. Cartoon or 3D render look
 
 ---
 
-## 11 — Brown suit and a roll-neck
+## Brown suit and a roll-neck
 
 **Section:** 11. Brown suit and a roll-neck
-**File:** images/brown-suit-men-11.jpg
+**File:** images/brown-suit-men-roll-neck.jpg
 **Alt text:** "A man in a medium brown suit with a fine dark roll-neck and brown Chelsea boots, a contemporary evening look for a brown suit men"
 
 ```
@@ -287,10 +286,10 @@ AVOID: A visible face - the phone must fully cover it. Cartoon or 3D render look
 
 ---
 
-## 12 — Brown suit, white shirt, burgundy tie
+## Brown suit, white shirt, burgundy tie
 
 **Section:** 12. Brown suit, white shirt, burgundy tie
-**File:** images/brown-suit-men-12.jpg
+**File:** images/brown-suit-men-white-shirt-burgundy-tie.jpg
 **Alt text:** "A man in a brown suit with a white shirt, a burgundy tie and burgundy loafers, an autumn wedding-guest look for a brown suit men"
 
 ```
@@ -309,10 +308,10 @@ AVOID: A visible face - the phone must fully cover it. Cartoon or 3D render look
 
 ---
 
-## 13 — Corduroy brown suit and a knit
+## Corduroy brown suit and a knit
 
 **Section:** 13. Corduroy brown suit and a knit
-**File:** images/brown-suit-men-13.jpg
+**File:** images/brown-suit-men-corduroy-knit.jpg
 **Alt text:** "A man in a brown corduroy suit with a cream roll-neck and brown boots, an autumn texture-casual look for a brown suit men"
 
 ```
@@ -331,10 +330,10 @@ AVOID: A visible face - the phone must fully cover it. Cartoon or 3D render look
 
 ---
 
-## 14 — Brown suit and an olive tie
+## Brown suit and an olive tie
 
 **Section:** 14. Brown suit and an olive tie
-**File:** images/brown-suit-men-14.jpg
+**File:** images/brown-suit-men-olive-tie.jpg
 **Alt text:** "A man in a medium brown suit with a white shirt, an olive tie and brown derbies, an earthy considered look for a brown suit men"
 
 ```
@@ -353,10 +352,10 @@ AVOID: A visible face - the phone must fully cover it. Cartoon or 3D render look
 
 ---
 
-## 15 — Three-piece brown suit
+## Three-piece brown suit
 
 **Section:** 15. Three-piece brown suit
-**File:** images/brown-suit-men-15.jpg
+**File:** images/brown-suit-men-three-piece.jpg
 **Alt text:** "A man in a three-piece brown suit with a waistcoat, a white shirt, a navy tie and dark brown shoes, the dressiest look for a brown suit men"
 
 ```
