@@ -1,0 +1,451 @@
+<title>StyleX Style Finder</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<!--
+  ============================================================================
+  StyleX Style Finder  —  for stylexmagazine.com
+  ----------------------------------------------------------------------------
+  HOW TO USE IN WORDPRESS (per article):
+  1. Edit a post → add a "Custom HTML" block.
+  2. Copy EVERYTHING between the two lines marked:
+        <!== COPY FROM HERE ==>  ...  <!== COPY TO HERE ==>
+     and paste it into that Custom HTML block.
+  3. In the SXM_CONFIG block near the top of the <script>, change the title,
+     subtitle, and the "items" list to match THIS article's styles.
+     - Put each style's image URL in `img` and the guide link in `link`.
+     - Leave `img` as "" to show a clean placeholder instead.
+  That's it. The widget is fully self-contained (its own scoped CSS + JS),
+  so it will not clash with your theme and loads nothing from outside.
+  ============================================================================
+-->
+
+<!== COPY FROM HERE ==>
+<style>
+/* ===========================================================================
+   StyleX Style Finder — scoped styles (everything lives under .sxm-finder)
+   Layout: a self-contained card — filter rail on top, best-match spotlight,
+   then a responsive grid of style cards. Barbershop palette: ink + brass.
+   =========================================================================== */
+.sxm-finder{
+  /* ---- Color tokens (light) ---- */
+  --sxm-bg:#f6f4f0;          /* widget surface */
+  --sxm-panel:#ffffff;       /* cards */
+  --sxm-ink:#1a1816;         /* primary text */
+  --sxm-muted:#6b655d;       /* secondary text */
+  --sxm-line:#e4ded4;        /* borders */
+  --sxm-accent:#b07d2b;      /* brass */
+  --sxm-accent-soft:#f1e4cc; /* brass tint */
+  --sxm-accent-ink:#5a3d11;  /* text on brass tint */
+  --sxm-good:#3f7d4e;        /* match / success */
+  --sxm-shadow:0 1px 2px rgba(26,24,22,.06),0 10px 30px -18px rgba(26,24,22,.35);
+  /* ---- Type tokens ---- */
+  --sxm-font-head:"Space Grotesk",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  --sxm-font-body:"Inter",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+
+  box-sizing:border-box;
+  font-family:var(--sxm-font-body);
+  color:var(--sxm-ink);
+  background:var(--sxm-bg);
+  border:1px solid var(--sxm-line);
+  border-radius:18px;
+  padding:clamp(16px,4vw,28px);
+  max-width:1040px;
+  margin:28px auto;
+  line-height:1.5;
+  box-shadow:var(--sxm-shadow);
+  -webkit-font-smoothing:antialiased;
+}
+@media (prefers-color-scheme:dark){
+  .sxm-finder:not([data-sxm-theme="light"]){
+    --sxm-bg:#17150f;
+    --sxm-panel:#201d16;
+    --sxm-ink:#f3efe7;
+    --sxm-muted:#a79e8f;
+    --sxm-line:#36312720;
+    --sxm-line:#38322a;
+    --sxm-accent:#d9a94e;
+    --sxm-accent-soft:#3a2f1a;
+    --sxm-accent-ink:#f0d9a6;
+    --sxm-good:#6cbf7f;
+    --sxm-shadow:0 1px 2px rgba(0,0,0,.4),0 14px 36px -18px rgba(0,0,0,.8);
+    color-scheme:dark;
+  }
+}
+.sxm-finder[data-sxm-theme="dark"]{
+  --sxm-bg:#17150f;
+  --sxm-panel:#201d16;
+  --sxm-ink:#f3efe7;
+  --sxm-muted:#a79e8f;
+  --sxm-line:#38322a;
+  --sxm-accent:#d9a94e;
+  --sxm-accent-soft:#3a2f1a;
+  --sxm-accent-ink:#f0d9a6;
+  --sxm-good:#6cbf7f;
+  --sxm-shadow:0 1px 2px rgba(0,0,0,.4),0 14px 36px -18px rgba(0,0,0,.8);
+  color-scheme:dark;
+}
+.sxm-finder *,.sxm-finder *::before,.sxm-finder *::after{box-sizing:border-box}
+
+/* ---- Header ---- */
+.sxm-finder .sxm-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:10px 16px;margin-bottom:18px}
+.sxm-finder .sxm-eyebrow{display:inline-flex;align-items:center;gap:7px;font-family:var(--sxm-font-head);font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--sxm-accent)}
+.sxm-finder .sxm-eyebrow svg{width:16px;height:16px;flex:0 0 auto}
+.sxm-finder h2.sxm-title{font-family:var(--sxm-font-head);font-size:clamp(1.3rem,3.4vw,1.9rem);font-weight:700;line-height:1.1;margin:.35em 0 .15em;text-wrap:balance;color:var(--sxm-ink)}
+.sxm-finder .sxm-sub{color:var(--sxm-muted);font-size:.95rem;max-width:56ch;margin:0}
+
+/* ---- Filters ---- */
+.sxm-finder .sxm-filters{display:flex;flex-direction:column;gap:14px;background:var(--sxm-panel);border:1px solid var(--sxm-line);border-radius:14px;padding:clamp(13px,3vw,18px);margin-bottom:18px}
+.sxm-finder .sxm-facet{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.sxm-finder .sxm-facet-label{font-family:var(--sxm-font-head);font-size:.74rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--sxm-muted);min-width:96px;flex:0 0 auto}
+.sxm-finder .sxm-chips{display:flex;flex-wrap:wrap;gap:7px;min-width:0}
+.sxm-finder .sxm-chip{font:inherit;font-size:.85rem;cursor:pointer;border:1px solid var(--sxm-line);background:transparent;color:var(--sxm-ink);padding:6px 13px;border-radius:999px;transition:background .15s,border-color .15s,color .15s,transform .05s}
+.sxm-finder .sxm-chip:hover{border-color:var(--sxm-accent)}
+.sxm-finder .sxm-chip:active{transform:translateY(1px)}
+.sxm-finder .sxm-chip[aria-pressed="true"]{background:var(--sxm-accent);border-color:var(--sxm-accent);color:#fff;font-weight:600}
+.sxm-finder[data-sxm-theme="dark"] .sxm-chip[aria-pressed="true"],
+.sxm-finder .sxm-chip[aria-pressed="true"]{color:#1a1510}
+.sxm-finder .sxm-chip:focus-visible{outline:2px solid var(--sxm-accent);outline-offset:2px}
+
+/* ---- Toolbar row ---- */
+.sxm-finder .sxm-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}
+.sxm-finder .sxm-count{font-size:.88rem;color:var(--sxm-muted)}
+.sxm-finder .sxm-count b{color:var(--sxm-ink)}
+.sxm-finder .sxm-reset{font:inherit;font-size:.85rem;cursor:pointer;border:1px solid var(--sxm-line);background:transparent;color:var(--sxm-muted);padding:6px 14px;border-radius:999px;transition:color .15s,border-color .15s}
+.sxm-finder .sxm-reset:hover{color:var(--sxm-ink);border-color:var(--sxm-accent)}
+.sxm-finder .sxm-reset:focus-visible{outline:2px solid var(--sxm-accent);outline-offset:2px}
+
+/* ---- Best match spotlight ---- */
+.sxm-finder .sxm-best{display:grid;grid-template-columns:160px 1fr;gap:clamp(14px,3vw,22px);align-items:center;background:var(--sxm-panel);border:1px solid var(--sxm-accent);border-radius:16px;padding:clamp(13px,3vw,18px);margin-bottom:20px;box-shadow:var(--sxm-shadow)}
+.sxm-finder .sxm-best[hidden]{display:none}
+.sxm-finder .sxm-best-media{aspect-ratio:1/1;border-radius:12px;overflow:hidden;max-width:100%}
+.sxm-finder .sxm-best-media img{width:100%;height:100%;object-fit:cover;display:block}
+.sxm-finder .sxm-best-body{min-width:0}
+.sxm-finder .sxm-best-tag{display:inline-flex;align-items:center;gap:6px;font-family:var(--sxm-font-head);font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--sxm-accent-ink);background:var(--sxm-accent-soft);padding:4px 10px;border-radius:999px;margin-bottom:8px}
+.sxm-finder .sxm-best-name{font-family:var(--sxm-font-head);font-size:clamp(1.1rem,2.6vw,1.45rem);font-weight:700;margin:0 0 4px;line-height:1.15}
+.sxm-finder .sxm-best-desc{color:var(--sxm-muted);font-size:.92rem;margin:0 0 12px}
+
+/* ---- Grid ---- */
+.sxm-finder .sxm-note{font-size:.9rem;color:var(--sxm-muted);margin:0 0 12px;padding:9px 13px;background:var(--sxm-panel);border:1px dashed var(--sxm-line);border-radius:10px}
+.sxm-finder .sxm-note[hidden]{display:none}
+.sxm-finder .sxm-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:clamp(12px,2.4vw,18px)}
+.sxm-finder .sxm-card{display:flex;flex-direction:column;background:var(--sxm-panel);border:1px solid var(--sxm-line);border-radius:14px;overflow:hidden;transition:transform .15s,box-shadow .15s,border-color .15s}
+.sxm-finder .sxm-card:hover{transform:translateY(-3px);box-shadow:var(--sxm-shadow);border-color:var(--sxm-accent)}
+.sxm-finder .sxm-card-media{aspect-ratio:4/5;position:relative;overflow:hidden;background:var(--sxm-accent-soft)}
+.sxm-finder .sxm-card-media img{width:100%;height:100%;object-fit:cover;display:block}
+.sxm-finder .sxm-ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--sxm-font-head);font-weight:700;font-size:2.2rem;color:var(--sxm-accent);background:
+  radial-gradient(120% 120% at 20% 10%,var(--sxm-accent-soft),transparent 60%),var(--sxm-panel)}
+.sxm-finder .sxm-match{position:absolute;top:9px;left:9px;font-family:var(--sxm-font-head);font-size:.68rem;font-weight:700;letter-spacing:.04em;color:#fff;background:var(--sxm-good);padding:3px 8px;border-radius:999px}
+.sxm-finder .sxm-card-body{display:flex;flex-direction:column;gap:7px;padding:13px 14px 15px;flex:1}
+.sxm-finder .sxm-card-name{font-family:var(--sxm-font-head);font-size:1rem;font-weight:600;line-height:1.2;margin:0}
+.sxm-finder .sxm-card-desc{font-size:.85rem;color:var(--sxm-muted);margin:0;flex:1}
+.sxm-finder .sxm-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:2px}
+.sxm-finder .sxm-tag{font-size:.7rem;color:var(--sxm-muted);border:1px solid var(--sxm-line);padding:2px 8px;border-radius:999px;text-transform:capitalize}
+.sxm-finder a.sxm-link{font-family:var(--sxm-font-head);font-size:.84rem;font-weight:600;color:var(--sxm-accent);text-decoration:none;display:inline-flex;align-items:center;gap:5px;margin-top:4px}
+.sxm-finder a.sxm-link:hover{text-decoration:underline}
+.sxm-finder a.sxm-link svg{width:14px;height:14px}
+.sxm-finder .sxm-cta{align-self:flex-start;margin-top:2px;font:inherit;font-family:var(--sxm-font-head);font-size:.86rem;font-weight:600;background:var(--sxm-accent);color:#1a1510;text-decoration:none;padding:8px 15px;border-radius:999px;transition:filter .15s}
+.sxm-finder .sxm-cta:hover{filter:brightness(1.07)}
+
+/* ---- Empty state ---- */
+.sxm-finder .sxm-empty{text-align:center;padding:36px 16px;color:var(--sxm-muted);background:var(--sxm-panel);border:1px dashed var(--sxm-line);border-radius:14px}
+.sxm-finder .sxm-empty[hidden]{display:none}
+.sxm-finder .sxm-empty b{color:var(--sxm-ink);font-family:var(--sxm-font-head)}
+
+/* ---- Footer credit ---- */
+.sxm-finder .sxm-foot{margin-top:16px;text-align:right;font-size:.74rem;color:var(--sxm-muted)}
+.sxm-finder .sxm-foot b{color:var(--sxm-ink)}
+
+/* ---- Mobile ---- */
+@media (max-width:540px){
+  .sxm-finder .sxm-facet-label{min-width:100%}
+  .sxm-finder .sxm-best{grid-template-columns:1fr}
+  .sxm-finder .sxm-best-media{max-width:150px}
+}
+@media (prefers-reduced-motion:reduce){
+  .sxm-finder *{transition:none!important}
+}
+</style>
+
+<section class="sxm-finder" id="sxmFinder" aria-label="Style finder">
+  <div class="sxm-head">
+    <div>
+      <span class="sxm-eyebrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        StyleX Finder
+      </span>
+      <h2 class="sxm-title" id="sxmTitle">Find Your Perfect Haircut</h2>
+      <p class="sxm-sub" id="sxmSub">Pick your details and we’ll match you to the styles that suit you best.</p>
+    </div>
+  </div>
+
+  <div class="sxm-filters" id="sxmFilters"><!-- facets injected here --></div>
+
+  <div class="sxm-bar">
+    <span class="sxm-count" id="sxmCount"></span>
+    <button type="button" class="sxm-reset" id="sxmReset">Reset filters</button>
+  </div>
+
+  <div class="sxm-best" id="sxmBest" hidden>
+    <div class="sxm-best-media" id="sxmBestMedia"></div>
+    <div class="sxm-best-body">
+      <span class="sxm-best-tag">★ Your best match</span>
+      <h3 class="sxm-best-name" id="sxmBestName"></h3>
+      <p class="sxm-best-desc" id="sxmBestDesc"></p>
+      <a class="sxm-cta" id="sxmBestCta" href="#">See this style</a>
+    </div>
+  </div>
+
+  <p class="sxm-note" id="sxmNote" hidden></p>
+  <div class="sxm-grid" id="sxmGrid"></div>
+  <div class="sxm-empty" id="sxmEmpty" hidden><b>No styles match those choices.</b><br>Try removing a filter or two.</div>
+
+  <div class="sxm-foot">Powered by <b>StyleX Magazine</b></div>
+</section>
+
+<script>
+(function(){
+  "use strict";
+
+  /* =========================================================================
+     ↓↓↓  EDIT THIS CONFIG FOR EACH ARTICLE  ↓↓↓
+     - title / subtitle: heading shown at the top.
+     - filters: which question rows appear. Delete a row you don't need.
+     - items: the list of styles for THIS article.
+         img:  image URL (leave "" for a lettered placeholder)
+         link: URL to the style/section (use "#id" to jump within the page)
+         the facet keys (faceShape, hairType, length, maintenance) must match
+         the filter keys above. Each value is a list of what the style suits.
+     ========================================================================= */
+  var SXM_CONFIG = {
+    title: "Find Your Perfect Haircut",
+    subtitle: "Pick your details and we’ll match you to the styles that suit you best.",
+
+    filters: [
+      { key:"faceShape", label:"Face Shape", options:[
+          {v:"round",l:"Round"},{v:"oval",l:"Oval"},{v:"square",l:"Square"},
+          {v:"oblong",l:"Oblong"},{v:"diamond",l:"Diamond"},{v:"heart",l:"Heart"}
+      ]},
+      { key:"hairType", label:"Hair Type", options:[
+          {v:"straight",l:"Straight"},{v:"wavy",l:"Wavy"},{v:"curly",l:"Curly"},{v:"coily",l:"Coily"}
+      ]},
+      { key:"length", label:"Length", options:[
+          {v:"short",l:"Short"},{v:"medium",l:"Medium"},{v:"long",l:"Long"}
+      ]},
+      { key:"maintenance", label:"Maintenance", options:[
+          {v:"low",l:"Low effort"},{v:"medium",l:"Medium"},{v:"high",l:"High effort"}
+      ]}
+    ],
+
+    items: [
+      { name:"Classic Taper Fade", img:"", link:"#",
+        desc:"Short back and sides with a clean taper — sharp, versatile, office-ready.",
+        faceShape:["oval","square","round","diamond"], hairType:["straight","wavy","curly","coily"], length:["short"], maintenance:["low"] },
+
+      { name:"Textured Crop", img:"", link:"#",
+        desc:"Short textured top with a fringe — modern and very low fuss.",
+        faceShape:["oval","oblong","square"], hairType:["straight","wavy"], length:["short"], maintenance:["low"] },
+
+      { name:"Slicked-Back Undercut", img:"", link:"#",
+        desc:"Disconnected sides with a swept-back top — bold and polished.",
+        faceShape:["oval","square","diamond"], hairType:["straight","wavy"], length:["medium"], maintenance:["medium"] },
+
+      { name:"Curly Top Fade", img:"", link:"#",
+        desc:"Defined curls up top over a tight fade — shows off natural texture.",
+        faceShape:["oval","round","heart"], hairType:["curly","coily"], length:["short","medium"], maintenance:["medium"] },
+
+      { name:"Modern Quiff", img:"", link:"#",
+        desc:"Volume at the front, tidy sides — classic with an edge.",
+        faceShape:["square","oblong","diamond"], hairType:["straight","wavy"], length:["medium"], maintenance:["high"] },
+
+      { name:"Buzz Cut", img:"", link:"#",
+        desc:"One length all over — the lowest-maintenance look there is.",
+        faceShape:["oval","square","diamond"], hairType:["straight","wavy","curly","coily"], length:["short"], maintenance:["low"] },
+
+      { name:"Medium Layered Flow", img:"", link:"#",
+        desc:"Grown-out layers with natural movement — relaxed and stylish.",
+        faceShape:["oval","oblong","heart"], hairType:["wavy","curly"], length:["medium","long"], maintenance:["high"] },
+
+      { name:"Comb Over + Hard Part", img:"", link:"#",
+        desc:"A defined part with a neat comb-over — smart and timeless.",
+        faceShape:["round","oval","heart"], hairType:["straight","wavy"], length:["short","medium"], maintenance:["medium"] }
+    ]
+  };
+  /* ↑↑↑  END OF CONFIG  ↑↑↑ */
+
+  var root = document.getElementById("sxmFinder");
+  if(!root) return;
+  var $ = function(id){ return root.querySelector(id); };
+
+  // Build a label lookup per facet for showing readable tags.
+  var labelMap = {};
+  SXM_CONFIG.filters.forEach(function(f){
+    labelMap[f.key] = {};
+    f.options.forEach(function(o){ labelMap[f.key][o.v] = o.l; });
+  });
+
+  var state = {}; // key -> selected value (or undefined = All)
+
+  // ---- Header text ----
+  document.getElementById("sxmTitle").textContent = SXM_CONFIG.title;
+  document.getElementById("sxmSub").textContent = SXM_CONFIG.subtitle;
+
+  // ---- Build filter rows ----
+  var filtersEl = document.getElementById("sxmFilters");
+  SXM_CONFIG.filters.forEach(function(f){
+    var row = document.createElement("div");
+    row.className = "sxm-facet";
+    var lab = document.createElement("span");
+    lab.className = "sxm-facet-label";
+    lab.textContent = f.label;
+    row.appendChild(lab);
+    var chips = document.createElement("div");
+    chips.className = "sxm-chips";
+    f.options.forEach(function(o){
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "sxm-chip";
+      b.textContent = o.l;
+      b.setAttribute("aria-pressed","false");
+      b.addEventListener("click", function(){
+        if(state[f.key] === o.v){ delete state[f.key]; }
+        else { state[f.key] = o.v; }
+        render();
+      });
+      b.dataset.key = f.key; b.dataset.val = o.v;
+      chips.appendChild(b);
+    });
+    row.appendChild(chips);
+    filtersEl.appendChild(row);
+  });
+
+  // ---- Scoring ----
+  function activeKeys(){ return Object.keys(state); }
+
+  function scoreItem(item){
+    var keys = activeKeys();
+    if(keys.length === 0) return {score:0, total:0, strict:true};
+    var hit = 0;
+    keys.forEach(function(k){
+      var vals = item[k] || [];
+      if(vals.indexOf(state[k]) !== -1) hit++;
+    });
+    return {score:hit, total:keys.length, strict: hit === keys.length};
+  }
+
+  function placeholder(name){
+    var letter = (name||"?").trim().charAt(0).toUpperCase();
+    return '<div class="sxm-ph">'+letter+'</div>';
+  }
+
+  function tagChips(item){
+    var html = "";
+    SXM_CONFIG.filters.forEach(function(f){
+      var vals = item[f.key] || [];
+      // show the matched value if filtered, else the first suited value
+      var show = (state[f.key] && vals.indexOf(state[f.key])!==-1) ? state[f.key] : vals[0];
+      if(show){ html += '<span class="sxm-tag">'+(labelMap[f.key][show]||show)+'</span>'; }
+    });
+    return html;
+  }
+
+  function cardHTML(item, pct){
+    var media = item.img
+      ? '<img src="'+item.img+'" alt="'+escapeAttr(item.name)+'" loading="lazy">'
+      : placeholder(item.name);
+    var badge = (pct!=null) ? '<span class="sxm-match">'+pct+'% match</span>' : '';
+    var link = item.link && item.link !== "#"
+      ? '<a class="sxm-link" href="'+item.link+'">Read the guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>'
+      : '';
+    return '<article class="sxm-card">'
+      + '<div class="sxm-card-media">'+media+badge+'</div>'
+      + '<div class="sxm-card-body">'
+      +   '<h3 class="sxm-card-name">'+escapeHtml(item.name)+'</h3>'
+      +   '<p class="sxm-card-desc">'+escapeHtml(item.desc||"")+'</p>'
+      +   '<div class="sxm-tags">'+tagChips(item)+'</div>'
+      +   link
+      + '</div></article>';
+  }
+
+  function escapeHtml(s){ return String(s).replace(/[&<>]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c];}); }
+  function escapeAttr(s){ return String(s).replace(/"/g,'&quot;'); }
+
+  // ---- Render ----
+  function render(){
+    // chip pressed state
+    root.querySelectorAll(".sxm-chip").forEach(function(b){
+      b.setAttribute("aria-pressed", state[b.dataset.key] === b.dataset.val ? "true" : "false");
+    });
+
+    var keys = activeKeys();
+    var scored = SXM_CONFIG.items.map(function(it){ return {it:it, s:scoreItem(it)}; });
+
+    var grid = document.getElementById("sxmGrid");
+    var best = document.getElementById("sxmBest");
+    var note = document.getElementById("sxmNote");
+    var empty = document.getElementById("sxmEmpty");
+    var count = document.getElementById("sxmCount");
+
+    grid.innerHTML = "";
+
+    if(keys.length === 0){
+      // No filters: show everything, no best-match spotlight.
+      best.hidden = true; note.hidden = true; empty.hidden = true;
+      SXM_CONFIG.items.forEach(function(it){ grid.insertAdjacentHTML("beforeend", cardHTML(it, null)); });
+      count.innerHTML = "Showing all <b>"+SXM_CONFIG.items.length+"</b> styles";
+      return;
+    }
+
+    var strict = scored.filter(function(x){ return x.s.strict; });
+    var list, usedFallback = false;
+
+    if(strict.length){
+      list = strict;
+    } else {
+      // fallback: best partial matches (highest score, > 0)
+      var maxScore = Math.max.apply(null, scored.map(function(x){return x.s.score;}));
+      list = (maxScore > 0) ? scored.filter(function(x){ return x.s.score === maxScore; }) : [];
+      usedFallback = list.length > 0;
+    }
+
+    if(list.length === 0){
+      best.hidden = true; note.hidden = true; empty.hidden = false;
+      count.innerHTML = "Showing <b>0</b> of "+SXM_CONFIG.items.length+" styles";
+      return;
+    }
+    empty.hidden = true;
+
+    // sort by score desc then original order
+    list.sort(function(a,b){ return b.s.score - a.s.score; });
+
+    // Best match spotlight = top item
+    var top = list[0];
+    var topPct = Math.round((top.s.score / top.s.total) * 100);
+    best.hidden = false;
+    $("#sxmBestName").textContent = top.it.name;
+    $("#sxmBestDesc").textContent = top.it.desc || "";
+    $("#sxmBestMedia").innerHTML = top.it.img
+      ? '<img src="'+top.it.img+'" alt="'+escapeAttr(top.it.name)+'">'
+      : placeholder(top.it.name);
+    var cta = $("#sxmBestCta");
+    if(top.it.link && top.it.link !== "#"){ cta.href = top.it.link; cta.hidden = false; }
+    else { cta.hidden = true; }
+
+    note.hidden = !usedFallback;
+    if(usedFallback){ note.textContent = "No exact match — here are the closest styles for what you picked."; }
+
+    // Grid = the rest (skip the spotlighted top)
+    list.slice(1).forEach(function(x){
+      var pct = Math.round((x.s.score / x.s.total) * 100);
+      grid.insertAdjacentHTML("beforeend", cardHTML(x.it, pct));
+    });
+
+    count.innerHTML = "Showing <b>"+list.length+"</b> of "+SXM_CONFIG.items.length+" styles";
+  }
+
+  document.getElementById("sxmReset").addEventListener("click", function(){
+    state = {}; render();
+  });
+
+  render();
+})();
+</script>
+<!== COPY TO HERE ==>
