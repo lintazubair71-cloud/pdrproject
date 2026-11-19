@@ -1,0 +1,180 @@
+<title>StyleX Style Finder</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* ---- Demo article shell (NOT part of the embed — only to preview the tool) ---- */
+:root{--d-bg:#fcfbf9;--d-ink:#201d18;--d-mut:#6b655d;--d-line:#e7e1d7;--d-accent:#b07d2b}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--d-bg:#141210;--d-ink:#efeae0;--d-mut:#a79e8f;--d-line:#332e26;--d-accent:#d9a94e;color-scheme:dark}}
+:root[data-theme="dark"]{--d-bg:#141210;--d-ink:#efeae0;--d-mut:#a79e8f;--d-line:#332e26;--d-accent:#d9a94e;color-scheme:dark}
+body{background:var(--d-bg);color:var(--d-ink);font-family:Inter,system-ui,Segoe UI,Roboto,sans-serif;line-height:1.6}
+.demo-wrap{max-width:760px;margin:0 auto;padding-block:28px 60px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.demo-eyebrow{font:600 .72rem/1 "Space Grotesk",system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--d-accent)}
+.demo-wrap h1{font-family:"Space Grotesk",system-ui,sans-serif;font-size:clamp(1.6rem,5vw,2.3rem);line-height:1.12;margin:.3em 0 .1em;text-wrap:balance}
+.demo-meta{color:var(--d-mut);font-size:.9rem;margin-bottom:8px}
+.entry-content h2{font-family:"Space Grotesk",system-ui,sans-serif;font-size:1.3rem;margin:1.6em 0 .3em}
+.entry-content p{margin:.4em 0}
+.bestfor{font-size:.9rem;color:var(--d-mut)}
+.bestfor b{color:var(--d-ink)}
+.demo-note{background:color-mix(in srgb,var(--d-accent) 12%,transparent);border:1px dashed var(--d-accent);border-radius:10px;padding:10px 14px;font-size:.85rem;color:var(--d-ink);margin:18px 0}
+</style>
+
+<div class="demo-wrap">
+  <span class="demo-eyebrow">StyleX Magazine · Haircuts</span>
+  <h1>20 Best Men's Haircuts by Face Shape (2026 Guide)</h1>
+  <p class="demo-meta">By Amir Khan · Updated Nov 2026</p>
+  <p class="demo-note">⬇️ This is a <b>preview</b>. The brass bar below is the actual tool. Tap a face shape — the article's own styles below filter instantly. On your site you paste just the tool; your article supplies the styles.</p>
+
+  <!-- ===================== THE TOOL (embed this part) ===================== -->
+  <style>
+  .sxmf{--sxmf-bg:#faf8f4;--sxmf-ink:#1a1816;--sxmf-muted:#6b655d;--sxmf-line:#e4ded4;--sxmf-accent:#b07d2b;--sxmf-on-accent:#fff;--sxmf-head:"Space Grotesk",system-ui,Segoe UI,Roboto,sans-serif;--sxmf-body:"Inter",system-ui,Segoe UI,Roboto,sans-serif;box-sizing:border-box;font-family:var(--sxmf-body);color:var(--sxmf-ink);background:var(--sxmf-bg);border:1px solid var(--sxmf-line);border-left:4px solid var(--sxmf-accent);border-radius:12px;padding:14px clamp(14px,3vw,18px);max-width:860px;margin:22px auto;line-height:1.5;-webkit-font-smoothing:antialiased}
+  @media (prefers-color-scheme:dark){.sxmf:not([data-sxmf-theme="light"]){--sxmf-bg:#1b1812;--sxmf-ink:#f3efe7;--sxmf-muted:#a79e8f;--sxmf-line:#39332a;--sxmf-accent:#d9a94e;--sxmf-on-accent:#1a1510;color-scheme:dark}}
+  .sxmf[data-sxmf-theme="dark"]{--sxmf-bg:#1b1812;--sxmf-ink:#f3efe7;--sxmf-muted:#a79e8f;--sxmf-line:#39332a;--sxmf-accent:#d9a94e;--sxmf-on-accent:#1a1510;color-scheme:dark}
+  .sxmf *,.sxmf *::before,.sxmf *::after{box-sizing:border-box}
+  .sxmf .sxmf-top{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+  .sxmf .sxmf-ic{width:17px;height:17px;flex:0 0 auto;color:var(--sxmf-accent)}
+  .sxmf .sxmf-title{font-family:var(--sxmf-head);font-size:1rem;font-weight:700;margin:0;line-height:1.2}
+  .sxmf .sxmf-title span{color:var(--sxmf-muted);font-weight:400;font-size:.85rem}
+  .sxmf .sxmf-rows{display:flex;flex-direction:column;gap:9px}
+  .sxmf .sxmf-row{display:flex;flex-wrap:wrap;align-items:center;gap:7px}
+  .sxmf .sxmf-lab{font-family:var(--sxmf-head);font-size:.72rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--sxmf-muted);min-width:82px;flex:0 0 auto}
+  .sxmf .sxmf-chips{display:flex;flex-wrap:wrap;gap:6px;min-width:0}
+  .sxmf .sxmf-chip{font:inherit;font-size:.84rem;cursor:pointer;border:1px solid var(--sxmf-line);background:transparent;color:var(--sxmf-ink);padding:5px 12px;border-radius:999px;transition:background .15s,border-color .15s,color .15s}
+  .sxmf .sxmf-chip:hover{border-color:var(--sxmf-accent)}
+  .sxmf .sxmf-chip .sxmf-n{color:var(--sxmf-muted);font-size:.78em;margin-left:4px}
+  .sxmf .sxmf-chip[aria-pressed="true"]{background:var(--sxmf-accent);border-color:var(--sxmf-accent);color:var(--sxmf-on-accent);font-weight:600}
+  .sxmf .sxmf-chip[aria-pressed="true"] .sxmf-n{color:var(--sxmf-on-accent);opacity:.8}
+  .sxmf .sxmf-chip:focus-visible{outline:2px solid var(--sxmf-accent);outline-offset:2px}
+  .sxmf .sxmf-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;margin-top:11px;padding-top:10px;border-top:1px solid var(--sxmf-line)}
+  .sxmf .sxmf-count{font-size:.85rem;color:var(--sxmf-muted)}
+  .sxmf .sxmf-count b{color:var(--sxmf-ink)}
+  .sxmf .sxmf-reset{font:inherit;font-size:.82rem;cursor:pointer;border:none;background:none;color:var(--sxmf-accent);font-weight:600;padding:4px 2px;text-decoration:underline;text-underline-offset:3px}
+  .sxmf .sxmf-reset:focus-visible{outline:2px solid var(--sxmf-accent);outline-offset:2px}
+  .sxmf[hidden]{display:none}
+  .sxmf-hiddenstyle{display:none!important}
+  @media (max-width:520px){.sxmf .sxmf-lab{min-width:100%}}
+  @media (prefers-reduced-motion:reduce){.sxmf *{transition:none!important}}
+  </style>
+
+  <section class="sxmf" id="sxmf" aria-label="Find your style by face shape" hidden>
+    <div class="sxmf-top">
+      <svg class="sxmf-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <h2 class="sxmf-title">Find your style <span>— pick your face shape</span></h2>
+    </div>
+    <div class="sxmf-rows" id="sxmfRows"></div>
+    <div class="sxmf-foot">
+      <span class="sxmf-count" id="sxmfCount"></span>
+      <button type="button" class="sxmf-reset" id="sxmfReset">Show all</button>
+    </div>
+  </section>
+
+  <script>
+  (function(){
+    "use strict";
+    var SXM={scope:".entry-content, article .post-content, article, main, body",heading:"h2",autoText:true};
+    var FACE_ORDER=["oval","round","square","oblong","heart","diamond","triangle"];
+    var FACE_LABEL={oval:"Oval",round:"Round",square:"Square",oblong:"Oblong",heart:"Heart",diamond:"Diamond",triangle:"Triangle"};
+    var FACE_WORDS={oval:["oval"],round:["round"],square:["square"],oblong:["oblong","rectangle","rectangular","long face"],heart:["heart"],diamond:["diamond"],triangle:["triangle","triangular","pear"]};
+    var ALL_PHRASES=["all face shapes","any face shape","every face shape","all shapes","most face shapes","any shape"];
+    function ready(fn){if(document.readyState!=="loading")fn();else document.addEventListener("DOMContentLoaded",fn);}
+    ready(function(){
+      var bar=document.getElementById("sxmf"); if(!bar)return;
+      var container=null;
+      SXM.scope.split(",").some(function(sel){var el=document.querySelector(sel.trim());if(el){container=el;return true;}return false;});
+      if(!container)container=document.body;
+      var headings=Array.prototype.slice.call(container.querySelectorAll(SXM.heading));
+      var styles=[];
+      headings.forEach(function(h){
+        var nodes=[h],n=h.nextElementSibling;
+        while(n&&n.tagName!==h.tagName){nodes.push(n);n=n.nextElementSibling;}
+        var faces=readFaces(h,nodes);
+        if(!faces||faces.size===0)return;
+        styles.push({heading:h,nodes:nodes,faces:faces});
+      });
+      if(styles.length<2)return;
+      var present={};styles.forEach(function(s){s.faces.forEach(function(f){present[f]=true;});});
+      var faceList=FACE_ORDER.filter(function(f){return present[f];});
+      if(faceList.length<2)return;
+      var rows=document.getElementById("sxmfRows");
+      var row=document.createElement("div");row.className="sxmf-row";
+      var lab=document.createElement("span");lab.className="sxmf-lab";lab.textContent="Face shape";row.appendChild(lab);
+      var chipsWrap=document.createElement("div");chipsWrap.className="sxmf-chips";
+      var selected=null;
+      faceList.forEach(function(f){
+        var count=styles.filter(function(s){return s.faces.has(f);}).length;
+        var b=document.createElement("button");
+        b.type="button";b.className="sxmf-chip";b.setAttribute("aria-pressed","false");b.dataset.face=f;
+        b.innerHTML=FACE_LABEL[f]+' <span class="sxmf-n">'+count+'</span>';
+        b.addEventListener("click",function(){selected=(selected===f)?null:f;apply();});
+        chipsWrap.appendChild(b);
+      });
+      row.appendChild(chipsWrap);rows.appendChild(row);
+      var countEl=document.getElementById("sxmfCount");
+      document.getElementById("sxmfReset").addEventListener("click",function(){selected=null;apply();});
+      function apply(){
+        chipsWrap.querySelectorAll(".sxmf-chip").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.face===selected?"true":"false");});
+        var shown=0;
+        styles.forEach(function(s){
+          var match=!selected||s.faces.has(selected);
+          if(match)shown++;
+          s.nodes.forEach(function(nd){nd.classList.toggle("sxmf-hiddenstyle",!match);});
+        });
+        if(!selected){countEl.innerHTML="Showing all <b>"+styles.length+"</b> styles";}
+        else{countEl.innerHTML="Showing <b>"+shown+"</b> of "+styles.length+" for "+FACE_LABEL[selected]+" faces";}
+      }
+      apply();bar.hidden=false;
+      function readFaces(h,nodes){
+        var tag=h.getAttribute("data-face");
+        if(tag){return toSet(tag.split(/[,\s]+/));}
+        if(!SXM.autoText)return null;
+        var low=nodes.map(function(n){return n.textContent||"";}).join("  ").toLowerCase();
+        var cue=low.search(/\b(best for|suits|suited to|ideal for|great for|works for|face shape|recommended for|flatters)\b/);
+        var scan=(cue>=0)?low.slice(cue,cue+160):low;
+        for(var i=0;i<ALL_PHRASES.length;i++){if(scan.indexOf(ALL_PHRASES[i])>=0){return toSet(FACE_ORDER.slice());}}
+        var found=new Set();
+        Object.keys(FACE_WORDS).forEach(function(f){FACE_WORDS[f].forEach(function(w){var re=new RegExp("\\b"+w.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+"\\b");if(re.test(scan))found.add(f);});});
+        return found.size?found:null;
+      }
+      function toSet(arr){var s=new Set();arr.forEach(function(v){v=(v||"").trim().toLowerCase();if(FACE_LABEL[v])s.add(v);});return s;}
+    });
+  })();
+  </script>
+  <!-- =================== END OF TOOL =================== -->
+
+  <div class="entry-content">
+    <p>Your face shape is the single best guide to a haircut that actually suits you. Below are 20 looks our barbers rate — use the finder above to jump straight to the ones for your shape.</p>
+
+    <h2>Classic Taper Fade</h2>
+    <p>Short back and sides with a clean, gradual taper. Timeless and office-ready.</p>
+    <p class="bestfor"><b>Best for:</b> Oval, Square, Round, Diamond faces · Low maintenance</p>
+
+    <h2>Textured Crop</h2>
+    <p>A short, choppy top with a blunt fringe. Modern and very low effort.</p>
+    <p class="bestfor"><b>Best for:</b> Oval, Oblong and Square faces</p>
+
+    <h2>Slicked-Back Undercut</h2>
+    <p>Disconnected sides with a swept-back top for a bold, polished finish.</p>
+    <p class="bestfor"><b>Suits</b> Oval, Square and Diamond face shapes.</p>
+
+    <h2>Curly Top Fade</h2>
+    <p>Defined curls on top over a tight fade — makes the most of natural texture.</p>
+    <p class="bestfor"><b>Ideal for</b> Round, Oval and Heart faces.</p>
+
+    <h2>Modern Quiff</h2>
+    <p>Volume at the front with tidy sides. A classic with a sharp edge.</p>
+    <p class="bestfor"><b>Best for:</b> Square, Oblong and Diamond faces.</p>
+
+    <h2>Buzz Cut</h2>
+    <p>One length all over — the lowest-maintenance look there is.</p>
+    <p class="bestfor"><b>Great for</b> Oval, Square and Diamond faces.</p>
+
+    <h2>Medium Layered Flow</h2>
+    <p>Grown-out layers with natural movement — relaxed and stylish.</p>
+    <p class="bestfor"><b>Best for:</b> Oval, Oblong and Heart faces.</p>
+
+    <h2>Comb Over with Hard Part</h2>
+    <p>A defined parting with a neat comb-over. Smart and timeless.</p>
+    <p class="bestfor"><b>Suits</b> Round, Oval and Heart face shapes.</p>
+
+    <h2>Frequently Asked Questions</h2>
+    <p>This heading has no face-shape line, so the finder correctly ignores it and leaves it visible at all times.</p>
+  </div>
+</div>
