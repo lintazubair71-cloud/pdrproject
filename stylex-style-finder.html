@@ -93,7 +93,7 @@
   /* ---- Small config (you rarely need to touch this) ---- */
   var SXM = {
     scope: ".entry-content, article .post-content, article, main, body", // where the article lives
-    heading: "h2",     // each hairstyle in the article is one of these headings
+    heading: "auto",   // "auto" = detect whether styles are H2/H3/H4. Or force e.g. "h3".
     autoText: true     // also read face shapes from a "Best for: ..." line in each section
   };
 
@@ -118,18 +118,20 @@
     SXM.scope.split(",").some(function(sel){ var el=document.querySelector(sel.trim()); if(el){container=el;return true;} return false; });
     if(!container) container=document.body;
 
-    var headings = Array.prototype.slice.call(container.querySelectorAll(SXM.heading));
-
-    /* Build a "style" record for each heading that has face-shape info. */
-    var styles=[];
-    headings.forEach(function(h){
-      // collect the block: this heading + following siblings until the next heading of same tag
-      var nodes=[h], n=h.nextElementSibling;
-      while(n && n.tagName!==h.tagName){ nodes.push(n); n=n.nextElementSibling; }
-
-      var faces=readFaces(h, nodes);
-      if(!faces || faces.size===0) return; // not a filterable style (intro, FAQ, etc.) — leave untouched
-      styles.push({heading:h, nodes:nodes, faces:faces});
+    /* Find which heading level the hairstyles use, and build a record per style.
+       "auto" tries H2/H3/H4 and keeps whichever level yields the most styles. */
+    var levels = (SXM.heading === "auto") ? ["h2","h3","h4"] : [].concat(SXM.heading);
+    var styles = [];
+    levels.forEach(function(tag){
+      var arr = [];
+      Array.prototype.forEach.call(container.querySelectorAll(tag), function(h){
+        // block = this heading + following siblings until the next heading of same tag
+        var nodes=[h], n=h.nextElementSibling;
+        while(n && n.tagName!==h.tagName){ nodes.push(n); n=n.nextElementSibling; }
+        var faces=readFaces(h, nodes);
+        if(faces && faces.size) arr.push({heading:h, nodes:nodes, faces:faces}); // headings with no face info (intro, FAQ) are ignored
+      });
+      if(arr.length > styles.length) styles = arr;
     });
 
     if(styles.length < 2){ return; } // nothing useful to filter — keep bar hidden

@@ -10,7 +10,8 @@ body{background:var(--d-bg);color:var(--d-ink);font-family:Inter,system-ui,Segoe
 .demo-eyebrow{font:600 .72rem/1 "Space Grotesk",system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--d-accent)}
 .demo-wrap h1{font-family:"Space Grotesk",system-ui,sans-serif;font-size:clamp(1.6rem,5vw,2.3rem);line-height:1.12;margin:.3em 0 .1em;text-wrap:balance}
 .demo-meta{color:var(--d-mut);font-size:.9rem;margin-bottom:8px}
-.entry-content h2{font-family:"Space Grotesk",system-ui,sans-serif;font-size:1.3rem;margin:1.6em 0 .3em}
+.entry-content h2{font-family:"Space Grotesk",system-ui,sans-serif;font-size:1.4rem;margin:1.8em 0 .3em}
+.entry-content h3{font-family:"Space Grotesk",system-ui,sans-serif;font-size:1.2rem;margin:1.5em 0 .3em}
 .entry-content p{margin:.4em 0}
 .bestfor{font-size:.9rem;color:var(--d-mut)}
 .bestfor b{color:var(--d-ink)}
@@ -69,7 +70,7 @@ body{background:var(--d-bg);color:var(--d-ink);font-family:Inter,system-ui,Segoe
   <script>
   (function(){
     "use strict";
-    var SXM={scope:".entry-content, article .post-content, article, main, body",heading:"h2",autoText:true};
+    var SXM={scope:".entry-content, article .post-content, article, main, body",heading:"auto",autoText:true};
     var FACE_ORDER=["oval","round","square","oblong","heart","diamond","triangle"];
     var FACE_LABEL={oval:"Oval",round:"Round",square:"Square",oblong:"Oblong",heart:"Heart",diamond:"Diamond",triangle:"Triangle"};
     var FACE_WORDS={oval:["oval"],round:["round"],square:["square"],oblong:["oblong","rectangle","rectangular","long face"],heart:["heart"],diamond:["diamond"],triangle:["triangle","triangular","pear"]};
@@ -80,14 +81,17 @@ body{background:var(--d-bg);color:var(--d-ink);font-family:Inter,system-ui,Segoe
       var container=null;
       SXM.scope.split(",").some(function(sel){var el=document.querySelector(sel.trim());if(el){container=el;return true;}return false;});
       if(!container)container=document.body;
-      var headings=Array.prototype.slice.call(container.querySelectorAll(SXM.heading));
+      var levels=(SXM.heading==="auto")?["h2","h3","h4"]:[].concat(SXM.heading);
       var styles=[];
-      headings.forEach(function(h){
-        var nodes=[h],n=h.nextElementSibling;
-        while(n&&n.tagName!==h.tagName){nodes.push(n);n=n.nextElementSibling;}
-        var faces=readFaces(h,nodes);
-        if(!faces||faces.size===0)return;
-        styles.push({heading:h,nodes:nodes,faces:faces});
+      levels.forEach(function(tag){
+        var arr=[];
+        Array.prototype.forEach.call(container.querySelectorAll(tag),function(h){
+          var nodes=[h],n=h.nextElementSibling;
+          while(n&&n.tagName!==h.tagName){nodes.push(n);n=n.nextElementSibling;}
+          var faces=readFaces(h,nodes);
+          if(faces&&faces.size)arr.push({heading:h,nodes:nodes,faces:faces});
+        });
+        if(arr.length>styles.length)styles=arr;
       });
       if(styles.length<2)return;
       var present={};styles.forEach(function(s){s.faces.forEach(function(f){present[f]=true;});});
@@ -142,39 +146,39 @@ body{background:var(--d-bg);color:var(--d-ink);font-family:Inter,system-ui,Segoe
   <div class="entry-content">
     <p>Your face shape is the single best guide to a haircut that actually suits you. Below are 20 looks our barbers rate — use the finder above to jump straight to the ones for your shape.</p>
 
-    <h2>Classic Taper Fade</h2>
+    <h3>Classic Taper Fade</h3>
     <p>Short back and sides with a clean, gradual taper. Timeless and office-ready.</p>
     <p class="bestfor"><b>Best for:</b> Oval, Square, Round, Diamond faces · Low maintenance</p>
 
-    <h2>Textured Crop</h2>
+    <h3>Textured Crop</h3>
     <p>A short, choppy top with a blunt fringe. Modern and very low effort.</p>
     <p class="bestfor"><b>Best for:</b> Oval, Oblong and Square faces</p>
 
-    <h2>Slicked-Back Undercut</h2>
+    <h3>Slicked-Back Undercut</h3>
     <p>Disconnected sides with a swept-back top for a bold, polished finish.</p>
     <p class="bestfor"><b>Suits</b> Oval, Square and Diamond face shapes.</p>
 
-    <h2>Curly Top Fade</h2>
+    <h3>Curly Top Fade</h3>
     <p>Defined curls on top over a tight fade — makes the most of natural texture.</p>
     <p class="bestfor"><b>Ideal for</b> Round, Oval and Heart faces.</p>
 
-    <h2>Modern Quiff</h2>
+    <h3>Modern Quiff</h3>
     <p>Volume at the front with tidy sides. A classic with a sharp edge.</p>
     <p class="bestfor"><b>Best for:</b> Square, Oblong and Diamond faces.</p>
 
-    <h2>Buzz Cut</h2>
+    <h3>Buzz Cut</h3>
     <p>One length all over — the lowest-maintenance look there is.</p>
     <p class="bestfor"><b>Great for</b> Oval, Square and Diamond faces.</p>
 
-    <h2>Medium Layered Flow</h2>
+    <h3>Medium Layered Flow</h3>
     <p>Grown-out layers with natural movement — relaxed and stylish.</p>
     <p class="bestfor"><b>Best for:</b> Oval, Oblong and Heart faces.</p>
 
-    <h2>Comb Over with Hard Part</h2>
+    <h3>Comb Over with Hard Part</h3>
     <p>A defined parting with a neat comb-over. Smart and timeless.</p>
     <p class="bestfor"><b>Suits</b> Round, Oval and Heart face shapes.</p>
 
     <h2>Frequently Asked Questions</h2>
-    <p>This heading has no face-shape line, so the finder correctly ignores it and leaves it visible at all times.</p>
+    <p>This H2 section has no face-shape line, so the finder correctly ignores it (it filters the H3 styles above) and leaves it visible at all times.</p>
   </div>
 </div>
