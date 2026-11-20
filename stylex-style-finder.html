@@ -189,11 +189,11 @@
       if(tag){ return toSet(tag.split(/[,\s]+/)); }
       if(!SXM.autoText) return null;
 
-      // 2) read from text — prefer a "best for / suits / ideal for / face shape" cue
-      var text = nodes.map(function(n){return n.textContent||"";}).join("  ").toLowerCase();
-      var low = text;
-      var cue = low.search(/\b(best for|suits|suited to|ideal for|great for|works for|face shape|recommended for|flatters)\b/);
-      var scan = (cue>=0) ? low.slice(cue, cue+160) : low;
+      // 2) read ONLY from a face-shape cue line ("Best for: ...", "Suits ...", etc.)
+      var low = nodes.map(function(n){return n.textContent||"";}).join("  ").toLowerCase();
+      var cue = low.search(/\b(best for|best suited|suits|suited to|suited for|ideal for|perfect for|great for|good for|works for|works best for|recommended for|flatters|face shapes?)\b/);
+      if(cue < 0) return null;                 // no cue line = not treated as a style (avoids false matches)
+      var scan = low.slice(cue, cue+160);
 
       // "all face shapes"
       for(var i=0;i<ALL_PHRASES.length;i++){ if(scan.indexOf(ALL_PHRASES[i])>=0){ return toSet(FACE_ORDER.slice()); } }

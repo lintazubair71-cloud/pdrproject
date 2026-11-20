@@ -130,8 +130,9 @@ body{background:var(--d-bg);color:var(--d-ink);font-family:Inter,system-ui,Segoe
         if(tag){return toSet(tag.split(/[,\s]+/));}
         if(!SXM.autoText)return null;
         var low=nodes.map(function(n){return n.textContent||"";}).join("  ").toLowerCase();
-        var cue=low.search(/\b(best for|suits|suited to|ideal for|great for|works for|face shape|recommended for|flatters)\b/);
-        var scan=(cue>=0)?low.slice(cue,cue+160):low;
+        var cue=low.search(/\b(best for|best suited|suits|suited to|suited for|ideal for|perfect for|great for|good for|works for|works best for|recommended for|flatters|face shapes?)\b/);
+        if(cue<0)return null;
+        var scan=low.slice(cue,cue+160);
         for(var i=0;i<ALL_PHRASES.length;i++){if(scan.indexOf(ALL_PHRASES[i])>=0){return toSet(FACE_ORDER.slice());}}
         var found=new Set();
         Object.keys(FACE_WORDS).forEach(function(f){FACE_WORDS[f].forEach(function(w){var re=new RegExp("\\b"+w.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+"\\b");if(re.test(scan))found.add(f);});});
