@@ -93,7 +93,7 @@
   /* ---- Small config (you rarely need to touch this) ---- */
   var SXM = {
     scope: ".entry-content, article .post-content, article, main, body", // where the article lives
-    heading: "auto",   // "auto" = detect whether styles are H2/H3/H4. Or force e.g. "h3".
+    heading: "auto",   // "auto" = detect headings (H2-H5) OR numbered bold paragraphs. Or force e.g. "h3".
     autoText: true     // also read face shapes from a "Best for: ..." line in each section
   };
 
@@ -120,21 +120,33 @@
 
     /* Find which heading level the hairstyles use, and build a record per style.
        "auto" tries H2/H3/H4 and keeps whichever level yields the most styles. */
-    var levels = (SXM.heading === "auto") ? ["h2","h3","h4"] : [].concat(SXM.heading);
-    var styles = [];
-    levels.forEach(function(tag){
-      var arr = [];
-      Array.prototype.forEach.call(container.querySelectorAll(tag), function(h){
-        // block = this heading + following siblings until the next heading of same tag
-        var nodes=[h], n=h.nextElementSibling;
-        while(n && n.tagName!==h.tagName){ nodes.push(n); n=n.nextElementSibling; }
-        var faces=readFaces(h, nodes);
-        if(faces && faces.size) arr.push({heading:h, nodes:nodes, faces:faces}); // headings with no face info (intro, FAQ) are ignored
+    /* Detect the styles in the article. Works with EITHER:
+       (a) headings (H2/H3/H4), or
+       (b) numbered bold paragraphs like "1. Low Taper Fade." — no heading needed.
+       A block only counts as a style if it has a face-shape cue line ("Best for: ..."). */
+    function buildStyles(isAnchor){
+      var anchors=[];
+      Array.prototype.forEach.call(container.querySelectorAll("h2,h3,h4,h5,p,li"), function(el){ if(isAnchor(el)) anchors.push(el); });
+      var set = (window.Set ? new Set(anchors) : {has:function(x){return anchors.indexOf(x)>=0;}});
+      var out=[];
+      anchors.forEach(function(a){
+        var nodes=[a], n=a.nextElementSibling;
+        while(n && !set.has(n)){ nodes.push(n); n=n.nextElementSibling; } // block = anchor + siblings up to next anchor
+        var faces=readFaces(a, nodes);
+        if(faces && faces.size) out.push({heading:a, nodes:nodes, faces:faces});
       });
-      if(arr.length > styles.length) styles = arr;
-    });
+      return out;
+    }
+    var styles;
+    if(SXM.heading && SXM.heading !== "auto"){
+      styles = buildStyles(function(el){ return el.tagName === SXM.heading.toUpperCase(); });
+    } else {
+      var byHeading = buildStyles(function(el){ return /^H[2-5]$/.test(el.tagName); });
+      var byNumber  = buildStyles(function(el){ return (el.tagName==="P"||el.tagName==="LI") && /^\s*\d+\s*[.)]/.test((el.textContent||"").trim()); });
+      styles = (byNumber.length > byHeading.length) ? byNumber : byHeading; // whichever finds more styles
+    }
 
-    if(styles.length < 2){ return; } // nothing useful to filter — keep bar hidden
+    if(styles.length < 2){ return; } // nothing to filter — keep bar hidden
 
     /* Which face shapes actually appear, in display order */
     var present={};
