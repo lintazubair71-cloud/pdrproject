@@ -72,6 +72,23 @@
 .sxmf-hiddenstyle{display:none!important}
 @media (max-width:520px){.sxmf .sxmf-lab{min-width:100%}}
 @media (prefers-reduced-motion:reduce){.sxmf *{transition:none!important}}
+
+/* ---- Info box shown under each hairstyle (in your brand colours) ----
+   Change #ff2c54 below if you want a different accent. */
+.sxm-meta{
+  background:#fdeef1;                 /* light tint of your brand accent */
+  border:1px solid #f7d9e0;
+  border-left:4px solid #ff2c54;      /* your brand accent */
+  border-radius:10px;
+  padding:11px 15px;margin:12px 0 22px;
+  font-size:.95rem;line-height:1.8;color:#2b2d42;
+  font-family:"Poppins","Inter",system-ui,sans-serif;
+}
+.sxm-meta strong{color:#1f2030;font-weight:600}
+@media (prefers-color-scheme:dark){
+  .sxm-meta{background:#2a1a1f;border-color:#4a2a33;color:#ead9de}
+  .sxm-meta strong{color:#fff}
+}
 </style>
 
 <section class="sxmf" id="sxmf" aria-label="Find your style by face shape" hidden>
